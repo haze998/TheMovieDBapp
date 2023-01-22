@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "167719-doctor_strange_in_the_multiverse_of_madness_wanda_vision-750x1334.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
