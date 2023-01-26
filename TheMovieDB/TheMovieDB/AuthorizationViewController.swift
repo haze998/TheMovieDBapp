@@ -7,13 +7,46 @@
 
 import UIKit
 
-class AuthorizationViewController: UIViewController {
+class AuthorizationViewController: UIViewController  {
     
-    var networkManager = AuthNetworkManager()
+//    var networkManager = AuthNetworkManager()
+    let viewmodel = AuthorizationViewModel()
+    var username = ""
+    var pass = ""
+    
+    private lazy var usertextField: UITextField = {
+        let usertextField = UITextField()
+        usertextField.tag = 0
+        return usertextField
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        usertextField.delegate = self
         
-        networkManager.getToken()
+    }
+    
+    //add action
+    //viewmodel.userInfo(userName: self.username, pass: self.pass)
+}
+
+extension AuthorizationViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField.tag {
+        case 0 :
+            if let username = textField.text {
+                self.username = username
+            }
+        case 1:
+            if let pass = textField.text {
+                self.pass = pass
+            }
+        default:
+            break
+        }
+       
+        
+        
+        
     }
 }

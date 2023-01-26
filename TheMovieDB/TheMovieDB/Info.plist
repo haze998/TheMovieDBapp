@@ -2,6 +2,28 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>CodecPro-Bold.ttf</string>
+		<string>CodecPro-BoldItalic.ttf</string>
+		<string>CodecPro-ExtraBold.ttf</string>
+		<string>CodecPro-ExtraBoldItalic.ttf</string>
+		<string>CodecPro-ExtraLightItalic.ttf</string>
+		<string>CodecPro-Fat.ttf</string>
+		<string>CodecPro-FatItalic.ttf</string>
+		<string>CodecPro-Heavy.ttf</string>
+		<string>CodecPro-HeavyItalic.ttf</string>
+		<string>CodecPro-Light.ttf</string>
+		<string>CodecPro-LightItalic.ttf</string>
+		<string>CodecPro-News.ttf</string>
+		<string>CodecPro-NewsItalic.ttf</string>
+		<string>CodecPro-Thin.ttf</string>
+		<string>CodecPro-ThinItalic.ttf</string>
+		<string>CodecPro-Ultra.ttf</string>
+		<string>CodecPro-UltraBlack.ttf</string>
+		<string>CodecPro-UltraBlackItalic.ttf</string>
+		<string>CodecPro-UltraItalic.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

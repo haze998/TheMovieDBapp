@@ -9,14 +9,18 @@ import Foundation
 import Alamofire
 
 class AuthNetworkManager {
+    static let shared = AuthNetworkManager()
+    
+    private init() {}
+    
     var url = "https://api.themoviedb.org/3/authentication/token/new?api_key=aef19f83a7261debd6b9b8edfd7919ce"
     
-    func getToken() {
+    func getToken(userName: String, password: String) {
         let request = AF.request(url, method: .get)
         request.responseDecodable(of: TokenResponseModel.self) { [weak self] response in
             do {
                 let token = try response.result.get().requestToken
-                self?.getValidateRequestToken(username: "", password: "", requestToken: token)
+                self?.getValidateRequestToken(username: userName, password: password, requestToken: token)
                 self?.getSessionId(requestToken: token)
                 
             } catch {
