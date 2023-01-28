@@ -76,6 +76,7 @@ class OnboardViewController: UIViewController {
         getStartedButton.layer.cornerRadius = 20
         getStartedButton.layer.masksToBounds = true
         getStartedButton.titleLabel?.font = UIFont(name: "CodecPro-News", size: 20.0)
+        
         //background gradient
         let colorTop =  UIColor(red: 0.5, green: 0, blue: 1, alpha: 1).cgColor
         let colorBot = UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor

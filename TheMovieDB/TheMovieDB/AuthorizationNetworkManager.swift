@@ -15,14 +15,13 @@ class AuthNetworkManager {
     
     var url = "https://api.themoviedb.org/3/authentication/token/new?api_key=aef19f83a7261debd6b9b8edfd7919ce"
     
-    func getToken(userName: String, password: String) {
+    func getToken(userName: String, password: String, completion: @escaping(Bool) -> Void){
         let request = AF.request(url, method: .get)
         request.responseDecodable(of: TokenResponseModel.self) { [weak self] response in
             do {
                 let token = try response.result.get().requestToken
-                self?.getValidateRequestToken(username: userName, password: password, requestToken: token)
-                self?.getSessionId(requestToken: token)
-                
+                self?.getValidateRequestToken(username: userName.self, password: password.self, requestToken: token)
+                completion(try response.result.get().success)
             } catch {
                 print(error)
             }
@@ -39,6 +38,7 @@ class AuthNetworkManager {
             do {
                 let token = try response.result.get().requestToken
                 print("Validate \(token)")
+                self.getSessionId(requestToken: token)
             } catch {
                 print(error)
             }

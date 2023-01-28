@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="35H-5F-SPn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UIV-wM-V9R">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -8,6 +8,11 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="CodecPro-News.ttf">
+            <string>CodecPro-News</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Onboard View Controller-->
         <scene sceneID="7kx-AY-QAa">
@@ -52,7 +57,7 @@
                                 </connections>
                             </button>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="3lj-FP-cQ4">
-                                <rect key="frame" x="138.66666666666666" y="701" width="115.66666666666666" height="26"/>
+                                <rect key="frame" x="138.66666666666666" y="701" width="116" height="26"/>
                                 <color key="pageIndicatorTintColor" systemColor="labelColor"/>
                                 <color key="currentPageIndicatorTintColor" systemColor="systemGrayColor"/>
                             </pageControl>
@@ -88,16 +93,97 @@
                     <view key="view" contentMode="scaleToFill" id="Mhh-u3-08F">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="U9T-Wq-DEF">
+                                <rect key="frame" x="39" y="407" width="315" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="DZD-7e-54h"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="CodecPro-News" family="Codec Pro" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Login" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iGV-LI-Pbs" userLabel="Login Text Field">
+                                <rect key="frame" x="39" y="337" width="315" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="vif-z9-Xlg"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="CodecPro-News" family="Codec Pro" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tmdb.new.logo" translatesAutoresizingMaskIntoConstraints="NO" id="HfZ-i0-7rS" userLabel="Logo Image View">
+                                <rect key="frame" x="39" y="159" width="315" height="133"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4p-BD-qZ5" userLabel="Login Button">
+                                <rect key="frame" x="39" y="537" width="315" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="az0-Nn-hZK"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="UIV-wM-V9R" eventType="touchUpInside" id="zHX-Ys-ij6"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="3F8-AN-ADZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="A4p-BD-qZ5" firstAttribute="top" secondItem="U9T-Wq-DEF" secondAttribute="bottom" constant="70" id="6AM-5T-Cl6"/>
+                            <constraint firstItem="3F8-AN-ADZ" firstAttribute="trailing" secondItem="U9T-Wq-DEF" secondAttribute="trailing" constant="39" id="Emz-b1-xJc"/>
+                            <constraint firstItem="3F8-AN-ADZ" firstAttribute="trailing" secondItem="HfZ-i0-7rS" secondAttribute="trailing" constant="39" id="FB1-f8-UwO"/>
+                            <constraint firstItem="iGV-LI-Pbs" firstAttribute="leading" secondItem="3F8-AN-ADZ" secondAttribute="leading" constant="39" id="GaR-C3-aUW"/>
+                            <constraint firstItem="3F8-AN-ADZ" firstAttribute="trailing" secondItem="iGV-LI-Pbs" secondAttribute="trailing" constant="39" id="Ha1-xd-qNr"/>
+                            <constraint firstItem="U9T-Wq-DEF" firstAttribute="leading" secondItem="3F8-AN-ADZ" secondAttribute="leading" constant="39" id="LnU-ml-AvN"/>
+                            <constraint firstItem="3F8-AN-ADZ" firstAttribute="trailing" secondItem="A4p-BD-qZ5" secondAttribute="trailing" constant="39" id="MCI-b9-yTU"/>
+                            <constraint firstItem="iGV-LI-Pbs" firstAttribute="top" secondItem="HfZ-i0-7rS" secondAttribute="bottom" constant="45" id="YrT-5u-1Il"/>
+                            <constraint firstItem="HfZ-i0-7rS" firstAttribute="top" secondItem="3F8-AN-ADZ" secondAttribute="top" constant="100" id="ZAM-tm-k5n"/>
+                            <constraint firstItem="A4p-BD-qZ5" firstAttribute="leading" secondItem="3F8-AN-ADZ" secondAttribute="leading" constant="39" id="k0v-nt-fWk"/>
+                            <constraint firstItem="U9T-Wq-DEF" firstAttribute="top" secondItem="iGV-LI-Pbs" secondAttribute="bottom" constant="10" id="kbW-32-KNc"/>
+                            <constraint firstItem="HfZ-i0-7rS" firstAttribute="leading" secondItem="3F8-AN-ADZ" secondAttribute="leading" constant="39" id="lDl-Hl-7LV"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bgView" destination="Mhh-u3-08F" id="zPF-RL-gYI"/>
+                        <outlet property="loginButton" destination="A4p-BD-qZ5" id="jjB-32-9pC"/>
+                        <outlet property="loginTextField" destination="iGV-LI-Pbs" id="KAG-Ah-eqW"/>
+                        <outlet property="passwordTextField" destination="U9T-Wq-DEF" id="MSW-bP-OsT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofr-Wf-oQb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="123" y="-282"/>
+            <point key="canvasLocation" x="122.90076335877862" y="-282.3943661971831"/>
+        </scene>
+        <!--Genres View Controller-->
+        <scene sceneID="1iI-6J-hlN">
+            <objects>
+                <viewController storyboardIdentifier="GenresViewController" id="sof-L4-3bh" customClass="GenresViewController" customModule="TheMovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZGt-s1-5Xp">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GENRE VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="841-7m-Umc">
+                                <rect key="frame" x="38" y="416" width="355" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TVK-FN-6v7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pmS-JB-3wH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="901.52671755725191" y="-282.3943661971831"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Tmdb.new.logo" width="185.03999328613281" height="133.39999389648438"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

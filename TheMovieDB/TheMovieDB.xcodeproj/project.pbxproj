@@ -34,6 +34,7 @@
 		066908FA2982D46700367ABD /* CodecPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 066908E72982D46700367ABD /* CodecPro-Light.ttf */; };
 		066908FB2982D46700367ABD /* CodecPro-Fat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 066908E82982D46700367ABD /* CodecPro-Fat.ttf */; };
 		066908FC2982D46700367ABD /* CodecPro-UltraBlack.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 066908E92982D46700367ABD /* CodecPro-UltraBlack.ttf */; };
+		06A9088F29856A8100691E6F /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A9088E29856A8100691E6F /* GenresViewController.swift */; };
 		06B98521297D940700777123 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B98520297D940700777123 /* AppDelegate.swift */; };
 		06B98523297D940700777123 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B98522297D940700777123 /* SceneDelegate.swift */; };
 		06B98528297D940700777123 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06B98526297D940700777123 /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 		066908E72982D46700367ABD /* CodecPro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CodecPro-Light.ttf"; sourceTree = "<group>"; };
 		066908E82982D46700367ABD /* CodecPro-Fat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CodecPro-Fat.ttf"; sourceTree = "<group>"; };
 		066908E92982D46700367ABD /* CodecPro-UltraBlack.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CodecPro-UltraBlack.ttf"; sourceTree = "<group>"; };
+		06A9088E29856A8100691E6F /* GenresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewController.swift; sourceTree = "<group>"; };
 		06B9851D297D940700777123 /* TheMovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06B98520297D940700777123 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06B98522297D940700777123 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				063FA0802981471000C9BAF0 /* OnboardingCollectionViewCell.swift */,
 				062EC7C429829B310052986F /* OnboardingCollectionViewCell.xib */,
 				0631C19829802F1100215476 /* OnboardingSlideModel.swift */,
+				06A9088E29856A8100691E6F /* GenresViewController.swift */,
 				06499CE5298012E4008F120F /* Animations */,
 				06B98537297D94C100777123 /* Storyboards */,
 				066908D62982D42B00367ABD /* Fonts */,
@@ -352,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06A9088F29856A8100691E6F /* GenresViewController.swift in Sources */,
 				06B98539297D958B00777123 /* AuthorizationViewController.swift in Sources */,
 				06B98521297D940700777123 /* AppDelegate.swift in Sources */,
 				06B9853F297D9AA200777123 /* OnboardViewController.swift in Sources */,
