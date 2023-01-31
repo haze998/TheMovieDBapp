@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - AuthorizationViewModel
 class AuthorizationViewModel {
     
     var isLogin: Bool = false

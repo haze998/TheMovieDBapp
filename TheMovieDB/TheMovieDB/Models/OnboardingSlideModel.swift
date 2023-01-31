@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+// MARK: - OnboardingSlideModel
 struct OnboardingSlideModel {
     let title: String
     let description: String

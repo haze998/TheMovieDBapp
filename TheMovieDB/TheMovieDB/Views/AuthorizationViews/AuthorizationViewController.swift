@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - AuthorizationViewController
 class AuthorizationViewController: UIViewController  {
     
     @IBOutlet var bgView: UIView!
