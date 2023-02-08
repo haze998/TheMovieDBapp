@@ -47,10 +47,13 @@ class AuthorizationViewController: UIViewController  {
         }
     }
     
+    @IBAction func guestButtonPressed(_ sender: UIButton) {}
+    
+    
     func setupUI() {
         //background gradient
-        let colorTop =  UIColor(red: 0.5, green: 0, blue: 1, alpha: 1).cgColor
-        let colorBot = UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
+        let colorTop = UIColor(red: 0.188, green: 0.196, blue: 0.262, alpha: 1).cgColor
+        let colorBot = UIColor(red: 0.239, green: 0.271, blue: 0.562, alpha: 1).cgColor
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.bgView.bounds
         gradientLayer.colors = [colorTop, colorBot]
@@ -72,8 +75,8 @@ class AuthorizationViewController: UIViewController  {
         loginTextField.borderStyle = .roundedRect
         loginTextField.layer.cornerRadius = 20
         loginTextField.clipsToBounds = true
-        loginTextField.setGradient(startColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0), endColor: UIColor(red: 0.5, green: 0, blue: 1, alpha: 1))
-        loginTextField.layer.borderColor = UIColor(red: 0.5, green: 0, blue: 1, alpha: 1).cgColor
+        loginTextField.backgroundColor = .clear
+        loginTextField.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5).cgColor
         loginTextField.layer.borderWidth = 1.0
         loginTextField.attributedPlaceholder = NSAttributedString(
             string: "Login",
@@ -83,8 +86,8 @@ class AuthorizationViewController: UIViewController  {
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.layer.cornerRadius = 20
         passwordTextField.clipsToBounds = true
-        passwordTextField.setGradient(startColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0), endColor: UIColor(red: 0.5, green: 0, blue: 1, alpha: 1))
-        passwordTextField.layer.borderColor = UIColor(red: 0.5, green: 0, blue: 1, alpha: 1).cgColor
+        passwordTextField.backgroundColor = .clear
+        passwordTextField.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5).cgColor
         passwordTextField.layer.borderWidth = 1.0
         passwordTextField.attributedPlaceholder = NSAttributedString(
             string: "Password",
@@ -112,15 +115,15 @@ extension AuthorizationViewController: UITextFieldDelegate {
     }
 }
 
-extension UITextField {
-    func setGradient(startColor:UIColor,endColor:UIColor) {
-        let gradient:CAGradientLayer = CAGradientLayer()
-        gradient.colors = [startColor.cgColor, endColor.cgColor]
-        gradient.locations = [0.0 , 1.0]
-        gradient.startPoint = CGPoint(x: 1.0, y: 1.0)
-        gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
-        gradient.frame = self.bounds
-        self.layer.addSublayer(gradient)
-    }
-}
+//extension UITextField {
+//    func setGradient(startColor:UIColor,endColor:UIColor) {
+//        let gradient:CAGradientLayer = CAGradientLayer()
+//        gradient.colors = [startColor.cgColor, endColor.cgColor]
+//        gradient.locations = [0.0 , 1.0]
+//        gradient.startPoint = CGPoint(x: 1.0, y: 1.0)
+//        gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
+//        gradient.frame = self.bounds
+//        self.layer.addSublayer(gradient)
+//    }
+//}
 

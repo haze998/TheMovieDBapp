@@ -78,8 +78,8 @@ class OnboardViewController: UIViewController {
         getStartedButton.titleLabel?.font = UIFont(name: "CodecPro-News", size: 20.0)
         
         //background gradient
-        let colorTop =  UIColor(red: 0.5, green: 0, blue: 1, alpha: 1).cgColor
-        let colorBot = UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
+        let colorTop =  UIColor(red: 0.188, green: 0.196, blue: 0.262, alpha: 1).cgColor
+        let colorBot =   UIColor(red: 0.239, green: 0.271, blue: 0.562, alpha: 1).cgColor
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.bgView.bounds
         gradientLayer.colors = [colorTop, colorBot]

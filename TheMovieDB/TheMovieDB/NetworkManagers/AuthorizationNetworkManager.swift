@@ -13,6 +13,8 @@ class AuthNetworkManager {
     
     private init() {}
     
+    var sessionId = ""
+    
     var url = "https://api.themoviedb.org/3/authentication/token/new?api_key=aef19f83a7261debd6b9b8edfd7919ce"
     
     func getToken(userName: String, password: String, completion: @escaping(Bool) -> Void){
@@ -58,4 +60,19 @@ class AuthNetworkManager {
             }
         }
     }
+    
+    // - MARK: create guest session
+//    func guestSession(_ completionHandler: @escaping (GuestSessionID) -> Void) {
+//        let url = "https://api.themoviedb.org/3/authentication/guest_session/new?api_key=aef19f83a7261debd6b9b8edfd7919ce"
+//        let request = AF.request(url, method: .get)
+//        request.responseDecodable(of: GuestSessionID.self) { response in
+//            do {
+//                let guestId = try response.result.get().guestSessionID
+//                self.sessionId = guestId
+//            } catch {
+//                print(error)
+//            }
+//        }
+//    }
 }
+

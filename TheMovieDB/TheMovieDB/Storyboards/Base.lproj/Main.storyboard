@@ -58,8 +58,8 @@
                             </button>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="3lj-FP-cQ4">
                                 <rect key="frame" x="138.66666666666666" y="701" width="116" height="26"/>
-                                <color key="pageIndicatorTintColor" systemColor="labelColor"/>
-                                <color key="currentPageIndicatorTintColor" systemColor="systemGrayColor"/>
+                                <color key="pageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" systemColor="systemBackgroundColor"/>
                             </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gma-cy-nct"/>
@@ -128,11 +128,25 @@
                                     <action selector="loginButtonPressed:" destination="UIV-wM-V9R" eventType="touchUpInside" id="zHX-Ys-ij6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2VF-Bz-2xO" userLabel="Guest Button">
+                                <rect key="frame" x="213.33333333333337" y="467" width="140.66666666666663" height="29.333333333333314"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign in as a Guest ?">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="guestButtonPressed:" destination="UIV-wM-V9R" eventType="touchUpInside" id="Vqt-N0-dsv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3F8-AN-ADZ"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="A4p-BD-qZ5" firstAttribute="top" secondItem="U9T-Wq-DEF" secondAttribute="bottom" constant="70" id="6AM-5T-Cl6"/>
+                            <constraint firstItem="3F8-AN-ADZ" firstAttribute="trailing" secondItem="2VF-Bz-2xO" secondAttribute="trailing" constant="39" id="Dc5-9V-dAK"/>
+                            <constraint firstItem="2VF-Bz-2xO" firstAttribute="top" secondItem="U9T-Wq-DEF" secondAttribute="bottom" id="Deb-u9-8cg"/>
                             <constraint firstItem="3F8-AN-ADZ" firstAttribute="trailing" secondItem="U9T-Wq-DEF" secondAttribute="trailing" constant="39" id="Emz-b1-xJc"/>
                             <constraint firstItem="3F8-AN-ADZ" firstAttribute="trailing" secondItem="HfZ-i0-7rS" secondAttribute="trailing" constant="39" id="FB1-f8-UwO"/>
                             <constraint firstItem="iGV-LI-Pbs" firstAttribute="leading" secondItem="3F8-AN-ADZ" secondAttribute="leading" constant="39" id="GaR-C3-aUW"/>
@@ -141,6 +155,7 @@
                             <constraint firstItem="3F8-AN-ADZ" firstAttribute="trailing" secondItem="A4p-BD-qZ5" secondAttribute="trailing" constant="39" id="MCI-b9-yTU"/>
                             <constraint firstItem="iGV-LI-Pbs" firstAttribute="top" secondItem="HfZ-i0-7rS" secondAttribute="bottom" constant="45" id="YrT-5u-1Il"/>
                             <constraint firstItem="HfZ-i0-7rS" firstAttribute="top" secondItem="3F8-AN-ADZ" secondAttribute="top" constant="100" id="ZAM-tm-k5n"/>
+                            <constraint firstItem="2VF-Bz-2xO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3F8-AN-ADZ" secondAttribute="leading" symbolic="YES" id="acT-DS-nij"/>
                             <constraint firstItem="A4p-BD-qZ5" firstAttribute="leading" secondItem="3F8-AN-ADZ" secondAttribute="leading" constant="39" id="k0v-nt-fWk"/>
                             <constraint firstItem="U9T-Wq-DEF" firstAttribute="top" secondItem="iGV-LI-Pbs" secondAttribute="bottom" constant="10" id="kbW-32-KNc"/>
                             <constraint firstItem="HfZ-i0-7rS" firstAttribute="leading" secondItem="3F8-AN-ADZ" secondAttribute="leading" constant="39" id="lDl-Hl-7LV"/>
@@ -165,17 +180,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GENRE VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="841-7m-Umc">
-                                <rect key="frame" x="38" y="416" width="355" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aS6-4V-OWr">
+                                <rect key="frame" x="10" y="59" width="373" height="32"/>
+                                <segments>
+                                    <segment title="Movies"/>
+                                    <segment title="Serials"/>
+                                </segments>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SN5-oV-WaN">
+                                <rect key="frame" x="0.0" y="90" width="393" height="762"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vkb-AJ-aus">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TVK-FN-6v7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aS6-4V-OWr" firstAttribute="top" secondItem="TVK-FN-6v7" secondAttribute="top" id="0yP-LQ-7Wh"/>
+                            <constraint firstItem="TVK-FN-6v7" firstAttribute="trailing" secondItem="aS6-4V-OWr" secondAttribute="trailing" constant="10" id="2iV-dX-WN7"/>
+                            <constraint firstItem="aS6-4V-OWr" firstAttribute="leading" secondItem="TVK-FN-6v7" secondAttribute="leading" constant="10" id="5XV-iK-VGY"/>
+                            <constraint firstItem="SN5-oV-WaN" firstAttribute="leading" secondItem="TVK-FN-6v7" secondAttribute="leading" id="Chn-ZT-XLP"/>
+                            <constraint firstItem="SN5-oV-WaN" firstAttribute="trailing" secondItem="TVK-FN-6v7" secondAttribute="trailing" id="Rar-o5-Lgq"/>
+                            <constraint firstAttribute="bottom" secondItem="SN5-oV-WaN" secondAttribute="bottom" id="XnV-I7-HNl"/>
+                            <constraint firstItem="SN5-oV-WaN" firstAttribute="top" secondItem="aS6-4V-OWr" secondAttribute="bottom" id="ru1-Z6-b3Z"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bgView" destination="ZGt-s1-5Xp" id="3Mk-0p-XfW"/>
+                        <outlet property="collectionView" destination="SN5-oV-WaN" id="Zd0-4D-jek"/>
+                        <outlet property="segmentControl" destination="aS6-4V-OWr" id="oUs-WM-e6D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pmS-JB-3wH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -184,14 +224,8 @@
     </scenes>
     <resources>
         <image name="Tmdb.new.logo" width="185.03999328613281" height="133.39999389648438"/>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

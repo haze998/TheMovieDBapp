@@ -16,11 +16,20 @@ class AuthorizationViewModel {
         if userName.isEmpty || pass.isEmpty {
             print("auth error")
         } else {
-            AuthNetworkManager.shared.getToken(userName: userName, password: pass) { authResult in
+            AuthNetworkManager.shared.getToken(userName: userName, password: pass) { [weak self] authResult in
+                guard let self = self else { return }
                 self.isLogin = authResult
                 completion()
             }
            
         }
     }
+    
+//    func guestSignIn(_ completionHandler: @escaping () -> Void) {
+//            AuthNetworkManager.shared.guestSession ({ [weak self] guestSession in
+//                guard let self = self else { return }
+//                self.isLogin = guestSession.success
+//                completionHandler()
+//            })
+//    }
 }
