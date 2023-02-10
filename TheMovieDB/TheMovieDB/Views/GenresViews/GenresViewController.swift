@@ -18,8 +18,8 @@ class GenresViewController: UIViewController {
             let nib = UINib(nibName: GenresCollectionViewCell.reuseID, bundle: nil)
             collectionView.register(nib, forCellWithReuseIdentifier: GenresCollectionViewCell.reuseID)
             collectionView.register(HeaderSectionCollectionViewCell.self,
-                                   forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                   withReuseIdentifier: HeaderSectionCollectionViewCell.reuseId)
+                                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                    withReuseIdentifier: HeaderSectionCollectionViewCell.reuseId)
         }
     }
     var viewModel = GenresViewModel()
@@ -36,87 +36,142 @@ class GenresViewController: UIViewController {
         }
     }
     
+    // MARK: - autoscrolling View on top
+    @IBAction func logoBarButtonItemPressed(_ sender: Any) {
+        self.collectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
+    }
+    
     func setupUI() {
         segmentControl.setTitle("Movies", forSegmentAt: 0)
         segmentControl.setTitle("TV Shows", forSegmentAt: 1)
         segmentControl.backgroundColor = .clear
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        segmentControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        segmentControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+        segmentControl.addTarget(self, action: #selector(segmentWidget), for: .valueChanged)
         
         collectionView.backgroundColor = .clear
         collectionView.collectionViewLayout = createLayoutBuilder()
         
-        let colorTop =  UIColor(red: 0.188, green: 0.196, blue: 0.262, alpha: 1).cgColor
-        let colorBot =   UIColor(red: 0.239, green: 0.271, blue: 0.562, alpha: 1).cgColor
+        let colorTop = UIColor(red: 0.33, green: 0.04, blue: 0.63, alpha: 1.00).cgColor
+        let colorBot = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.bgView.bounds
         gradientLayer.colors = [colorTop, colorBot]
+        
         self.bgView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-   private func createLayout() -> NSCollectionLayoutSection? {
-            let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .fractionalHeight(1.0))
-            let item = NSCollectionLayoutItem(layoutSize: size)
-            item.contentInsets = NSDirectionalEdgeInsets(top: 0,
-                                                         leading: 4,
-                                                         bottom: 8,
-                                                         trailing: 4)
-            let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(180),
-                                                   heightDimension: .absolute(330))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                           subitems: [item])
-            group.contentInsets = NSDirectionalEdgeInsets(top: 8,
-                                                          leading: 4,
-                                                          bottom: 8,
-                                                          trailing: 0)
-            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                    heightDimension: .fractionalHeight(0.05))
-            let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
-                                                                     elementKind: UICollectionView.elementKindSectionHeader,
-                                                                     alignment: .topLeading)
-            let section = NSCollectionLayoutSection(group: group)
-            section.boundarySupplementaryItems = [header]
-            section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
-            return section
-        }
+    @objc func segmentWidget(sender: UISegmentedControl) {
+        collectionView.reloadData()
+    }
+    
+    private func createLayout() -> NSCollectionLayoutSection? {
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                          heightDimension: .fractionalHeight(0.95))
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                     leading: 4,
+                                                     bottom: 8,
+                                                     trailing: 4)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(180),
+                                               heightDimension: .absolute(280))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                       subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                      leading: 4,
+                                                      bottom: 8,
+                                                      trailing: 0)
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                heightDimension: .fractionalHeight(0.05))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
+                                                                 elementKind: UICollectionView.elementKindSectionHeader,
+                                                                 alignment: .topLeading)
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [header]
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+        return section
+    }
     
     private func createLayoutBuilder() -> UICollectionViewCompositionalLayout {
-        return UICollectionViewCompositionalLayout { (sectionNumber, _) -> NSCollectionLayoutSection? in
-            return self.createLayout()
+        return UICollectionViewCompositionalLayout { (sectionNumber, _) -> NSCollectionLayoutSection? in return self.createLayout()
+        }
+    }
+}
+
+extension GenresViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+        
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            navigationController?.pushViewController(vc, animated: true)
+        default: break
         }
     }
     
-
 }
 
-extension GenresViewController: UICollectionViewDelegate { }
-
 extension GenresViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.sortedMovies.keys.count
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            return viewModel.sortedMovies.keys.count
+        case 1:
+            return viewModel.sortedTVs.keys.count
+        default:
+            return 0
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        viewModel.sortedMovies.values.count
+        switch segmentControl.selectedSegmentIndex {
+        case 0 :
+            return viewModel.sortedMovies.values.count
+        case 1:
+            return viewModel.sortedTVs.values.count
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenresCollectionViewCell.reuseID, for: indexPath) as? GenresCollectionViewCell else { return UICollectionViewCell() }
-        let genre = viewModel.sortedMovies.keys.sorted(by: <)[indexPath.section]
-        let media = viewModel.sortedMovies[genre]![indexPath.item]
-        cell.setupCell(media: media)
-        return cell
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            let genre = viewModel.sortedMovies.keys.sorted(by: <)[indexPath.section]
+            let media = viewModel.sortedMovies[genre]![indexPath.item]
+            cell.setupCell(media: media)
+            return cell
+        case 1:
+            let genre = viewModel.sortedTVs.keys.sorted(by: <)[indexPath.section]
+            let media = viewModel.sortedTVs[genre]![indexPath.item]
+            cell.setupCell(media: media)
+            return cell
+        default:
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderSectionCollectionViewCell.reuseId, for: indexPath) as? HeaderSectionCollectionViewCell else { return UICollectionReusableView() }
-            
-            sectionHeader.label.text = viewModel.sortedMovies.keys.sorted(by: <)[indexPath.section]
-
-            return sectionHeader
+            switch segmentControl.selectedSegmentIndex {
+            case 0:
+                sectionHeader.label.text = viewModel.sortedMovies.keys.sorted(by: <)[indexPath.section]
+                return sectionHeader
+            case 1:
+                sectionHeader.label.text = viewModel.sortedTVs.keys.sorted(by: <)[indexPath.section]
+                return sectionHeader
+            default:
+                return sectionHeader
+            }
         } else {
             return UICollectionReusableView()
         }
-        
     }
 }

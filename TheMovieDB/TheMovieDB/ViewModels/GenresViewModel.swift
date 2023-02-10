@@ -57,7 +57,7 @@ class GenresViewModel {
     }
 //    // MARK: - Get TVs by genre
     func getSortedTVs(completion: @escaping () -> Void) {
-        GenresNetworkManager.shared.sortedMediaList(mediaType: MediaType.tvShow.rawValue) { [weak self]
+        GenresNetworkManager.shared.sortedMediaListTV(mediaType: MediaType.tvShow.rawValue) { [weak self]
             tv in
             guard let self = self else { return }
             self.sortedTVs = tv

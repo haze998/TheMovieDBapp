@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sof-L4-3bh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wsc-cn-13W">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -58,8 +58,8 @@
                             </button>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="3lj-FP-cQ4">
                                 <rect key="frame" x="138.66666666666666" y="701" width="116" height="26"/>
-                                <color key="pageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="currentPageIndicatorTintColor" systemColor="systemBackgroundColor"/>
+                                <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" systemColor="systemPurpleColor"/>
                             </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gma-cy-nct"/>
@@ -181,14 +181,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aS6-4V-OWr">
-                                <rect key="frame" x="10" y="59" width="373" height="32"/>
+                                <rect key="frame" x="10" y="103" width="373" height="32"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
                                     <segment title="Movies"/>
                                     <segment title="Serials"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" red="0.25098040700000002" green="0.054901964960000001" blue="0.50980395079999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SN5-oV-WaN">
-                                <rect key="frame" x="0.0" y="90" width="393" height="762"/>
+                                <rect key="frame" x="0.0" y="154" width="393" height="698"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vkb-AJ-aus">
                                     <size key="itemSize" width="128" height="128"/>
@@ -208,9 +210,17 @@
                             <constraint firstItem="SN5-oV-WaN" firstAttribute="leading" secondItem="TVK-FN-6v7" secondAttribute="leading" id="Chn-ZT-XLP"/>
                             <constraint firstItem="SN5-oV-WaN" firstAttribute="trailing" secondItem="TVK-FN-6v7" secondAttribute="trailing" id="Rar-o5-Lgq"/>
                             <constraint firstAttribute="bottom" secondItem="SN5-oV-WaN" secondAttribute="bottom" id="XnV-I7-HNl"/>
-                            <constraint firstItem="SN5-oV-WaN" firstAttribute="top" secondItem="aS6-4V-OWr" secondAttribute="bottom" id="ru1-Z6-b3Z"/>
+                            <constraint firstItem="SN5-oV-WaN" firstAttribute="top" secondItem="aS6-4V-OWr" secondAttribute="bottom" constant="20" id="ru1-Z6-b3Z"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="xr0-bt-ddq">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="logo" id="HZj-Ty-bQu">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="logoBarButtonItemPressed:" destination="sof-L4-3bh" id="TD2-dk-Xar"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bgView" destination="ZGt-s1-5Xp" id="3Mk-0p-XfW"/>
                         <outlet property="collectionView" destination="SN5-oV-WaN" id="Zd0-4D-jek"/>
@@ -219,13 +229,64 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pmS-JB-3wH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1679" y="-282"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="PSR-Ig-Nbl">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="5SI-IN-N0S" customClass="DetailViewController" customModule="TheMovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Jj-30-CHa">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wcg-of-ePc">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="osu-Jd-7gd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wcg-of-ePc" firstAttribute="leading" secondItem="osu-Jd-7gd" secondAttribute="leading" id="6Ae-Sk-ole"/>
+                            <constraint firstAttribute="bottom" secondItem="wcg-of-ePc" secondAttribute="bottom" id="Ill-la-6oB"/>
+                            <constraint firstItem="wcg-of-ePc" firstAttribute="top" secondItem="3Jj-30-CHa" secondAttribute="top" id="lQ6-U7-dAh"/>
+                            <constraint firstItem="wcg-of-ePc" firstAttribute="trailing" secondItem="osu-Jd-7gd" secondAttribute="trailing" id="vsJ-mo-qP2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="posterImageView" destination="wcg-of-ePc" id="2vF-aX-gHo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wRG-dO-a0v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1678.6259541984732" y="371.83098591549299"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dQt-iw-ytg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wsc-cn-13W" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="h4l-aD-cV4">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sof-L4-3bh" kind="relationship" relationship="rootViewController" id="uIz-BJ-VwV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qfW-ed-0ui" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="901.52671755725191" y="-282.3943661971831"/>
         </scene>
     </scenes>
     <resources>
         <image name="Tmdb.new.logo" width="185.03999328613281" height="133.39999389648438"/>
+        <image name="logo" width="177" height="15"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

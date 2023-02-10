@@ -106,18 +106,38 @@ class GenresNetworkManager {
                 task.resume()
             }
         }
-                        // MARK: - Get sorted TVs by genre
-                        //                       func getTVs(competion: @escaping ([MediaResponse.Media]) -> ()) {
-                        //           let url = "https://api.themoviedb.org/3/discover/tv?api_key=aef19f83a7261debd6b9b8edfd7919ce&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0"
-                        //           let request = AF.request(url, method: .get)
-                        //           request.responseDecodable(of: MediaResponse.self) { response in
-                        //               do {
-                        //                   let tv = try response.result.get().results
-                        //                   competion(tv!)
-                        //               } catch {
-                        //                   print(error)
-                        //               }
-                        //           }
-                        //       }
-        )}
+                        
+    )}
+    
+    func sortedMediaListTV(mediaType: String, completion: @escaping (([String: [MediaResponse.Media]]) -> Void)) {
+        getTVGenres(completion: { response in
+            var dict: [String: [MediaResponse.Media]] = [:]
+            for genre in response {
+                guard let genreId = genre.id else { return }
+                guard let apiURL = URL(string: "https://api.themoviedb.org/3/discover/tv?api_key=aef19f83a7261debd6b9b8edfd7919ce&sort_by=popularity.desc&with_genres=\(genreId)") else {
+                    fatalError("Invalid URL")
+                    
+                }
+                let session = URLSession(configuration: .default)
+                let task = session.dataTask(with: apiURL) { data, response, error in
+                    guard let data = data else { return }
+                    do {
+                        let decoder = JSONDecoder()
+                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+                        let response = try decoder.decode(MediaResponse.self, from: data)
+                        DispatchQueue.main.async {
+                            dict[genre.name!] = response.results
+                            completion(dict)
+                        }
+                    } catch {
+                        print("Error: \(error)")
+                    }
+                }
+                task.resume()
+            }
+        }
+                        
+    )}
 }
+                        
+

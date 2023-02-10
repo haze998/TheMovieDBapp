@@ -14,22 +14,21 @@ class GenresCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var rateMovieLabel: UILabel!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var stackView: UIStackView!
-    private let sdwTransformer = SDImageResizingTransformer(size: CGSize(width: 200, height: 300), scaleMode: .fill)
     static let reuseID = "GenresCollectionViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //setupUI()
+        setupUI()
     }
     
     func setupCell(media: MediaResponse.Media) {
         loadingIndicator.startAnimating()
         let url = URL(string: "https://image.tmdb.org/t/p/w500\(media.posterPath ?? "")")
-        movieImageView.sd_setImage(with: url, placeholderImage: nil, context: [.imageTransformer: sdwTransformer], progress: nil) { [ weak self ] _, _, _, _ in
+        movieImageView.sd_setImage(with: url, placeholderImage: nil, progress: nil) { [ weak self ] _, _, _, _ in
             guard let self = self else { return }
-            self.loadingIndicator.stopAnimating()
             self.rateMovieLabel.text = "\(media.voteAverage ?? 0)"
-            
+            self.loadingIndicator.hidesWhenStopped = true
+            self.loadingIndicator.stopAnimating()
         }
     }
     
@@ -37,6 +36,7 @@ class GenresCollectionViewCell: UICollectionViewCell {
     private func setupUI() {
         containerView.layer.cornerRadius = 20
         containerView.clipsToBounds = true
+        containerView.backgroundColor = .clear
         stackView.layer.cornerRadius = 5
     }
 }

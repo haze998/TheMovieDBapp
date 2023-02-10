@@ -34,8 +34,8 @@ final class HeaderSectionCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .left
         label.adjustsFontForContentSizeCategory = true
         label.minimumContentSizeCategory = .accessibilityMedium
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        label.textColor = .black
+        label.font = UIFont(name: "CodecPro-Bold", size: 30.0)
+        label.textColor = .white
         leftElemnt.backgroundColor = .systemRed
         leftElemnt.translatesAutoresizingMaskIntoConstraints = false
         leftElemnt.layer.cornerRadius = 4
@@ -52,7 +52,7 @@ final class HeaderSectionCollectionViewCell: UICollectionViewCell {
             contrainer.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         NSLayoutConstraint.activate([
-            leftElemnt.topAnchor.constraint(equalTo: contrainer.topAnchor, constant: 4),
+            leftElemnt.topAnchor.constraint(equalTo: contrainer.topAnchor, constant: 0),
             leftElemnt.leadingAnchor.constraint(equalTo: contrainer.leadingAnchor, constant: 8),
             leftElemnt.bottomAnchor.constraint(equalTo: contrainer.bottomAnchor, constant: -4),
             leftElemnt.widthAnchor.constraint(equalToConstant: 8)
