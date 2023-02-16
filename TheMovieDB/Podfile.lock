@@ -4,23 +4,27 @@ PODS:
   - SDWebImage (5.14.3):
     - SDWebImage/Core (= 5.14.3)
   - SDWebImage/Core (5.14.3)
+  - youtube-ios-player-helper (1.0.4)
 
 DEPENDENCIES:
   - Alamofire
   - lottie-ios
   - SDWebImage
+  - youtube-ios-player-helper
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - lottie-ios
     - SDWebImage
+    - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   lottie-ios: 0b5919ae7673fd7a1c36122b7cb6a9050e9c9f58
   SDWebImage: 9c36e66c8ce4620b41a7407698dda44211a96764
+  youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
 
-PODFILE CHECKSUM: ee9b5bd913f9a5811a2f5379be22ca995ca13e6d
+PODFILE CHECKSUM: 547e496d0df3d339fb6fe50d309bec825a908fc7
 
 COCOAPODS: 1.11.3

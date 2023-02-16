@@ -36,11 +36,6 @@ class GenresViewController: UIViewController {
         }
     }
     
-    // MARK: - autoscrolling View on top
-    @IBAction func logoBarButtonItemPressed(_ sender: Any) {
-        self.collectionView.setContentOffset(CGPoint(x:0,y:0), animated: true)
-    }
-    
     func setupUI() {
         segmentControl.setTitle("Movies", forSegmentAt: 0)
         segmentControl.setTitle("TV Shows", forSegmentAt: 1)
@@ -102,13 +97,21 @@ class GenresViewController: UIViewController {
 extension GenresViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
-        
+        //let detailVC = DetailViewController()
+      guard let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
         switch segmentControl.selectedSegmentIndex {
         case 0:
-            navigationController?.pushViewController(vc, animated: true)
+            let genre = viewModel.sortedMovies.keys.sorted(by: <)[indexPath.section]
+            let media = viewModel.sortedMovies[genre]![indexPath.item]
+            //detailVC.movieId = media.id!
+            vc.movieId = media.id!
+            self.navigationController?.pushViewController(vc, animated: true)
         case 1:
-            navigationController?.pushViewController(vc, animated: true)
+            let genre = viewModel.sortedTVs.keys.sorted(by: <)[indexPath.section]
+            let media = viewModel.sortedTVs[genre]![indexPath.item]
+            //detailVC.tvShowId = media.id!
+            vc.tvShowId = media.id!
+            self.navigationController?.pushViewController(vc, animated: true)
         default: break
         }
     }

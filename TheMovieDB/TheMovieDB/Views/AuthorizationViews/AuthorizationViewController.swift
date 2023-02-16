@@ -40,9 +40,10 @@ class AuthorizationViewController: UIViewController  {
         viewModel.userInfo(userName: loginTextField.text ?? "", pass: passwordTextField.text ?? "") {
             if self.viewModel.isLogin {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                guard let vc = storyboard.instantiateViewController(withIdentifier: "GenresViewController") as? GenresViewController else { return }
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: true)
+                let vc = storyboard.instantiateViewController(withIdentifier: "NavControllerId")
+                self.view.window?.rootViewController = vc
+                self.view.window?.makeKeyAndVisible()
+
             }
         }
     }

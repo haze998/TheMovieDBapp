@@ -7,6 +7,7 @@ target 'TheMovieDB' do
   pod 'Alamofire'
   pod 'lottie-ios'
   pod 'SDWebImage'
+  pod "youtube-ios-player-helper"
   # Pods for TheMovieDB
 
 end
