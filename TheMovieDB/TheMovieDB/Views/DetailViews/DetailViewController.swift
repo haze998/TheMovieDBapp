@@ -10,21 +10,26 @@ import SDWebImage
 import youtube_ios_player_helper
 
 class DetailViewController: UIViewController {
-    
+    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var voteCountLabel: UILabel!
+    @IBOutlet weak var runtimeLabel: UILabel!
     @IBOutlet var bgDetailView: UIView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var playerView: YTPlayerView!
-    
     private lazy var detailViewModel = DetailViewModel(delegate: self)
     // Default media values
     var movieId = 0
     var tvShowId = 0
-
+//    var media: MediaResponse.Media?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+     
+
         setupUI()
     }
     
@@ -39,13 +44,19 @@ class DetailViewController: UIViewController {
     // MARK: - Loading Data
     private func loadData() {
         if movieId != 0 {
-            detailViewModel.getVideosMovies(movieID: movieId)
-            detailViewModel.getMovieDetails(movieID: movieId)
+//            detailViewModel.getVideosMovies(movieID: movieId)
+            detailViewModel.getVideosMovies(movieID: movieId) {
+                self.loadTrailer()
+            }
+            detailViewModel.getMovieDetails(movieID: movieId) {
+               
+            }
         } else {
             detailViewModel.getVideosTV(tvShowID: tvShowId)
             detailViewModel.getTVShowDetails(tvShowId: tvShowId)
         }
     }
+
     
     private func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
         let inputFormatter = DateFormatter()
@@ -58,8 +69,22 @@ class DetailViewController: UIViewController {
         }
         return nil
     }
-
+    
+//    func bindWithMedia(keysPath: [String], index: Int) {
+//        DispatchQueue.main.async {
+//            self.playerView.load(withVideoId: keysPath[index])
+//        }
+    func loadTrailer() {
+        playerView.load(withVideoId: detailViewModel.videosPath.first ?? "")
+        }
+        
+        
 }
+
+       // cell.bindWithMedia(keysPath: viewModel.videosPath, index: indexPath.item)
+    
+    
+
 
 // MARK: - ViewModelProtocol
 extension DetailViewController: ViewModelProtocol {
@@ -75,6 +100,7 @@ extension DetailViewController: ViewModelProtocol {
 //        loaderView.isHidden = true
 //        loaderView.stopAnimating()
     }
+
     func updateView() {
         if movieId != 0 {
             guard let movie = detailViewModel.currentMovie else { return }
@@ -84,8 +110,18 @@ extension DetailViewController: ViewModelProtocol {
             self.posterImageView.sd_setImage(with: URL(string: (MediaType.getImage.rawValue + (movie.posterPath ?? ""))), completed: nil)
             posterImageView.layer.cornerRadius = 25
             let attributedDate = formattedDateFromString(dateString: movie.releaseDate ?? "", withFormat: "MMM dd, yyyy")
-            titleLabel.text = (movie.title ?? movie.originalTitle ?? "")  + " " + ("(\(attributedDate ?? ""))")
+            titleLabel.text = (movie.title ?? movie.originalTitle ?? "")
             textView.text = movie.overview
+            runtimeLabel.text = "\(movie.runtime ?? 0) minutes"
+            voteCountLabel.text = "\(movie.voteAverage ?? 0.0) (TMDB)"
+            releaseDateLabel.text = attributedDate
+            
+            guard let movieGenresFilter = movie.genres else { return }
+            var movieGenresCounter = ""
+            for genre in movieGenresFilter {
+                movieGenresCounter += (genre.name ?? "") + " "
+            }
+            genreLabel.text = movieGenresCounter
 //
 //            date.text = formattedText
 //            voteAverage.text = "\(round(movie.voteAverage ?? 0.0))"
@@ -106,8 +142,18 @@ extension DetailViewController: ViewModelProtocol {
             self.posterImageView.sd_setImage(with: URL(string: (MediaType.getImage.rawValue + (tvShow.posterPath ?? ""))), completed: nil)
             posterImageView.layer.cornerRadius = 25
             let attributedDate = formattedDateFromString(dateString: tvShow.firstAirDate ?? "", withFormat: "MMM dd, yyyy")
-            titleLabel.text = (tvShow.name ?? tvShow.originalTitle ?? "")  + " " + ("(\(attributedDate ?? ""))")
+            titleLabel.text = (tvShow.name ?? tvShow.originalTitle ?? "")
             textView.text = tvShow.overview
+            runtimeLabel.text = "\(tvShow.runtime ?? 0)"
+            voteCountLabel.text = "\(tvShow.voteAverage ?? 0.0) (TMDB)"
+            releaseDateLabel.text = attributedDate
+            
+            guard let tvGenresFilter = tvShow.genres else { return }
+            var tvGenresCounter = ""
+            for genre in tvGenresFilter {
+                tvGenresCounter += (genre.name ?? "") + " "
+            }
+            genreLabel.text = tvGenresCounter
             
 //            let formattedText = formattedDateFromString(dateString: tvShow.firstAirDate ?? "",
 //                                                        withFormat: "MMM dd, yyyy")

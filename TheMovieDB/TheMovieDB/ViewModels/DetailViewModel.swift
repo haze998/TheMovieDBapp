@@ -17,14 +17,18 @@ class DetailViewModel {
         self.delegate = delegate
     }
     // MARK: - Media Details request
-    func getMovieDetails(movieID: Int) {
+    
+    
+    
+    func getMovieDetails(movieID: Int, completion: @escaping () -> ()) {
         delegate?.showLoading()
         DetailNetworkManager.shared.getMovieDetails(movieId: movieID) { movie in
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
                 self.currentMovie = movie
-                self.delegate?.hideLoading()
-                self.delegate?.updateView()
-            }
+//                self.delegate?.hideLoading()
+//                self.delegate?.updateView()
+//            }
+            completion()
         }
     }
     func getTVShowDetails(tvShowId: Int) {
@@ -38,16 +42,18 @@ class DetailViewModel {
         }
     }
     // MARK: - Youtube configure
-    func getVideosMovies(movieID: Int) {
+    func getVideosMovies(movieID: Int, completion: @escaping()->()) {
         delegate?.showLoading()
         DetailNetworkManager.shared.getVideos(mediaID: movieID, mediaType: MediaType.movie.rawValue) { [weak self] videos in
             DispatchQueue.main.async {
                 self?.delegate?.hideLoading()
-                let sorted = videos.filter { video in
-                    return video.type == "Trailer"
-                }
-                for video in sorted {
-                    self?.videosPath.append(video.key)
+                videos.forEach { [weak self] video in
+                    if video.type == "Trailer" {
+                        guard let self = self else { return }
+                        self.videosPath.append(video.key)
+                        completion()
+                    }
+                    
                 }
                 self?.delegate?.reload()
             }

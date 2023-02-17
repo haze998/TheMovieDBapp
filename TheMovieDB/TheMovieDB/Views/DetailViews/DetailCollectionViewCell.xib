@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="CodecPro-News.ttf">
+            <string>CodecPro-News</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="DetailCollectionViewCell" reuseIdentifier="DetailCollectionViewCell" id="gTV-IL-0wX" customClass="DetailCollectionViewCell" customModule="TheMovieDB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="111" height="108"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="111" height="108"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bm-ag-2hN">
+                        <rect key="frame" x="0.0" y="93.333333333333329" width="111" height="14.666666666666671"/>
+                        <fontDescription key="fontDescription" name="CodecPro-News" family="Codec Pro" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Aor-81-35Q">
+                        <rect key="frame" x="0.0" y="0.0" width="111" height="88"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="0Bm-ag-2hN" secondAttribute="bottom" id="BqW-Qw-Eos"/>
+                <constraint firstItem="Aor-81-35Q" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="LJZ-22-cAl"/>
+                <constraint firstItem="Aor-81-35Q" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.814815" id="NHb-Oa-ve8"/>
+                <constraint firstItem="Aor-81-35Q" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="R8L-E7-ngN"/>
+                <constraint firstItem="0Bm-ag-2hN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dOE-Wd-tpW"/>
+                <constraint firstAttribute="trailing" secondItem="0Bm-ag-2hN" secondAttribute="trailing" id="iMa-RW-auD"/>
+                <constraint firstAttribute="trailing" secondItem="Aor-81-35Q" secondAttribute="trailing" id="pr8-Bg-iZH"/>
+            </constraints>
+            <size key="customSize" width="111" height="108"/>
+            <connections>
+                <outlet property="actorImageView" destination="Aor-81-35Q" id="VOQ-Hq-ahg"/>
+                <outlet property="actorNamelabel" destination="0Bm-ag-2hN" id="cSD-fz-XaQ"/>
+            </connections>
+            <point key="canvasLocation" x="-109.16030534351144" y="-56.338028169014088"/>
+        </collectionViewCell>
+    </objects>
+</document>
