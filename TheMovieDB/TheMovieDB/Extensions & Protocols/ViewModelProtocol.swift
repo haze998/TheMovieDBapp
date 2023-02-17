@@ -10,7 +10,7 @@ import Foundation
 protocol ViewModelProtocol: AnyObject {
     func showLoading()
     func hideLoading()
-    func updateView()
+//    func updateView()
     func reload()
 }
 
