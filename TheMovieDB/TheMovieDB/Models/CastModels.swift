@@ -1,5 +1,5 @@
 //
-//  ActorsModels.swift
+//  CastModels.swift
 //  TheMovieDB
 //
 //  Created by Evgeniy Docenko on 17.02.2023.

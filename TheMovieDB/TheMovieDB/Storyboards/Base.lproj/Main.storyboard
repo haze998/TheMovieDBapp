@@ -312,35 +312,47 @@
                                                     <constraint firstAttribute="width" constant="20" id="gp9-8t-bWd"/>
                                                 </constraints>
                                             </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gHa-Ug-Yfs">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gHa-Ug-Yfs">
                                                 <rect key="frame" x="8" y="676.66666666666663" width="377" height="191.33333333333337"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="CodecPro-Light" family="Codec Pro" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8K-qQ-zp4" customClass="YTPlayerView">
-                                                <rect key="frame" x="0.0" y="878" width="393" height="288"/>
-                                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K8K-qQ-zp4" customClass="YTPlayerView">
+                                                <rect key="frame" x="0.0" y="1109" width="393" height="288"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="C2z-rH-WPA">
+                                                <rect key="frame" x="0.0" y="878" width="393" height="130"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="otV-NA-IGh">
+                                                    <size key="itemSize" width="128" height="116"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                            </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="C2z-rH-WPA" firstAttribute="height" secondItem="6fS-mv-dbh" secondAttribute="height" multiplier="0.0866667" id="7aP-Oo-tZU"/>
+                                            <constraint firstAttribute="trailing" secondItem="C2z-rH-WPA" secondAttribute="trailing" id="8bv-3q-We8"/>
                                             <constraint firstItem="pGC-hg-Zc4" firstAttribute="top" secondItem="FsR-0r-dQb" secondAttribute="bottom" constant="8" id="BVS-pb-YHb"/>
                                             <constraint firstItem="gHa-Ug-Yfs" firstAttribute="height" secondItem="6fS-mv-dbh" secondAttribute="height" multiplier="0.127556" id="CcC-tt-0Dt"/>
                                             <constraint firstItem="SFz-pi-Pf4" firstAttribute="top" secondItem="6fS-mv-dbh" secondAttribute="top" constant="8" id="DGf-qr-bnn"/>
-                                            <constraint firstAttribute="trailing" secondItem="K8K-qQ-zp4" secondAttribute="trailing" id="ELc-Ph-DFW"/>
                                             <constraint firstItem="hJS-DA-V9t" firstAttribute="leading" secondItem="i0e-BH-1wV" secondAttribute="trailing" constant="25" id="GJ2-cT-vej"/>
                                             <constraint firstItem="hJS-DA-V9t" firstAttribute="top" secondItem="pGC-hg-Zc4" secondAttribute="bottom" constant="8" id="GyB-2q-EzE"/>
-                                            <constraint firstItem="K8K-qQ-zp4" firstAttribute="height" secondItem="6fS-mv-dbh" secondAttribute="height" multiplier="0.192" id="HSY-G6-v5y"/>
                                             <constraint firstItem="FsR-0r-dQb" firstAttribute="top" secondItem="SFz-pi-Pf4" secondAttribute="bottom" constant="8" id="Hak-va-rYo"/>
                                             <constraint firstAttribute="trailing" secondItem="FsR-0r-dQb" secondAttribute="trailing" constant="16" id="J11-HQ-wND"/>
                                             <constraint firstAttribute="trailing" secondItem="gHa-Ug-Yfs" secondAttribute="trailing" constant="8" id="Nqr-KZ-g6F"/>
                                             <constraint firstItem="gHa-Ug-Yfs" firstAttribute="top" secondItem="KYc-na-V0I" secondAttribute="bottom" constant="10" id="OY3-0N-asJ"/>
+                                            <constraint firstItem="C2z-rH-WPA" firstAttribute="leading" secondItem="6fS-mv-dbh" secondAttribute="leading" id="S26-kw-Rca"/>
                                             <constraint firstItem="SFz-pi-Pf4" firstAttribute="leading" secondItem="6fS-mv-dbh" secondAttribute="leading" constant="16" id="XPJ-fM-kSD"/>
                                             <constraint firstItem="bPh-PP-U4t" firstAttribute="top" secondItem="e9o-uA-hpc" secondAttribute="bottom" constant="8" id="afA-at-hfW"/>
                                             <constraint firstItem="kE3-d3-Nk4" firstAttribute="leading" secondItem="pGC-hg-Zc4" secondAttribute="trailing" constant="6" id="b0q-lG-uA3"/>
-                                            <constraint firstItem="K8K-qQ-zp4" firstAttribute="top" secondItem="gHa-Ug-Yfs" secondAttribute="bottom" constant="10" id="bdy-aR-ODc"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KYc-na-V0I" secondAttribute="trailing" constant="20" symbolic="YES" id="cNg-41-0Bv"/>
                                             <constraint firstItem="wo9-Y6-BeS" firstAttribute="leading" secondItem="e9o-uA-hpc" secondAttribute="trailing" constant="6" id="gtW-TJ-eDN"/>
                                             <constraint firstItem="KYc-na-V0I" firstAttribute="leading" secondItem="hJS-DA-V9t" secondAttribute="trailing" constant="6" id="iaA-Dn-mXJ"/>
@@ -349,12 +361,12 @@
                                             <constraint firstItem="FsR-0r-dQb" firstAttribute="leading" secondItem="6fS-mv-dbh" secondAttribute="leading" constant="16" id="q4o-eH-keh"/>
                                             <constraint firstItem="kE3-d3-Nk4" firstAttribute="top" secondItem="FsR-0r-dQb" secondAttribute="bottom" constant="10" id="tkM-Ee-po0"/>
                                             <constraint firstItem="bPh-PP-U4t" firstAttribute="leading" secondItem="6fS-mv-dbh" secondAttribute="leading" constant="16" id="u17-wF-tB1"/>
-                                            <constraint firstItem="K8K-qQ-zp4" firstAttribute="leading" secondItem="6fS-mv-dbh" secondAttribute="leading" id="ulj-MP-FzF"/>
                                             <constraint firstItem="i0e-BH-1wV" firstAttribute="leading" secondItem="bPh-PP-U4t" secondAttribute="trailing" constant="6" id="vAW-X0-T0t"/>
                                             <constraint firstItem="e9o-uA-hpc" firstAttribute="leading" secondItem="6fS-mv-dbh" secondAttribute="leading" constant="16" id="vcA-Av-HeK"/>
                                             <constraint firstItem="e9o-uA-hpc" firstAttribute="top" secondItem="FsR-0r-dQb" secondAttribute="bottom" constant="8" id="vs8-W7-hUI"/>
                                             <constraint firstAttribute="trailing" secondItem="SFz-pi-Pf4" secondAttribute="trailing" constant="16" id="xVj-48-b3y"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kE3-d3-Nk4" secondAttribute="trailing" constant="20" symbolic="YES" id="yGh-dh-nql"/>
+                                            <constraint firstItem="C2z-rH-WPA" firstAttribute="top" secondItem="gHa-Ug-Yfs" secondAttribute="bottom" constant="10" id="yw7-cS-bHJ"/>
                                             <constraint firstItem="pGC-hg-Zc4" firstAttribute="leading" secondItem="wo9-Y6-BeS" secondAttribute="trailing" constant="25" id="z9C-CO-32B"/>
                                             <constraint firstItem="wo9-Y6-BeS" firstAttribute="top" secondItem="FsR-0r-dQb" secondAttribute="bottom" constant="10" id="zPT-iQ-OK4"/>
                                             <constraint firstItem="i0e-BH-1wV" firstAttribute="top" secondItem="wo9-Y6-BeS" secondAttribute="bottom" constant="10" id="zf9-s5-2Y8"/>
@@ -386,6 +398,7 @@
                     <size key="freeformSize" width="393" height="1500"/>
                     <connections>
                         <outlet property="bgDetailView" destination="3Jj-30-CHa" id="Y3X-S1-jo4"/>
+                        <outlet property="collectionView" destination="C2z-rH-WPA" id="2oh-Z0-97Y"/>
                         <outlet property="genreLabel" destination="KYc-na-V0I" id="ICJ-yO-RX8"/>
                         <outlet property="playerView" destination="K8K-qQ-zp4" id="L1L-fN-n6y"/>
                         <outlet property="posterImageView" destination="SFz-pi-Pf4" id="7bs-qP-OwG"/>
@@ -496,9 +509,6 @@
         </systemColor>
         <systemColor name="systemCyanColor">
             <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -19,19 +19,24 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var playerView: YTPlayerView!
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            collectionView.delegate = self
+            collectionView.dataSource = self
+            let nib = UINib(nibName: "DetailCollectionViewCell", bundle: nil)
+            collectionView.register(nib, forCellWithReuseIdentifier: "DetailCollectionViewCell")
+        }
+    }
     private var viewModel = DetailViewModel()
     // Default media values
     var movieId = 0
     var tvShowId = 0
-
-//    var media: MediaResponse.Media?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-     
-
         setupUI()
+       // loadActors()
     }
     
     private func setupUI() {
@@ -44,16 +49,20 @@ class DetailViewController: UIViewController {
     }
     // MARK: - Loading Data
     private func loadData() {
-
         viewModel.getDetails(movieId: movieId, tvShowId: tvShowId) {
             self.updateView()
+            self.loadActors()
         }
-        
         viewModel.getVideos(movieId: movieId, tvShowId: tvShowId) {
             self.loadTrailer()
         }
     }
-
+    // MARK: - Loading Actors
+    private func loadActors() {
+        viewModel.getActors(movieId: movieId, tvShowId: tvShowId) {
+            self.collectionView.reloadData()
+        }
+    }
     
     private func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
         let inputFormatter = DateFormatter()
@@ -67,15 +76,10 @@ class DetailViewController: UIViewController {
         return nil
     }
     
-//    func bindWithMedia(keysPath: [String], index: Int) {
-//        DispatchQueue.main.async {
-//            self.playerView.load(withVideoId: keysPath[index])
-//        }
     private func loadTrailer() {
         let playvarsDic = ["controls": 1, "playsinline": 0, "modestbranding": 1]
         playerView.load(withVideoId: viewModel.videosPath.first ?? "", playerVars: playvarsDic)
-        
-        }
+    }
         
     private func updateView() {
             if movieId != 0 {
@@ -120,6 +124,7 @@ class DetailViewController: UIViewController {
                 let attributedDate = formattedDateFromString(dateString: tvShow.firstAirDate ?? "", withFormat: "MMM dd, yyyy")
                 titleLabel.text = (tvShow.name ?? tvShow.originalTitle ?? "")
                 textView.text = tvShow.overview
+                runtimeLabel.isHidden = true
                 runtimeLabel.text = "\(tvShow.runtime ?? 0)"
                 voteCountLabel.text = "\(tvShow.voteAverage ?? 0.0) (TMDB)"
                 releaseDateLabel.text = attributedDate
@@ -151,28 +156,31 @@ class DetailViewController: UIViewController {
     //            watchListButton.isSelected = true
     //        }
         }
-
-
-
 }
 
-       // cell.bindWithMedia(keysPath: viewModel.videosPath, index: indexPath.item)
+extension DetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if viewModel.movieActorsArray.count != 0 {
+            return viewModel.movieActorsArray.count
+        } else {
+            return viewModel.tvShowActorsArray.count
+        }
+    }
     
-    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell else { return UICollectionViewCell() }
+        if viewModel.movieActorsArray.count != 0 {
+            let currentActor = viewModel.movieActorsArray[indexPath.row]
+            cell.configure(actor: currentActor)
+            return cell
+        } else {
+            let currentActor = viewModel.tvShowActorsArray[indexPath.row]
+            cell.configure(actor: currentActor)
+            return cell
+        }
+    }
+}
+
+extension DetailViewController: UICollectionViewDelegate {}
 
 
-//// MARK: - ViewModelProtocol
-//extension DetailViewController: ViewModelProtocol {
-//    func reload() {
-//        //self.videoCollectionView.reloadData()
-//    }
-//    func showLoading() {
-////        loaderView.isHidden = false
-////        loaderView.startAnimating()
-////        view.bringSubviewToFront(loaderView)
-//    }
-//    func hideLoading() {
-////        loaderView.isHidden = true
-////        loaderView.stopAnimating()
-//    }
-//
