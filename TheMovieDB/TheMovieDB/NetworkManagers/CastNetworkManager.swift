@@ -12,7 +12,7 @@ class CastNetworkManager {
     private init() {}
     
     func requestMovieActors(movieId: Int, mediaType: String, completion: @escaping (([Cast]?) -> Void)) {
-        guard let apiURL = URL(string: "https://api.themoviedb.org/3/movie/505642/credits?api_key=aef19f83a7261debd6b9b8edfd7919ce&language=en-US") else { fatalError("Invalid URL") }
+        guard let apiURL = URL(string: "https://api.themoviedb.org/3/movie/\(movieId)/credits?api_key=aef19f83a7261debd6b9b8edfd7919ce&language=en-US") else { fatalError("Invalid URL") }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: apiURL) { data, response, error in
             guard let data = data else { return }

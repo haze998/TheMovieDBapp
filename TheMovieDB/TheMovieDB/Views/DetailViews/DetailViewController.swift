@@ -81,7 +81,7 @@ class DetailViewController: UIViewController {
         playerView.load(withVideoId: viewModel.videosPath.first ?? "", playerVars: playvarsDic)
     }
         
-    private func updateView() {
+     func updateView() {
             if movieId != 0 {
                 guard let movie = viewModel.currentMovie else { return }
                 let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
@@ -158,7 +158,12 @@ class DetailViewController: UIViewController {
         }
 }
 
-extension DetailViewController: UICollectionViewDataSource {
+extension DetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemHeight = collectionView.bounds.height
+        let itemWith = collectionView.bounds.width / 6
+        return CGSize(width: itemWith, height: itemHeight)
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if viewModel.movieActorsArray.count != 0 {
             return viewModel.movieActorsArray.count
