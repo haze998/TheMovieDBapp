@@ -177,8 +177,6 @@ extension SearchViewController: UICollectionViewDataSource {
         }
 
     }
-    
-    
 }
 
 // MARK: - TableView Delegate

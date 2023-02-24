@@ -16,52 +16,59 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="DetailCollectionViewCell" reuseIdentifier="DetailCollectionViewCell" id="gTV-IL-0wX" customClass="DetailCollectionViewCell" customModule="TheMovieDB" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="111" height="108"/>
+            <rect key="frame" x="0.0" y="0.0" width="100" height="133"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="111" height="108"/>
+                <rect key="frame" x="0.0" y="0.0" width="100" height="133"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bm-ag-2hN">
-                        <rect key="frame" x="0.0" y="93.333333333333329" width="111" height="14.666666666666671"/>
-                        <fontDescription key="fontDescription" name="CodecPro-News" family="Codec Pro" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5o-8S-E7T" userLabel="Container View">
-                        <rect key="frame" x="0.0" y="0.0" width="111" height="93.333333333333329"/>
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="111"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ctg-IM-4GV">
-                                <rect key="frame" x="0.0" y="0.0" width="111" height="90.333333333333329"/>
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="111"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ctg-IM-4GV" firstAttribute="top" secondItem="X5o-8S-E7T" secondAttribute="top" id="4Na-gS-Xe8"/>
-                            <constraint firstAttribute="bottom" secondItem="ctg-IM-4GV" secondAttribute="bottom" constant="3" id="7Kj-Mc-cgD"/>
-                            <constraint firstItem="ctg-IM-4GV" firstAttribute="leading" secondItem="X5o-8S-E7T" secondAttribute="leading" id="DMu-pO-8bN"/>
-                            <constraint firstAttribute="trailing" secondItem="ctg-IM-4GV" secondAttribute="trailing" id="jbd-10-eiI"/>
+                            <constraint firstItem="ctg-IM-4GV" firstAttribute="top" secondItem="X5o-8S-E7T" secondAttribute="top" id="EHa-8F-9EQ"/>
+                            <constraint firstItem="ctg-IM-4GV" firstAttribute="leading" secondItem="X5o-8S-E7T" secondAttribute="leading" id="Zb8-qE-DRE"/>
+                            <constraint firstAttribute="bottom" secondItem="ctg-IM-4GV" secondAttribute="bottom" id="kCs-Tk-gdd"/>
+                            <constraint firstAttribute="bottom" secondItem="ctg-IM-4GV" secondAttribute="bottom" id="lXQ-XD-9ri"/>
+                            <constraint firstItem="ctg-IM-4GV" firstAttribute="leading" secondItem="X5o-8S-E7T" secondAttribute="leading" id="lmU-gz-oIS"/>
+                            <constraint firstAttribute="trailing" secondItem="ctg-IM-4GV" secondAttribute="trailing" id="pra-vB-RWP"/>
+                            <constraint firstItem="ctg-IM-4GV" firstAttribute="top" secondItem="X5o-8S-E7T" secondAttribute="top" id="q2T-tD-It8"/>
+                            <constraint firstAttribute="trailing" secondItem="ctg-IM-4GV" secondAttribute="trailing" id="uZB-al-kH9"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bm-ag-2hN">
+                        <rect key="frame" x="3" y="112" width="94" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="vKj-Hs-hor"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="CodecPro-News" family="Codec Pro" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="0Bm-ag-2hN" secondAttribute="bottom" id="BqW-Qw-Eos"/>
-                <constraint firstItem="0Bm-ag-2hN" firstAttribute="top" secondItem="X5o-8S-E7T" secondAttribute="bottom" id="Hcn-o6-edF"/>
-                <constraint firstItem="X5o-8S-E7T" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="OkJ-t5-IJD"/>
-                <constraint firstAttribute="trailing" secondItem="X5o-8S-E7T" secondAttribute="trailing" id="YJG-Vj-Xse"/>
-                <constraint firstItem="0Bm-ag-2hN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dOE-Wd-tpW"/>
-                <constraint firstAttribute="trailing" secondItem="0Bm-ag-2hN" secondAttribute="trailing" id="iMa-RW-auD"/>
-                <constraint firstItem="X5o-8S-E7T" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qvy-S5-TSr"/>
+                <constraint firstAttribute="trailing" secondItem="0Bm-ag-2hN" secondAttribute="trailing" constant="3" id="PO4-Ya-JLP"/>
+                <constraint firstItem="X5o-8S-E7T" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Xau-Hx-I0b"/>
+                <constraint firstItem="X5o-8S-E7T" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.833333" id="YLc-kl-ZO1"/>
+                <constraint firstItem="0Bm-ag-2hN" firstAttribute="top" secondItem="X5o-8S-E7T" secondAttribute="bottom" constant="1" id="Yc2-Dj-rQT"/>
+                <constraint firstAttribute="trailing" secondItem="X5o-8S-E7T" secondAttribute="trailing" id="bED-1F-gA4"/>
+                <constraint firstItem="X5o-8S-E7T" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qwk-lo-tqy"/>
+                <constraint firstItem="0Bm-ag-2hN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="t5U-CN-FWW"/>
             </constraints>
-            <size key="customSize" width="111" height="108"/>
+            <size key="customSize" width="111" height="150"/>
             <connections>
                 <outlet property="actorImageView" destination="ctg-IM-4GV" id="gn4-JV-Hrd"/>
                 <outlet property="actorNamelabel" destination="0Bm-ag-2hN" id="532-oI-4GN"/>
                 <outlet property="containerView" destination="X5o-8S-E7T" id="UJX-sD-Jaf"/>
             </connections>
-            <point key="canvasLocation" x="-109.16030534351144" y="-56.338028169014088"/>
+            <point key="canvasLocation" x="-137.40458015267174" y="-63.028169014084511"/>
         </collectionViewCell>
     </objects>
     <resources>

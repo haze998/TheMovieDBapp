@@ -34,7 +34,7 @@ final class ActorHeaderSection: UICollectionViewCell {
         label.textAlignment = .left
         label.adjustsFontForContentSizeCategory = true
         label.minimumContentSizeCategory = .accessibilityMedium
-        label.font = UIFont(name: "CodecPro-Bold", size: 30.0)
+        label.font = UIFont(name: "CodecPro-Bold", size: 20.0)
         label.textColor = .white
         leftElemnt.backgroundColor = .systemRed
         leftElemnt.translatesAutoresizingMaskIntoConstraints = false
@@ -52,7 +52,7 @@ final class ActorHeaderSection: UICollectionViewCell {
             contrainer.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         NSLayoutConstraint.activate([
-            leftElemnt.topAnchor.constraint(equalTo: contrainer.topAnchor, constant: 3),
+            leftElemnt.topAnchor.constraint(equalTo: contrainer.topAnchor, constant: 7),
             leftElemnt.leadingAnchor.constraint(equalTo: contrainer.leadingAnchor, constant: 8),
             leftElemnt.bottomAnchor.constraint(equalTo: contrainer.bottomAnchor, constant: -4),
             leftElemnt.widthAnchor.constraint(equalToConstant: 8)

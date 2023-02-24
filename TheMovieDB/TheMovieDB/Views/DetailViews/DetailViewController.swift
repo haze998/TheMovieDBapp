@@ -25,9 +25,9 @@ class DetailViewController: UIViewController {
             collectionView.dataSource = self
             let nib = UINib(nibName: "DetailCollectionViewCell", bundle: nil)
             collectionView.register(nib, forCellWithReuseIdentifier: "DetailCollectionViewCell")
-            collectionView.register(ActorHeaderSection.self,
-                                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                    withReuseIdentifier: ActorHeaderSection.reuseId)
+//            collectionView.register(ActorHeaderSection.self,
+//                                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+//                                    withReuseIdentifier: ActorHeaderSection.reuseId)
             collectionView.collectionViewLayout = createLayoutBuilder()
         }
     }
@@ -177,14 +177,14 @@ class DetailViewController: UIViewController {
         group.contentInsets = NSDirectionalEdgeInsets(top: 0,
                                                       leading: 4,
                                                       bottom: 8,
-                                                      trailing: 0)
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                heightDimension: .fractionalHeight(0.05))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
-                                                                 elementKind: UICollectionView.elementKindSectionHeader,
-                                                                 alignment: .topLeading)
+                                                      trailing: 4)
+//        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+//                                                heightDimension: .fractionalHeight(0.05))
+//        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
+//                                                                 elementKind: UICollectionView.elementKindSectionHeader,
+//                                                                 alignment: .topLeading)
         let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [header]
+        //section.boundarySupplementaryItems = [header]
         section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
         return section
     }
@@ -218,15 +218,15 @@ extension DetailViewController: UICollectionViewDataSource {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader {
-            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ActorHeaderSection.reuseId, for: indexPath) as? ActorHeaderSection else { return UICollectionReusableView() }
-            
-            sectionHeader.label.text = "Actors"
-            return sectionHeader
-        }
-        return UICollectionReusableView()
-    }
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        if kind == UICollectionView.elementKindSectionHeader {
+//            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ActorHeaderSection.reuseId, for: indexPath) as? ActorHeaderSection else { return UICollectionReusableView() }
+//
+//            sectionHeader.label.text = "Actors"
+//            return sectionHeader
+//        }
+//        return UICollectionReusableView()
+//    }
     
 }
 
