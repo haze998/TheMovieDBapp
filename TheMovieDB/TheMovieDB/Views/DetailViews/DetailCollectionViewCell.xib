@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -21,33 +22,51 @@
                 <rect key="frame" x="0.0" y="0.0" width="111" height="108"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bm-ag-2hN">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bm-ag-2hN">
                         <rect key="frame" x="0.0" y="93.333333333333329" width="111" height="14.666666666666671"/>
                         <fontDescription key="fontDescription" name="CodecPro-News" family="Codec Pro" pointSize="17"/>
-                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Aor-81-35Q">
-                        <rect key="frame" x="0.0" y="0.0" width="111" height="88"/>
-                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5o-8S-E7T" userLabel="Container View">
+                        <rect key="frame" x="0.0" y="0.0" width="111" height="93.333333333333329"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ctg-IM-4GV">
+                                <rect key="frame" x="0.0" y="0.0" width="111" height="90.333333333333329"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ctg-IM-4GV" firstAttribute="top" secondItem="X5o-8S-E7T" secondAttribute="top" id="4Na-gS-Xe8"/>
+                            <constraint firstAttribute="bottom" secondItem="ctg-IM-4GV" secondAttribute="bottom" constant="3" id="7Kj-Mc-cgD"/>
+                            <constraint firstItem="ctg-IM-4GV" firstAttribute="leading" secondItem="X5o-8S-E7T" secondAttribute="leading" id="DMu-pO-8bN"/>
+                            <constraint firstAttribute="trailing" secondItem="ctg-IM-4GV" secondAttribute="trailing" id="jbd-10-eiI"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="0Bm-ag-2hN" secondAttribute="bottom" id="BqW-Qw-Eos"/>
-                <constraint firstItem="Aor-81-35Q" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="LJZ-22-cAl"/>
-                <constraint firstItem="Aor-81-35Q" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.814815" id="NHb-Oa-ve8"/>
-                <constraint firstItem="Aor-81-35Q" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="R8L-E7-ngN"/>
+                <constraint firstItem="0Bm-ag-2hN" firstAttribute="top" secondItem="X5o-8S-E7T" secondAttribute="bottom" id="Hcn-o6-edF"/>
+                <constraint firstItem="X5o-8S-E7T" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="OkJ-t5-IJD"/>
+                <constraint firstAttribute="trailing" secondItem="X5o-8S-E7T" secondAttribute="trailing" id="YJG-Vj-Xse"/>
                 <constraint firstItem="0Bm-ag-2hN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dOE-Wd-tpW"/>
                 <constraint firstAttribute="trailing" secondItem="0Bm-ag-2hN" secondAttribute="trailing" id="iMa-RW-auD"/>
-                <constraint firstAttribute="trailing" secondItem="Aor-81-35Q" secondAttribute="trailing" id="pr8-Bg-iZH"/>
+                <constraint firstItem="X5o-8S-E7T" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qvy-S5-TSr"/>
             </constraints>
             <size key="customSize" width="111" height="108"/>
             <connections>
-                <outlet property="actorImageView" destination="Aor-81-35Q" id="RmR-gZ-jGG"/>
+                <outlet property="actorImageView" destination="ctg-IM-4GV" id="gn4-JV-Hrd"/>
                 <outlet property="actorNamelabel" destination="0Bm-ag-2hN" id="532-oI-4GN"/>
+                <outlet property="containerView" destination="X5o-8S-E7T" id="UJX-sD-Jaf"/>
             </connections>
             <point key="canvasLocation" x="-109.16030534351144" y="-56.338028169014088"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

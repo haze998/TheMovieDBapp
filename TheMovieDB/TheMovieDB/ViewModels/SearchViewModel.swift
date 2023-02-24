@@ -17,9 +17,18 @@ class SearchViewModel {
     
     public func searchMovie(query: String, completion: @escaping()->Void) {
         currentPage += 1
-        SearchNetworkManager.shared.getSearchRequest(page: currentPage, searchQuery: query) { [weak self] searched in
+        SearchNetworkManager.shared.getSearchRequest(page: currentPage, searchQuery: query, mediaType: MediaType.movie.rawValue) { [weak self] searched in
             guard let movies = searched.results, !movies.isEmpty else { return }
             self?.searchedMedia.append(contentsOf: movies)
+            completion()
+        }
+    }
+    
+    public func searchTV(query: String, completion: @escaping()->Void) {
+        currentPage += 1
+        SearchNetworkManager.shared.getSearchRequest(page: currentPage, searchQuery: query, mediaType: MediaType.tvShow.rawValue) { [weak self] searched in
+            guard let tvs = searched.results, !tvs.isEmpty else { return }
+            self?.searchedMedia.append(contentsOf: tvs)
             completion()
         }
     }

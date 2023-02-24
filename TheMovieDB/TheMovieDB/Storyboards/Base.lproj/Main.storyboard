@@ -467,34 +467,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FVE-cm-bUn">
-                                <rect key="frame" x="0.0" y="159" width="393" height="610"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ZF0-yZ-Q85">
+                            <searchBar contentMode="redraw" placeholder="Search movies" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZF0-yZ-Q85">
                                 <rect key="frame" x="0.0" y="103" width="393" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                                 <connections>
                                     <outlet property="delegate" destination="Og8-zU-iQ9" id="a3n-zU-V2Y"/>
                                 </connections>
                             </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mbf-4b-Uli">
+                                <rect key="frame" x="0.0" y="159" width="393" height="610"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fXs-0W-Je4">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="W17-sX-l19"/>
-                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="FVE-cm-bUn" firstAttribute="top" secondItem="ZF0-yZ-Q85" secondAttribute="bottom" id="AZg-Xt-0KD"/>
-                            <constraint firstItem="FVE-cm-bUn" firstAttribute="trailing" secondItem="W17-sX-l19" secondAttribute="trailing" id="HqH-ZF-Y6E"/>
-                            <constraint firstItem="FVE-cm-bUn" firstAttribute="leading" secondItem="W17-sX-l19" secondAttribute="leading" id="PxZ-6U-JRX"/>
+                            <constraint firstItem="mbf-4b-Uli" firstAttribute="trailing" secondItem="W17-sX-l19" secondAttribute="trailing" id="Z8b-Ut-1nb"/>
                             <constraint firstItem="ZF0-yZ-Q85" firstAttribute="top" secondItem="W17-sX-l19" secondAttribute="top" id="chM-3n-ysd"/>
                             <constraint firstItem="ZF0-yZ-Q85" firstAttribute="trailing" secondItem="W17-sX-l19" secondAttribute="trailing" id="dfK-Ny-7qL"/>
+                            <constraint firstItem="mbf-4b-Uli" firstAttribute="bottom" secondItem="W17-sX-l19" secondAttribute="bottom" id="e18-5g-FDV"/>
+                            <constraint firstItem="mbf-4b-Uli" firstAttribute="leading" secondItem="W17-sX-l19" secondAttribute="leading" id="kAr-n0-rzT"/>
                             <constraint firstItem="ZF0-yZ-Q85" firstAttribute="leading" secondItem="W17-sX-l19" secondAttribute="leading" id="vGa-3N-vRH"/>
-                            <constraint firstItem="FVE-cm-bUn" firstAttribute="bottom" secondItem="W17-sX-l19" secondAttribute="bottom" id="xUd-Mc-Knf"/>
+                            <constraint firstItem="mbf-4b-Uli" firstAttribute="top" secondItem="ZF0-yZ-Q85" secondAttribute="bottom" id="wmT-io-dZv"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="azp-68-12H"/>
                     <connections>
+                        <outlet property="collectionView" destination="mbf-4b-Uli" id="ecI-xa-MeD"/>
                         <outlet property="searchBar" destination="ZF0-yZ-Q85" id="5jN-6R-obT"/>
-                        <outlet property="tableView" destination="FVE-cm-bUn" id="Cui-Rp-2RM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yeM-fz-1Yj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -528,9 +541,6 @@
         <image name="timer" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

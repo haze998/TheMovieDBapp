@@ -25,9 +25,6 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dP0-ts-bJ9" userLabel="Movie Image">
                             <rect key="frame" x="0.0" y="0.0" width="140" height="197"/>
                         </imageView>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="xtj-gy-ga4">
-                            <rect key="frame" x="60" y="88.666666666666671" width="20" height="20"/>
-                        </activityIndicatorView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="WbS-sw-IdW">
                             <rect key="frame" x="15.000000000000004" y="10" width="57.333333333333343" height="15"/>
                             <subviews>
@@ -53,13 +50,11 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="xtj-gy-ga4" firstAttribute="centerX" secondItem="D1I-HP-OCt" secondAttribute="centerX" id="3c4-Tc-M8f"/>
                         <constraint firstItem="dP0-ts-bJ9" firstAttribute="top" secondItem="D1I-HP-OCt" secondAttribute="top" id="9wt-oi-ntR"/>
                         <constraint firstAttribute="trailing" secondItem="dP0-ts-bJ9" secondAttribute="trailing" id="Gsr-tj-cJg"/>
                         <constraint firstItem="WbS-sw-IdW" firstAttribute="top" secondItem="D1I-HP-OCt" secondAttribute="top" constant="10" id="Hxo-J5-zPH"/>
                         <constraint firstAttribute="bottom" secondItem="dP0-ts-bJ9" secondAttribute="bottom" id="QKi-Zt-jIk"/>
                         <constraint firstAttribute="trailing" secondItem="dP0-ts-bJ9" secondAttribute="trailing" id="bo9-Ro-B6R"/>
-                        <constraint firstItem="xtj-gy-ga4" firstAttribute="centerY" secondItem="D1I-HP-OCt" secondAttribute="centerY" id="dHF-so-s8a"/>
                         <constraint firstItem="dP0-ts-bJ9" firstAttribute="leading" secondItem="D1I-HP-OCt" secondAttribute="leading" id="fZy-Za-4vX"/>
                         <constraint firstItem="dP0-ts-bJ9" firstAttribute="top" secondItem="D1I-HP-OCt" secondAttribute="top" id="fdm-KH-3CW"/>
                         <constraint firstItem="dP0-ts-bJ9" firstAttribute="leading" secondItem="D1I-HP-OCt" secondAttribute="leading" id="pII-97-434"/>
@@ -79,7 +74,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="containerView" destination="D1I-HP-OCt" id="KaM-MW-G4z"/>
-                <outlet property="loadingIndicator" destination="xtj-gy-ga4" id="fZV-op-Uzo"/>
                 <outlet property="movieImageView" destination="dP0-ts-bJ9" id="bf1-yV-0FI"/>
                 <outlet property="rateMovieLabel" destination="9aq-Ho-Ny1" id="WEY-LX-7jJ"/>
                 <outlet property="stackView" destination="WbS-sw-IdW" id="Wuo-sX-ZHL"/>

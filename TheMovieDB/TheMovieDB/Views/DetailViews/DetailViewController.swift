@@ -25,6 +25,10 @@ class DetailViewController: UIViewController {
             collectionView.dataSource = self
             let nib = UINib(nibName: "DetailCollectionViewCell", bundle: nil)
             collectionView.register(nib, forCellWithReuseIdentifier: "DetailCollectionViewCell")
+            collectionView.register(ActorHeaderSection.self,
+                                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                    withReuseIdentifier: ActorHeaderSection.reuseId)
+            collectionView.collectionViewLayout = createLayoutBuilder()
         }
     }
     private var viewModel = DetailViewModel()
@@ -46,6 +50,7 @@ class DetailViewController: UIViewController {
         gradientLayer.frame = self.bgDetailView.bounds
         gradientLayer.colors = [colorTop, colorBot]
         self.bgDetailView.layer.insertSublayer(gradientLayer, at: 0)
+        collectionView.backgroundColor = .clear
     }
     // MARK: - Loading Data
     private func loadData() {
@@ -156,14 +161,42 @@ class DetailViewController: UIViewController {
     //            watchListButton.isSelected = true
     //        }
         }
+    
+    private func createLayout() -> NSCollectionLayoutSection? {
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                          heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 8,
+                                                     leading: 4,
+                                                     bottom: 8,
+                                                     trailing: 4)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3),
+                                               heightDimension: .fractionalHeight(1.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                       subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0,
+                                                      leading: 4,
+                                                      bottom: 8,
+                                                      trailing: 0)
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                heightDimension: .fractionalHeight(0.05))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
+                                                                 elementKind: UICollectionView.elementKindSectionHeader,
+                                                                 alignment: .topLeading)
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [header]
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+        return section
+    }
+    
+    private func createLayoutBuilder() -> UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { (sectionNumber, _) -> NSCollectionLayoutSection? in return self.createLayout()
+        }
+    }
 }
 
-extension DetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemHeight = collectionView.bounds.height
-        let itemWith = collectionView.bounds.width / 6
-        return CGSize(width: itemWith, height: itemHeight)
-    }
+extension DetailViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if viewModel.movieActorsArray.count != 0 {
             return viewModel.movieActorsArray.count
@@ -184,8 +217,25 @@ extension DetailViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ActorHeaderSection.reuseId, for: indexPath) as? ActorHeaderSection else { return UICollectionReusableView() }
+            
+            sectionHeader.label.text = "Actors"
+            return sectionHeader
+        }
+        return UICollectionReusableView()
+    }
+    
 }
 
 extension DetailViewController: UICollectionViewDelegate {}
-
-
+//
+//extension DetailViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let itemHeight = collectionView.bounds.height
+//        let itemWith = collectionView.bounds.width / 6
+//        return CGSize(width: itemWith, height: itemHeight)
+//    }
+//}
