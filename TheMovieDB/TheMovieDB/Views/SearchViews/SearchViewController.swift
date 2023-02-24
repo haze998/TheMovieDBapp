@@ -14,6 +14,8 @@ class SearchViewController: UIViewController {
             searchBar.delegate = self
         }
     }
+    
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.delegate = self
@@ -84,29 +86,45 @@ class SearchViewController: UIViewController {
 // MARK: - UISearchBarDelegate Delegate
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text == "" {
-            DispatchQueue.main.async {
-                self.viewModel.searchedMedia.removeAll()
-                self.collectionView.reloadData()
-            }
-            
-        } else {
-            guard let query = searchBar.text else { return }
-            self.viewModel.searchedMedia.removeAll()
-            //            if query.isEmpty {
-            //                //viewModel.searchedMedia.removeAll()
-            //                collectionView.reloadData()
-            //            }
-            
-            self.viewModel.currentPage = 0
-            //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-            viewModel.searchMovie(query: query.trimmingCharacters(in: .whitespaces)) {
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            if searchBar.text == "" {
                 DispatchQueue.main.async {
+                    self.viewModel.searchedMedia.removeAll()
                     self.collectionView.reloadData()
                 }
+            } else {
+                guard let query = searchBar.text else { return }
+                self.viewModel.searchedMedia.removeAll()
+                self.viewModel.currentPage = 0
+                //          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                viewModel.searchMovie(query: query) {
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                }
             }
-
+        case 1:
+            if searchBar.text == "" {
+                DispatchQueue.main.async {
+                    self.viewModel.searchedMedia.removeAll()
+                    self.collectionView.reloadData()
+                }
+            } else {
+                guard let query = searchBar.text else { return }
+                self.viewModel.searchedMedia.removeAll()
+                self.viewModel.currentPage = 0
+                //          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                viewModel.searchTV(query: query) {
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                }
+            }
+        default:
+            return
         }
+        
     }
 }
 
@@ -122,14 +140,36 @@ extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.reuseId, for: indexPath) as? SearchCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(with: viewModel.searchedMedia[indexPath.row])
+         cell.configure(with: viewModel.searchedMedia[indexPath.row])
         return cell
     }
     
+    // - MARK: Choosen movie/tv to detail VC
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        searchBar.searchTextField.endEditing(true)
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //let detailVC = DetailViewController()
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+            vc.movieId = viewModel.searchedMedia[indexPath.row].id!
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //let detailVC = DetailViewController()
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+            vc.tvShowId = viewModel.searchedMedia[indexPath.row].id!
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            return
+        }
+    }
+    
+    // - MARK: Paggination
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let query = searchBar.text else { return }
         if viewModel.currentPage < viewModel.totalPages && indexPath.row == viewModel.searchedMedia.count - 1 {
-            viewModel.searchMovie(query: query.trimmingCharacters(in: .whitespaces)) {
+            viewModel.searchMovie(query: query) {
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }

@@ -53,8 +53,8 @@
                                     <constraint firstItem="dH0-W5-iik" firstAttribute="centerY" secondItem="ATy-wX-3On" secondAttribute="centerY" id="0zb-2l-XuW"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIH-tx-uSN">
-                                <rect key="frame" x="8" y="179" width="44.333333333333336" height="14.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIH-tx-uSN">
+                                <rect key="frame" x="8" y="179" width="124" height="14.666666666666657"/>
                                 <fontDescription key="fontDescription" name="CodecPro-News" family="Codec Pro" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -67,6 +67,7 @@
                             <constraint firstItem="yke-4f-qQZ" firstAttribute="top" secondItem="rXi-ta-JVe" secondAttribute="top" constant="10" id="InL-nR-KeA"/>
                             <constraint firstItem="n2R-NK-Bei" firstAttribute="height" secondItem="rXi-ta-JVe" secondAttribute="height" multiplier="0.875" id="Nkm-u8-kWZ"/>
                             <constraint firstItem="yke-4f-qQZ" firstAttribute="leading" secondItem="rXi-ta-JVe" secondAttribute="leading" constant="15" id="XIa-cO-dw0"/>
+                            <constraint firstAttribute="trailing" secondItem="EIH-tx-uSN" secondAttribute="trailing" constant="8" id="bMk-8p-KCT"/>
                             <constraint firstItem="EIH-tx-uSN" firstAttribute="top" secondItem="n2R-NK-Bei" secondAttribute="bottom" constant="4" id="eYF-D2-a8R"/>
                             <constraint firstItem="EIH-tx-uSN" firstAttribute="leading" secondItem="rXi-ta-JVe" secondAttribute="leading" constant="8" id="sGw-6i-eZj"/>
                             <constraint firstItem="n2R-NK-Bei" firstAttribute="leading" secondItem="rXi-ta-JVe" secondAttribute="leading" id="veE-BL-aN0"/>

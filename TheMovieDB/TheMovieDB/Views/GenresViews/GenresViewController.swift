@@ -40,9 +40,7 @@ class GenresViewController: UIViewController {
         segmentControl.setTitle("Movies", forSegmentAt: 0)
         segmentControl.setTitle("TV Shows", forSegmentAt: 1)
         segmentControl.backgroundColor = .clear
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        segmentControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
-        segmentControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+//        l
         segmentControl.addTarget(self, action: #selector(segmentWidget), for: .valueChanged)
         
         collectionView.backgroundColor = .clear

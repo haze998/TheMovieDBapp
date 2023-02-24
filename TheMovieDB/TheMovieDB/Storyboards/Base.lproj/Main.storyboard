@@ -188,12 +188,12 @@
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aS6-4V-OWr">
                                 <rect key="frame" x="10" y="103" width="373" height="32"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.25098040700000002" green="0.054901964960000001" blue="0.50980395079999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <segments>
                                     <segment title="Movies"/>
                                     <segment title="Serials"/>
                                 </segments>
-                                <color key="selectedSegmentTintColor" red="0.25098040700000002" green="0.054901964960000001" blue="0.50980395079999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SN5-oV-WaN">
                                 <rect key="frame" x="0.0" y="154" width="393" height="615"/>
@@ -467,7 +467,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search movies" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZF0-yZ-Q85">
+                            <searchBar contentMode="redraw" placeholder="Search movies, tv shows..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZF0-yZ-Q85">
                                 <rect key="frame" x="0.0" y="103" width="393" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -481,7 +481,7 @@
                                 </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mbf-4b-Uli">
-                                <rect key="frame" x="0.0" y="159" width="393" height="610"/>
+                                <rect key="frame" x="0.0" y="190" width="393" height="579"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fXs-0W-Je4">
                                     <size key="itemSize" width="128" height="128"/>
@@ -491,23 +491,36 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="khF-R6-yxm">
+                                <rect key="frame" x="0.0" y="159" width="393" height="32"/>
+                                <color key="backgroundColor" red="0.25098040700000002" green="0.054901964960000001" blue="0.50980395079999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <segments>
+                                    <segment title="Movies"/>
+                                    <segment title="Serials"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="W17-sX-l19"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mbf-4b-Uli" firstAttribute="trailing" secondItem="W17-sX-l19" secondAttribute="trailing" id="Z8b-Ut-1nb"/>
+                            <constraint firstItem="khF-R6-yxm" firstAttribute="trailing" secondItem="W17-sX-l19" secondAttribute="trailing" id="CLe-YV-H4Z"/>
+                            <constraint firstItem="khF-R6-yxm" firstAttribute="leading" secondItem="W17-sX-l19" secondAttribute="leading" id="GHO-M4-eBZ"/>
+                            <constraint firstItem="mbf-4b-Uli" firstAttribute="top" secondItem="khF-R6-yxm" secondAttribute="bottom" id="JAQ-qh-iVe"/>
+                            <constraint firstItem="mbf-4b-Uli" firstAttribute="bottom" secondItem="W17-sX-l19" secondAttribute="bottom" id="NF0-36-9Fy"/>
                             <constraint firstItem="ZF0-yZ-Q85" firstAttribute="top" secondItem="W17-sX-l19" secondAttribute="top" id="chM-3n-ysd"/>
                             <constraint firstItem="ZF0-yZ-Q85" firstAttribute="trailing" secondItem="W17-sX-l19" secondAttribute="trailing" id="dfK-Ny-7qL"/>
-                            <constraint firstItem="mbf-4b-Uli" firstAttribute="bottom" secondItem="W17-sX-l19" secondAttribute="bottom" id="e18-5g-FDV"/>
-                            <constraint firstItem="mbf-4b-Uli" firstAttribute="leading" secondItem="W17-sX-l19" secondAttribute="leading" id="kAr-n0-rzT"/>
+                            <constraint firstItem="khF-R6-yxm" firstAttribute="top" secondItem="ZF0-yZ-Q85" secondAttribute="bottom" id="jJK-O9-xQz"/>
+                            <constraint firstItem="mbf-4b-Uli" firstAttribute="leading" secondItem="W17-sX-l19" secondAttribute="leading" id="pP1-pG-fid"/>
+                            <constraint firstItem="mbf-4b-Uli" firstAttribute="trailing" secondItem="W17-sX-l19" secondAttribute="trailing" id="tDj-BA-tl0"/>
                             <constraint firstItem="ZF0-yZ-Q85" firstAttribute="leading" secondItem="W17-sX-l19" secondAttribute="leading" id="vGa-3N-vRH"/>
-                            <constraint firstItem="mbf-4b-Uli" firstAttribute="top" secondItem="ZF0-yZ-Q85" secondAttribute="bottom" id="wmT-io-dZv"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="azp-68-12H"/>
                     <connections>
                         <outlet property="collectionView" destination="mbf-4b-Uli" id="ecI-xa-MeD"/>
                         <outlet property="searchBar" destination="ZF0-yZ-Q85" id="5jN-6R-obT"/>
+                        <outlet property="segmentControl" destination="khF-R6-yxm" id="3Vw-3m-Lsl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yeM-fz-1Yj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
