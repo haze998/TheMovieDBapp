@@ -22,5 +22,6 @@ enum Media {
 struct Constants {
     static let apiKey = "aef19f83a7261debd6b9b8edfd7919ce"
     static let mainURL = "https://api.themoviedb.org/3/"
+    static let auth = "authentication/"
 }
 

@@ -14,19 +14,27 @@ class AuthorizationViewController: UIViewController  {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginTextField: UITextField! {
         didSet {
-            loginTextField.delegate = self
+           // loginTextField.delegate = self
         }
     }
     
     @IBOutlet weak var passwordTextField: UITextField! {
         didSet {
-            passwordTextField.delegate = self
+           // passwordTextField.delegate = self
         }
     }
-
+    @IBOutlet weak var alertLabel: UILabel!
+    
     let viewModel = AuthorizationViewModel()
-    var username = ""
-    var password = ""
+//    private var username: String? {
+//        return loginTextField.text
+//    }
+//
+//    private var password: String? {
+//        return passwordTextField.text
+//    }
+//    private var username: String?
+//    private var password: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,20 +44,60 @@ class AuthorizationViewController: UIViewController  {
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
-        
-        viewModel.userInfo(userName: loginTextField.text ?? "", pass: passwordTextField.text ?? "") {
-            if self.viewModel.isLogin {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "NavControllerId")
-                self.view.window?.rootViewController = vc
-                self.view.window?.makeKeyAndVisible()
-
+        guard let username = loginTextField.text, let password = passwordTextField.text else { return }
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { [self] _ in
+            viewModel.userAuthentication(username: username, password: password) { [self] result in
+                if username.isEmpty || password.isEmpty {
+                    alertLabel.isHidden = false
+                    loginTextField.layer.borderColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
+                    passwordTextField.layer.borderColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
+                    self.shakeButton()
+                    alertLabel.text = "Username / password cannot be blank"
+                    return
+                } else {
+                    if result != true {
+                        alertLabel.isHidden = false
+                        loginTextField.layer.borderColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
+                        passwordTextField.layer.borderColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
+                        self.shakeButton()
+                        alertLabel.text = "Incorrect username / password"
+                    } else {
+                        if let sessionID = StorageSecure.keychain["sessionID"] {
+                            viewModel.getAccountID(sessionID)
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let vc = storyboard.instantiateViewController(withIdentifier: "NavControllerId")
+                            self.view.window?.rootViewController = vc
+                            self.view.window?.makeKeyAndVisible()
+                        }
+                    }
+                }
             }
         }
     }
     
-    @IBAction func guestButtonPressed(_ sender: UIButton) {}
+    @IBAction func guestButtonPressed(_ sender: UIButton) {
+        viewModel.getGuestSessionID()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "NavControllerId")
+        self.view.window?.rootViewController = vc
+        self.view.window?.makeKeyAndVisible()
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let vc = storyboard.instantiateViewController(withIdentifier: "NavControllerId")
+//                vc.modalPresentationStyle = .fullScreen
+//                vc.modalTransitionStyle = .flipHorizontal
+//                self.present(vc, animated: true)
+    }
     
+    private func shakeButton() {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 4
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: loginButton.center.x - 10, y: loginButton.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: loginButton.center.x + 10, y: loginButton.center.y))
+
+        loginButton.layer.add(animation, forKey: "position")
+    }
     
     func setupUI() {
         //background gradient
@@ -94,26 +142,30 @@ class AuthorizationViewController: UIViewController  {
             string: "Password",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
         )
-        passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        passwordTextField.isSecureTextEntry = true
         
+        
+        alertLabel.isHidden = true
     }
 }
 
 extension AuthorizationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        switch textField.tag {
-        case 0 :
-            if let username = textField.text {
-                self.username = username
-            }
-        case 1:
-            if let pass = textField.text {
-                self.password = pass
-            }
-        default:
-            break
-        }
+        passwordTextField.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5).cgColor
+//        switch textField.tag {
+//        case 0 :
+//            if let username = textField.text {
+//                self.username = username
+//            }
+//        case 1:
+//            if let pass = textField.text {
+//                self.password = pass
+//            }
+//        default:
+//            break
+//        }
     }
+   
 }
 
 //extension UITextField {

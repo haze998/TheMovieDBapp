@@ -6,73 +6,172 @@
 //
 
 import Foundation
-import Alamofire
 
 class AuthNetworkManager {
     static let shared = AuthNetworkManager()
     
     private init() {}
     
-    var sessionId = ""
-    
-    var url = "https://api.themoviedb.org/3/authentication/token/new?api_key=aef19f83a7261debd6b9b8edfd7919ce"
-    
-    func getToken(userName: String, password: String, completion: @escaping(Bool) -> Void){
-        let request = AF.request(url, method: .get)
-        request.responseDecodable(of: TokenResponseModel.self) { [weak self] response in
+    // MARK: - Get token
+    func getRequestToken(completion: @escaping ((TokenResponse) -> Void)) {
+        guard let apiURL = URL(string: "\(Constants.mainURL)\(Constants.auth)token/new?api_key=\(Constants.apiKey)") else {
+            fatalError("Invalid URL")
+        }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: apiURL) { data, response, error in
+            guard let data = data else { return }
             do {
-                let token = try response.result.get().requestToken
-                self?.getValidateRequestToken(username: userName.self, password: password.self, requestToken: token)
-                completion(try response.result.get().success)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let response = try decoder.decode(TokenResponse.self, from: data)
+                DispatchQueue.main.async {
+                    print(response)
+                    completion(response)
+                }
             } catch {
-                print(error)
+                print("Error: \(error)")
             }
         }
+        task.resume()
+    }
+
+    // MARK: - Validate request token
+    func getValidateRequestToken(login: String, password: String, requestToken: String, completion: @escaping ((TokenResponse) -> Void)) {
+        guard let apiURL = URL(string: "\(Constants.mainURL)authentication/token/validate_with_login?api_key=\(Constants.apiKey)") else { fatalError("Invalid URL") }
+        let usersData: [String: Any] = [
+            "username": login,
+            "password": password,
+            "request_token": requestToken
+        ]
+        let jsonData = try? JSONSerialization.data(withJSONObject: usersData)
+        var request = URLRequest(url: apiURL)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data else { return }
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let response = try decoder.decode(TokenResponse.self, from: data)
+                DispatchQueue.main.async {
+                    print(response)
+                    completion(response)
+                }
+            } catch {
+                print("Error: \(error)")
+            }
+        }
+        task.resume()
     }
     
-    func getValidateRequestToken(username: String, password: String, requestToken: String) {
-        let url = "https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=aef19f83a7261debd6b9b8edfd7919ce"
-        let parameters: [String: Any] = ["username" : username,
-                                         "password" : password,
-                                         "request_token": requestToken]
-        let request = AF.request(url, method: .post, parameters: parameters)
-        request.responseDecodable(of: TokenResponseModel.self) { response in
+    // MARK: - Create session ID
+    func createSessionId(requestToken: String, completion: @escaping ((SessionIdResponse)) -> Void) {
+        guard let apiURL = URL(string: "\(Constants.mainURL)authentication/session/new?api_key=\(Constants.apiKey)") else { fatalError("Invalid URL") }
+        let usersData: [String: Any] = [
+            "request_token": requestToken
+        ]
+        let jsonData = try? JSONSerialization.data(withJSONObject: usersData)
+        var request = URLRequest(url: apiURL)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data else { return }
             do {
-                let token = try response.result.get().requestToken
-                print("Validate \(token)")
-                self.getSessionId(requestToken: token)
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(SessionIdResponse.self, from: data)
+                DispatchQueue.main.async {
+                    print(response)
+                    completion(response)
+                }
             } catch {
-                print(error)
+                print("Error: \(error)")
             }
         }
-    }
-    
-    func getSessionId(requestToken: String) {
-        let url = "https://api.themoviedb.org/3/authentication/session/new?api_key=aef19f83a7261debd6b9b8edfd7919ce"
-        let parameters: [String: Any] = ["request_token": requestToken]
-        let request = AF.request(url, method: .post, parameters: parameters)
-        request.responseDecodable(of: SessionIdResponse.self) { response in
-            do {
-                let sessionId = try response.result.get().sessionID
-                print("SessionId: \(sessionId)")
-            } catch {
-                print(error)
-            }
-        }
+        task.resume()
     }
     
     // - MARK: create guest session
-//    func guestSession(_ completionHandler: @escaping (GuestSessionID) -> Void) {
-//        let url = "https://api.themoviedb.org/3/authentication/guest_session/new?api_key=aef19f83a7261debd6b9b8edfd7919ce"
-//        let request = AF.request(url, method: .get)
-//        request.responseDecodable(of: GuestSessionID.self) { response in
-//            do {
-//                let guestId = try response.result.get().guestSessionID
-//                self.sessionId = guestId
-//            } catch {
-//                print(error)
-//            }
-//        }
-//    }
+    func getGuestSessionID(completion: @escaping ((GuestSessionID) -> Void)) {
+        guard let apiURL = URL(string: "\(Constants.mainURL)authentication/guest_session/new?api_key=\(Constants.apiKey)") else { fatalError("Invalid URL") }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: apiURL) { data, response, error in
+            guard let data = data else { return }
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(GuestSessionID.self, from: data)
+                DispatchQueue.main.async {
+                    print(response)
+                    completion(response)
+                }
+            } catch {
+                print("Error: \(error)")
+            }
+        }
+        task.resume()
+    }
+    
+    // MARK: - Get account
+    func getAccount(sessionID: String, completion: @escaping ((Account) -> Void)) {
+        guard let apiURL = URL(string: "\(Constants.mainURL)account?api_key=\(Constants.apiKey)&session_id=\(sessionID)") else {
+            fatalError("Invalid URL")
+        }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: apiURL) { data, response, error in
+            guard let data = data else { return }
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let response = try decoder.decode(Account.self, from: data)
+                DispatchQueue.main.async {
+                    print(response)
+                    completion(response)
+                }
+            } catch {
+                print("Error: \(error)")
+            }
+        }
+        task.resume()
+    }
+    
+    // MARK: - Delete session
+    func deleteSession(sessionID: String) {
+        guard let apiURL = URL(string: "\(Constants.mainURL)authentication/session?api_key=\(Constants.apiKey)") else {
+            fatalError("Invalid URL")
+        }
+        let params: [String: Any] = [
+            "session_id": sessionID
+        ]
+        let jsonData = try? JSONSerialization.data(withJSONObject: params)
+        var request = URLRequest(url: apiURL)
+        request.httpMethod = "DELETE"
+        request.httpBody = jsonData
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data else { return }
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let response = try decoder.decode(TokenResponse.self, from: data)
+                DispatchQueue.main.async {
+                    do {
+                        try StorageSecure.keychain.removeAll()
+                        print(response)
+                    } catch {
+                        print("Error")
+                    }
+                }
+            } catch {
+                print("Error: \(error)")
+            }
+        }
+        task.resume()
+    }
+
+
 }
 

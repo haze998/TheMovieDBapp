@@ -8,21 +8,17 @@
 import Foundation
 
 // MARK: - TokenResponseModel
-struct TokenResponseModel: Codable {
-    let success: Bool
-    let expiresAt, requestToken: String
-
-    enum CodingKeys: String, CodingKey {
-        case success
-        case expiresAt = "expires_at"
-        case requestToken = "request_token"
-    }
+struct TokenResponse: Codable {
+    let success: Bool?
+    let expiresAt, requestToken: String?
+    let statusCode: Int?
+    let statusMessage: String?
 }
 
 // MARK: - SessionIdResponse
 struct SessionIdResponse: Codable {
-    let success: Bool
-    let sessionID: String
+    let success: Bool?
+    let sessionID: String?
 
     enum CodingKeys: String, CodingKey {
         case success
@@ -32,8 +28,9 @@ struct SessionIdResponse: Codable {
 
 // MARK: - GuestSessionID
 struct GuestSessionID: Codable {
-    let success: Bool
-    let guestSessionID, expiresAt: String
+    let success: Bool?
+    let guestSessionID: String?
+    let expiresAt: String?
     
     enum CodingKeys: String, CodingKey {
         case success

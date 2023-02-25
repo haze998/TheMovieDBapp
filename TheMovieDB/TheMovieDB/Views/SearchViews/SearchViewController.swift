@@ -27,7 +27,7 @@ class SearchViewController: UIViewController {
     }
     
     
-    private var searchActive : Bool = false
+    //private var searchActive : Bool = false
     var viewModel = SearchViewModel()
     
     

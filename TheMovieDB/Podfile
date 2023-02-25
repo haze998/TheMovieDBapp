@@ -8,6 +8,7 @@ target 'TheMovieDB' do
   pod 'lottie-ios'
   pod 'SDWebImage'
   pod "youtube-ios-player-helper"
+  pod 'KeychainAccess'
   # Pods for TheMovieDB
 
 end

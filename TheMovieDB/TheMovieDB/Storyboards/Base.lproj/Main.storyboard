@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wsc-cn-13W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="35H-5F-SPn">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -135,17 +135,23 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2VF-Bz-2xO" userLabel="Guest Button">
-                                <rect key="frame" x="213.33333333333337" y="467" width="140.66666666666663" height="29.333333333333314"/>
+                                <rect key="frame" x="209.66666666666663" y="467" width="144.33333333333337" height="25.333333333333314"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign in as a Guest ?">
-                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                    <fontDescription key="titleFontDescription" name="CodecPro-News" family="Codec Pro" pointSize="13"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="guestButtonPressed:" destination="UIV-wM-V9R" eventType="touchUpInside" id="Vqt-N0-dsv"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LK4-uJ-AQm">
+                                <rect key="frame" x="39" y="499.33333333333331" width="315" height="14.666666666666686"/>
+                                <fontDescription key="fontDescription" name="CodecPro-News" family="Codec Pro" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3F8-AN-ADZ"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -156,18 +162,22 @@
                             <constraint firstItem="3F8-AN-ADZ" firstAttribute="trailing" secondItem="U9T-Wq-DEF" secondAttribute="trailing" constant="39" id="Emz-b1-xJc"/>
                             <constraint firstItem="3F8-AN-ADZ" firstAttribute="trailing" secondItem="HfZ-i0-7rS" secondAttribute="trailing" constant="39" id="FB1-f8-UwO"/>
                             <constraint firstItem="iGV-LI-Pbs" firstAttribute="leading" secondItem="3F8-AN-ADZ" secondAttribute="leading" constant="39" id="GaR-C3-aUW"/>
+                            <constraint firstItem="3F8-AN-ADZ" firstAttribute="trailing" secondItem="LK4-uJ-AQm" secondAttribute="trailing" constant="39" id="GcR-DE-c6M"/>
                             <constraint firstItem="3F8-AN-ADZ" firstAttribute="trailing" secondItem="iGV-LI-Pbs" secondAttribute="trailing" constant="39" id="Ha1-xd-qNr"/>
                             <constraint firstItem="U9T-Wq-DEF" firstAttribute="leading" secondItem="3F8-AN-ADZ" secondAttribute="leading" constant="39" id="LnU-ml-AvN"/>
                             <constraint firstItem="3F8-AN-ADZ" firstAttribute="trailing" secondItem="A4p-BD-qZ5" secondAttribute="trailing" constant="39" id="MCI-b9-yTU"/>
                             <constraint firstItem="iGV-LI-Pbs" firstAttribute="top" secondItem="HfZ-i0-7rS" secondAttribute="bottom" constant="45" id="YrT-5u-1Il"/>
                             <constraint firstItem="HfZ-i0-7rS" firstAttribute="top" secondItem="3F8-AN-ADZ" secondAttribute="top" constant="100" id="ZAM-tm-k5n"/>
                             <constraint firstItem="2VF-Bz-2xO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3F8-AN-ADZ" secondAttribute="leading" symbolic="YES" id="acT-DS-nij"/>
+                            <constraint firstItem="LK4-uJ-AQm" firstAttribute="leading" secondItem="3F8-AN-ADZ" secondAttribute="leading" constant="39" id="geB-fg-EpD"/>
                             <constraint firstItem="A4p-BD-qZ5" firstAttribute="leading" secondItem="3F8-AN-ADZ" secondAttribute="leading" constant="39" id="k0v-nt-fWk"/>
                             <constraint firstItem="U9T-Wq-DEF" firstAttribute="top" secondItem="iGV-LI-Pbs" secondAttribute="bottom" constant="10" id="kbW-32-KNc"/>
                             <constraint firstItem="HfZ-i0-7rS" firstAttribute="leading" secondItem="3F8-AN-ADZ" secondAttribute="leading" constant="39" id="lDl-Hl-7LV"/>
+                            <constraint firstItem="LK4-uJ-AQm" firstAttribute="top" secondItem="2VF-Bz-2xO" secondAttribute="bottom" constant="7" id="zhI-Cr-fe0"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="alertLabel" destination="LK4-uJ-AQm" id="SCb-rp-pIM"/>
                         <outlet property="bgView" destination="Mhh-u3-08F" id="zPF-RL-gYI"/>
                         <outlet property="loginButton" destination="A4p-BD-qZ5" id="jjB-32-9pC"/>
                         <outlet property="loginTextField" destination="iGV-LI-Pbs" id="KAG-Ah-eqW"/>
@@ -441,7 +451,19 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5Qc-B4-4UP" customClass="TabBarViewController" customModule="TheMovieDB" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="yxL-5w-Ui4"/>
+                    <navigationItem key="navigationItem" id="yxL-5w-Ui4">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="d6K-gA-K06">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="eN8-l0-jzj">
+                                <rect key="frame" x="289" y="0.0" width="88" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="logout-5"/>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="5Qc-B4-4UP" eventType="touchUpInside" id="Wxx-de-g41"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="YhO-5B-5Sn">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -450,6 +472,7 @@
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <outlet property="logoutButton" destination="eN8-l0-jzj" id="DEI-5a-fLc"/>
                         <segue destination="sof-L4-3bh" kind="relationship" relationship="viewControllers" id="Qiu-l6-hYM"/>
                         <segue destination="Og8-zU-iQ9" kind="relationship" relationship="viewControllers" id="gvS-rV-wxz"/>
                         <segue destination="tQU-ki-lmZ" kind="relationship" relationship="viewControllers" id="AmB-LY-Zxx"/>
@@ -481,7 +504,7 @@
                                 </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mbf-4b-Uli">
-                                <rect key="frame" x="0.0" y="190" width="393" height="579"/>
+                                <rect key="frame" x="0.0" y="198" width="393" height="571"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fXs-0W-Je4">
                                     <size key="itemSize" width="128" height="128"/>
@@ -506,7 +529,7 @@
                         <constraints>
                             <constraint firstItem="khF-R6-yxm" firstAttribute="trailing" secondItem="W17-sX-l19" secondAttribute="trailing" id="CLe-YV-H4Z"/>
                             <constraint firstItem="khF-R6-yxm" firstAttribute="leading" secondItem="W17-sX-l19" secondAttribute="leading" id="GHO-M4-eBZ"/>
-                            <constraint firstItem="mbf-4b-Uli" firstAttribute="top" secondItem="khF-R6-yxm" secondAttribute="bottom" id="JAQ-qh-iVe"/>
+                            <constraint firstItem="mbf-4b-Uli" firstAttribute="top" secondItem="khF-R6-yxm" secondAttribute="bottom" constant="8" id="JAQ-qh-iVe"/>
                             <constraint firstItem="mbf-4b-Uli" firstAttribute="bottom" secondItem="W17-sX-l19" secondAttribute="bottom" id="NF0-36-9Fy"/>
                             <constraint firstItem="ZF0-yZ-Q85" firstAttribute="top" secondItem="W17-sX-l19" secondAttribute="top" id="chM-3n-ysd"/>
                             <constraint firstItem="ZF0-yZ-Q85" firstAttribute="trailing" secondItem="W17-sX-l19" secondAttribute="trailing" id="dfK-Ny-7qL"/>
@@ -548,6 +571,7 @@
         <image name="Tmdb.new.logo" width="185.03999328613281" height="133.39999389648438"/>
         <image name="calendar" width="512" height="512"/>
         <image name="film" catalog="system" width="128" height="93"/>
+        <image name="logout-5" width="32" height="32"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="movie" width="512" height="512"/>
         <image name="star" catalog="system" width="128" height="116"/>
@@ -557,6 +581,9 @@
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
