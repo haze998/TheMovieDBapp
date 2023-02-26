@@ -15,7 +15,7 @@ class SearchViewModel {
     //public var genres = [Genre]()
     //public var popular  = [Media]()
     
-    public func searchMovie(query: String, completion: @escaping()->Void) {
+    public func searchMovie(query: String, completion: @escaping () -> Void) {
         currentPage += 1
         let urlString = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         SearchNetworkManager.shared.getSearchRequest(page: currentPage, searchQuery: urlString, mediaType: MediaType.movie.rawValue) { [weak self] searched in
@@ -25,7 +25,7 @@ class SearchViewModel {
         }
     }
     
-    public func searchTV(query: String, completion: @escaping()->Void) {
+    public func searchTV(query: String, completion: @escaping () -> Void) {
         currentPage += 1
         let urlString = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         SearchNetworkManager.shared.getSearchRequest(page: currentPage, searchQuery: urlString, mediaType: MediaType.tvShow.rawValue) { [weak self] searched in

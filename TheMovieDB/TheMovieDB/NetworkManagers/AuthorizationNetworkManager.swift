@@ -171,7 +171,5 @@ class AuthNetworkManager {
         }
         task.resume()
     }
-
-
 }
 

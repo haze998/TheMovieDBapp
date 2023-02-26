@@ -45,6 +45,18 @@ class DetailViewModel {
             }
         }
     }
+    
+    func goToWatchList(mediaType: String, mediaID: String, boolean: Bool) {
+        if let accountID = StorageSecure.keychain["accountID"],
+           let sessionID = StorageSecure.keychain["sessionID"] {
+            WatchListNetworkManager.shared.actionWatchList(mediaType: mediaType,
+                                           mediaID: mediaID,
+                                           bool: boolean,
+                                           accountID: accountID,
+                                           sessionID: sessionID)
+        }
+    }
+    
     // MARK: - Youtube configure
     func getVideos(movieId: Int?, tvShowId: Int?, completion: @escaping () -> ()) {
         if movieId != 0 {

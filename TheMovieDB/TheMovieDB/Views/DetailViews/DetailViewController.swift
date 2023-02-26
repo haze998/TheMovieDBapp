@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var runtimeLabel: UILabel!
     @IBOutlet var bgDetailView: UIView!
     @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var addToWatchListButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var playerView: YTPlayerView!
@@ -39,8 +40,47 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
+        hideWatchListButton()
         setupUI()
        // loadActors()
+    }
+    
+    @IBAction func addToWatchListButtonPressed(_ sender: UIButton) {
+        if movieId != 0 {
+            viewModel.goToWatchList(mediaType: MediaType.movie.rawValue, mediaID: String(movieId), boolean: true)
+        } else {
+            viewModel.goToWatchList(mediaType: MediaType.tvShow.rawValue, mediaID: String(tvShowId), boolean: true)
+        }
+        
+//        switch sender.isSelected {
+//        case true:
+//            print("case true")
+////            var alert = UIAlertController()
+////            if movieId != 0 {
+////                alert = bottomAlert.createAlert(mediaType: MediaType.movie.rawValue,
+////                                                mediaID: String(movieId),
+////                                                sender: sender)
+////            } else {
+////                alert = bottomAlert.createAlert(mediaType: MediaType.tvShow.rawValue,
+////                                                mediaID: String(tvShowId),
+////                                                sender: sender)
+////            }
+//            //self.present(alert, animated: true)
+//        case false:
+//            if movieId != 0 {
+//                viewModel.goToWatchList(mediaType: MediaType.movie.rawValue, mediaID: String(movieId), boolean: true)
+//            } else {
+//                viewModel.goToWatchList(mediaType: MediaType.tvShow.rawValue, mediaID: String(tvShowId), boolean: true)
+//            }
+//            sender.isSelected.toggle()
+//        }
+    }
+    
+    private func hideWatchListButton() {
+        addToWatchListButton.isHidden = false
+        if StorageSecure.keychain["guestID"] != nil {
+            addToWatchListButton.isHidden = true
+        }
     }
     
     private func setupUI() {

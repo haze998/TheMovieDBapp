@@ -15,7 +15,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var actorImageView: UIImageView!
     @IBOutlet weak var actorNamelabel: UILabel!
     //private let transformer = SDImageResizingTransformer(size: CGSize(width: 200, height: 200), scaleMode: .aspectFill)
-    var viewModel = DetailViewModel()
+    //var viewModel = DetailViewModel()
     
     override func awakeFromNib() {
         super.awakeFromNib()

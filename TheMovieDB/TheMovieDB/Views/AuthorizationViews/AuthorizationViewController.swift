@@ -52,13 +52,12 @@ class AuthorizationViewController: UIViewController  {
                     loginTextField.layer.borderColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
                     passwordTextField.layer.borderColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
                     self.shakeButton()
-                    alertLabel.text = "Username / password cannot be blank"
+                    alertLabel.text = "Username / password cannot be empty"
                     return
                 } else {
                     if result != true {
                         alertLabel.isHidden = false
-                        loginTextField.layer.borderColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
-                        passwordTextField.layer.borderColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
+                        
                         self.shakeButton()
                         alertLabel.text = "Incorrect username / password"
                     } else {
@@ -97,6 +96,8 @@ class AuthorizationViewController: UIViewController  {
         animation.toValue = NSValue(cgPoint: CGPoint(x: loginButton.center.x + 10, y: loginButton.center.y))
 
         loginButton.layer.add(animation, forKey: "position")
+        loginTextField.layer.borderColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
+        passwordTextField.layer.borderColor = UIColor(red: 1.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
     }
     
     func setupUI() {
