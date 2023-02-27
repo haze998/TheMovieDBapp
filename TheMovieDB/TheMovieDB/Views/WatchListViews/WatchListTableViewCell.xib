@@ -4,9 +4,16 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="CodecPro-Bold.ttf">
+            <string>CodecPro-Bold</string>
+        </array>
+        <array key="CodecPro-News.ttf">
+            <string>CodecPro-News</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,29 +28,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="150" height="230"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzV-KH-TnB">
-                        <rect key="frame" x="158" y="7.9999999999999982" width="198" height="20.333333333333329"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="158" y="7.9999999999999991" width="198" height="14.666666666666661"/>
+                        <fontDescription key="fontDescription" name="CodecPro-Bold" family="Codec Pro" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Jdq-Ep-sQg">
-                        <rect key="frame" x="158" y="36.333333333333343" width="198" height="160"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <color key="textColor" systemColor="labelColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <rect key="frame" x="158" y="30.666666666666671" width="198" height="160"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="CodecPro-News" family="Codec Pro" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ratestar" translatesAutoresizingMaskIntoConstraints="NO" id="KOc-4x-twh">
-                        <rect key="frame" x="158" y="204.33333333333334" width="15" height="15"/>
+                        <rect key="frame" x="158" y="198.66666666666666" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="QJa-Jb-KkZ"/>
                             <constraint firstAttribute="height" constant="15" id="dvq-nt-OqV"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNB-q8-k61">
-                        <rect key="frame" x="178" y="201.33333333333334" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="178" y="195.66666666666666" width="39" height="13"/>
+                        <fontDescription key="fontDescription" name="CodecPro-News" family="Codec Pro" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -66,6 +73,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="posterImageView" destination="2t0-nl-HWA" id="3AP-EX-Y0b"/>
                 <outlet property="rateImage" destination="KOc-4x-twh" id="HDN-4V-RJh"/>
@@ -78,11 +86,5 @@
     </objects>
     <resources>
         <image name="Ratestar" width="512" height="512"/>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

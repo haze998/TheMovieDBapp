@@ -12,24 +12,26 @@ final class WatchListViewModel {
     var tvShowsList: [MediaResponse.Media] = []
     
     func getWatchList(completion: @escaping () -> Void) {
-        if StorageSecure.keychain["guestID"] != nil {
-            moviesList.removeAll()
-            tvShowsList.removeAll()
-        }
+//        if StorageSecure.keychain["guestID"] != nil {
+//            moviesList.removeAll()
+//            tvShowsList.removeAll()
+//        }
         if let accountID = StorageSecure.keychain["accountID"],
            let sessionID = StorageSecure.keychain["sessionID"] {
-            WatchListNetworkManager.shared.getWatchListMedia(accountID: accountID,
+            WatchListNetworkManager.shared.getMovieWatchList(accountID: accountID,
                                              sessionID: sessionID,
                                              mediaType: MediaType.movie.rawValue) { movies in
                 DispatchQueue.main.async {
                     self.moviesList = movies
+                    completion()
                 }
             }
-            WatchListNetworkManager.shared.getWatchListMedia(accountID: accountID,
+            WatchListNetworkManager.shared.getTVShowWatchList(accountID: accountID,
                                              sessionID: sessionID,
                                              mediaType: MediaType.tvShow.rawValue) { tvShow in
                 DispatchQueue.main.async {
                     self.tvShowsList = tvShow
+                    completion()
                 }
             }
         }

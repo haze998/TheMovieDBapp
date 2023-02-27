@@ -19,7 +19,7 @@ class SearchViewModel {
         currentPage += 1
         let urlString = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         SearchNetworkManager.shared.getSearchRequest(page: currentPage, searchQuery: urlString, mediaType: MediaType.movie.rawValue) { [weak self] searched in
-            guard let movies = searched.results, !movies.isEmpty else { return }
+            guard let movies = searched.results else { return }
             self?.searchedMedia.append(contentsOf: movies)
             completion()
         }
@@ -29,7 +29,7 @@ class SearchViewModel {
         currentPage += 1
         let urlString = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         SearchNetworkManager.shared.getSearchRequest(page: currentPage, searchQuery: urlString, mediaType: MediaType.tvShow.rawValue) { [weak self] searched in
-            guard let tvs = searched.results, !tvs.isEmpty else { return }
+            guard let tvs = searched.results else { return }
             self?.searchedMedia.append(contentsOf: tvs)
             completion()
         }

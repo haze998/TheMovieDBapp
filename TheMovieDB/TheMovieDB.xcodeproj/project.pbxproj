@@ -19,6 +19,7 @@
 		06312C1F299FC1BD00AE26C0 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06312C1D299FC1BD00AE26C0 /* DetailCollectionViewCell.swift */; };
 		06312C20299FC1BD00AE26C0 /* DetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06312C1E299FC1BD00AE26C0 /* DetailCollectionViewCell.xib */; };
 		0631C19929802F1100215476 /* OnboardingSlideModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0631C19829802F1100215476 /* OnboardingSlideModel.swift */; };
+		06387D8F29AC2D38005590A3 /* ObserveWatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06387D8E29AC2D38005590A3 /* ObserveWatchList.swift */; };
 		063FA0812981471000C9BAF0 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063FA0802981471000C9BAF0 /* OnboardingCollectionViewCell.swift */; };
 		06424623299BBC9B0031F332 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06424622299BBC9B0031F332 /* SearchViewController.swift */; };
 		06424625299BBCA80031F332 /* WatchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06424624299BBCA80031F332 /* WatchListViewController.swift */; };
@@ -91,6 +92,7 @@
 		06312C1D299FC1BD00AE26C0 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		06312C1E299FC1BD00AE26C0 /* DetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		0631C19829802F1100215476 /* OnboardingSlideModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlideModel.swift; sourceTree = "<group>"; };
+		06387D8E29AC2D38005590A3 /* ObserveWatchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveWatchList.swift; sourceTree = "<group>"; };
 		063FA0802981471000C9BAF0 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		06424622299BBC9B0031F332 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		06424624299BBCA80031F332 /* WatchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListViewController.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				06499CDE297FFE3E008F120F /* Assets.xcassets */,
 				06B9852E297D940700777123 /* Info.plist */,
 				06B98534297D943600777123 /* Podfile */,
+				06387D8E29AC2D38005590A3 /* ObserveWatchList.swift */,
 			);
 			path = TheMovieDB;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				06424629299BD4220031F332 /* DetailNetworkManager.swift in Sources */,
 				06312C1F299FC1BD00AE26C0 /* DetailCollectionViewCell.swift in Sources */,
 				0656ECC829969302003C6929 /* DetailViewController.swift in Sources */,
+				06387D8F29AC2D38005590A3 /* ObserveWatchList.swift in Sources */,
 				06B98539297D958B00777123 /* AuthorizationViewController.swift in Sources */,
 				06E93AC4298D37C4006711F6 /* GenresCollectionViewCell.swift in Sources */,
 				0678E8B329A23F08006AE959 /* SearchViewModel.swift in Sources */,

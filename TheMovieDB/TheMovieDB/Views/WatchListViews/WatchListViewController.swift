@@ -21,10 +21,15 @@ class WatchListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //goToAuthUser() - todo
         viewModel.getWatchList {
             self.tableView.reloadData()
         }
-        setupUI()
     }
     
     private func setupUI() {
@@ -47,15 +52,15 @@ extension WatchListViewController: UITableViewDataSource {
         }
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if section == 0 && !viewModel.moviesList.isEmpty {
-//            return "Movies"
-//        } else if section == 1 && !viewModel.tvShowsList.isEmpty {
-//            return "TV Shows"
-//        } else {
-//            return ""
-//        }
-//    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 && !viewModel.moviesList.isEmpty {
+            return "Movies"
+        } else if section == 1 && !viewModel.tvShowsList.isEmpty {
+            return "TV Shows"
+        } else {
+            return ""
+        }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WatchListTableViewCell", for: indexPath) as? WatchListTableViewCell else { return UITableViewCell() }
@@ -63,12 +68,10 @@ extension WatchListViewController: UITableViewDataSource {
         case 0:
             let media = viewModel.moviesList[indexPath.row]
             cell.configure(with: media)
-            tableView.reloadData()
             return cell
         case 1:
             let media = viewModel.tvShowsList[indexPath.row]
             cell.configure(with: media)
-            tableView.reloadData()
             return cell
         default:
             return UITableViewCell()
@@ -88,7 +91,8 @@ extension WatchListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = DetailViewController()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      guard let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
         switch indexPath.section {
         case 0:
             let media = viewModel.moviesList[indexPath.row]

@@ -42,15 +42,20 @@ class DetailViewController: UIViewController {
         loadData()
         hideWatchListButton()
         setupUI()
+        //updateSavedWatchList()
        // loadActors()
     }
     
     @IBAction func addToWatchListButtonPressed(_ sender: UIButton) {
         if movieId != 0 {
-            viewModel.goToWatchList(mediaType: MediaType.movie.rawValue, mediaID: String(movieId), boolean: true)
+            viewModel.goToWatchList(mediaType: MediaType.movie.rawValue, mediaID: String(movieId), status: true)
+            updateSavedWatchList()
         } else {
-            viewModel.goToWatchList(mediaType: MediaType.tvShow.rawValue, mediaID: String(tvShowId), boolean: true)
+            viewModel.goToWatchList(mediaType: MediaType.tvShow.rawValue, mediaID: String(tvShowId), status: true)
+            updateSavedWatchList()
         }
+        
+        
         
 //        switch sender.isSelected {
 //        case true:
@@ -74,6 +79,15 @@ class DetailViewController: UIViewController {
 //            }
 //            sender.isSelected.toggle()
 //        }
+    }
+    
+    private func updateSavedWatchList() {
+        ObserveWatchList.shared.getMoviesID {
+            print("update success")
+        }
+        ObserveWatchList.shared.getTVShowsID {
+            print("update success")
+        }
     }
     
     private func hideWatchListButton() {
