@@ -36,7 +36,7 @@ final class HeaderSectionCollectionViewCell: UICollectionViewCell {
         label.minimumContentSizeCategory = .accessibilityMedium
         label.font = UIFont(name: "CodecPro-Bold", size: 30.0)
         label.textColor = .white
-        leftElemnt.backgroundColor = .systemRed
+        leftElemnt.backgroundColor = UIColor(red: 0.26, green: 0.66, blue: 0.83, alpha: 1.00)
         leftElemnt.translatesAutoresizingMaskIntoConstraints = false
         leftElemnt.layer.cornerRadius = 4
     }

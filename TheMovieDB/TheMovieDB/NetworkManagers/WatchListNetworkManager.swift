@@ -87,4 +87,26 @@ class WatchListNetworkManager {
         }
         task.resume()
     }
+    
+    func removeFromWatchList(accountID: Int, mediaType: String, mediaId: Int, sessionId: String, completion: @escaping (SessionIdResponse, Int) -> Void) {
+        guard let apiURL = URL(string: "https://api.themoviedb.org/3/account/\(accountID)/watchlist?api_key=\(Constants.apiKey)&session_id=\(sessionId)") else {
+            fatalError("Invalid URL")
+    }
+//    func removeFromWatchlist(accountID: Int, mediaType: String, mediaId: Int, sessionId: String, completion: @escaping (SessionResponce, Int) -> Void) {
+//        let parameters: [String: Any] = [
+//            "media_type": mediaType,
+//            "media_id": mediaId,
+//            "watchlist": false
+//        ]
+//        let genresRequest = AF.request("https://api.themoviedb.org/3/account/\(accountID)/watchlist?api_key=\(apiKey)&session_id=\(sessionId)", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+//        genresRequest.responseDecodable(of: SessionResponce.self) { response in
+//            do {
+//                let data = try response.result.get()
+//                completion(data, mediaId)
+//            }
+//            catch {
+//                print("error: \(error)")
+//            }
+//        }
+    }
 }

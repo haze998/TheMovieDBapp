@@ -39,20 +39,17 @@ class GenresViewController: UIViewController {
     func setupUI() {
         segmentControl.setTitle("Movies", forSegmentAt: 0)
         segmentControl.setTitle("TV Shows", forSegmentAt: 1)
-        segmentControl.backgroundColor = .clear
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
+        
 //        l
         segmentControl.addTarget(self, action: #selector(segmentWidget), for: .valueChanged)
         
         collectionView.backgroundColor = .clear
         collectionView.collectionViewLayout = createLayoutBuilder()
         
-        let colorTop = UIColor(red: 0.33, green: 0.04, blue: 0.63, alpha: 1.00).cgColor
-        let colorBot = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.bgView.bounds
-        gradientLayer.colors = [colorTop, colorBot]
-        
-        self.bgView.layer.insertSublayer(gradientLayer, at: 0)
+        let bgColor = UIColor(red: 0.05, green: 0.04, blue: 0.10, alpha: 1.00)
+        self.view.backgroundColor = bgColor
     }
     
     @objc func segmentWidget(sender: UISegmentedControl) {

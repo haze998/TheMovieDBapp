@@ -37,17 +37,16 @@ class SearchViewController: UIViewController {
     }
     
     private func setupUI() {
-        let colorTop = UIColor(red: 0.33, green: 0.04, blue: 0.63, alpha: 1.00).cgColor
-        let colorBot = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [colorTop, colorBot]
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
+        let bgColor = UIColor(red: 0.05, green: 0.04, blue: 0.10, alpha: 1.00)
+        self.view.backgroundColor = bgColor
         
         searchBar.searchBarStyle = .minimal
         searchBar.barStyle = .default
         searchBar.searchTextField.backgroundColor = .white
         searchBar.searchTextField.textColor = .black
+        
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
         
     }
     

@@ -28,7 +28,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="WbS-sw-IdW">
                             <rect key="frame" x="15.000000000000004" y="10" width="57.333333333333343" height="15"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="tL5-ne-ggW">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" image="star-2" translatesAutoresizingMaskIntoConstraints="NO" id="tL5-ne-ggW">
                                     <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="15" id="5uF-lB-CbJ"/>
@@ -82,7 +82,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Star" width="10" height="10"/>
+        <image name="star-2" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

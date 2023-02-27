@@ -33,13 +33,8 @@ class WatchListViewController: UIViewController {
     }
     
     private func setupUI() {
-        let colorTop = UIColor(red: 0.33, green: 0.04, blue: 0.63, alpha: 1.00).cgColor
-        let colorBot = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [colorTop, colorBot]
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
-        
+        let bgColor = UIColor(red: 0.05, green: 0.04, blue: 0.10, alpha: 1.00)
+        self.view.backgroundColor = bgColor
     }
 }
 
@@ -50,6 +45,13 @@ extension WatchListViewController: UITableViewDataSource {
         } else {
             return viewModel.tvShowsList.count
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let headerView = view as? UITableViewHeaderFooterView else { return }
+        guard let headerLabel = headerView.textLabel else { return }
+        headerLabel.textColor = UIColor.white
+        headerView.contentView.backgroundColor = UIColor(red: 0.05, green: 0.04, blue: 0.10, alpha: 1.00)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -92,7 +94,7 @@ extension WatchListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-      guard let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
         switch indexPath.section {
         case 0:
             let media = viewModel.moviesList[indexPath.row]
@@ -105,4 +107,28 @@ extension WatchListViewController: UITableViewDelegate {
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+//    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let swipeAction = UIContextualAction(style: .normal, title: "Кemove") { [weak self] _, _, completion in
+//
+//        }
+        //        let removeAction = UIContextualAction(style: .normal, title: "Remove") { [weak self]_, _, completion in
+        //            switch self?.segmentController.selectedSegmentIndex {
+        //            case 0:
+        //                self?.viewModel.remove(mediaType: "movie", mediaId: self?.viewModel.arrayOfMoviesWatchlist[indexPath.row].id ?? 0) {
+        //                    self?.viewModel.arrayOfMoviesWatchlist.remove(at: indexPath.row)
+        //                    tableView.reloadData()
+        //                }
+        //            case 1:
+        //                self?.viewModel.remove(mediaType: "tv", mediaId: self?.viewModel.arrayOfTVShowsWatchlist[indexPath.row].id ?? 0) {
+        //                    self?.viewModel.arrayOfTVShowsWatchlist.remove(at: indexPath.row)
+        //                    tableView.reloadData()
+        //                }
+        //            default:
+        //                return
+        //            }
+        //        }
+        //return UISwipeActionsConfiguration()
+    //}
 }
+

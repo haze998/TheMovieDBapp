@@ -68,22 +68,30 @@ class OnboardViewController: UIViewController {
         // button
         let gradientButton = CAGradientLayer()
         gradientButton.colors = [
-            UIColor(red: 0.5, green: 0, blue: 1, alpha: 1).cgColor,
-            UIColor(red: 0.329, green: 0.043, blue: 0.631, alpha: 1).cgColor
-        ]
-        gradientButton.frame = getStartedButton.bounds
+            UIColor(red: 0.247, green: 0.216, blue: 0.498, alpha: 1).cgColor,
+            UIColor(red: 0.263, green: 0.659, blue: 0.831, alpha: 1).cgColor
+          ]
+        gradientButton.locations = [0, 1]
+        gradientButton.startPoint = CGPoint(x: 0.25, y: 0.5)
+        gradientButton.endPoint = CGPoint(x: 0.75, y: 0.5)
+        gradientButton.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: -1.14, b: 1.43, c: -1.43, d: -87.17, tx: 1.85, ty: 43.16))
+        gradientButton.bounds = view.bounds.insetBy(dx: -0.5*view.bounds.size.width, dy: -0.5*view.bounds.size.height)
+        gradientButton.position = view.center
+        
         getStartedButton.layer.insertSublayer(gradientButton, at: 0)
         getStartedButton.layer.cornerRadius = 20
         getStartedButton.layer.masksToBounds = true
         getStartedButton.titleLabel?.font = UIFont(name: "CodecPro-News", size: 20.0)
         
-        //background gradient
-        let colorTop = UIColor(red: 0.33, green: 0.04, blue: 0.63, alpha: 1.00).cgColor
-        let colorBot = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.bgView.bounds
-        gradientLayer.colors = [colorTop, colorBot]
-        self.bgView.layer.insertSublayer(gradientLayer, at: 0)
+        //background color
+//        let colorTop = UIColor(red: 0.33, green: 0.04, blue: 0.63, alpha: 1.00).cgColor
+//        let colorBot = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00).cgColor
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.frame = self.bgView.bounds
+//        gradientLayer.colors = [colorTop, colorBot]
+//        self.bgView.layer.insertSublayer(gradientLayer, at: 0)
+        let bgColor = UIColor(red: 0.05, green: 0.04, blue: 0.10, alpha: 1.00)
+        self.view.backgroundColor = bgColor
     }
 }
 
