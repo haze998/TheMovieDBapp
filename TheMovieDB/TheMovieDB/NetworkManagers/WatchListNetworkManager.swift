@@ -56,8 +56,8 @@ class WatchListNetworkManager {
         }
         task.resume()
     }
-    // mediaType for tv???
-    func actionWatchList(mediaType: String = "movie", mediaID: String, status: Bool = true, accountID: String, sessionID: String) {
+    
+    func getWatchList(mediaType: String, mediaID: String, status: Bool, accountID: String, sessionID: String) {
         guard let apiURL = URL(string: "\(Constants.mainURL)account/\(accountID)/watchlist?api_key=\(Constants.apiKey)&session_id=\(sessionID)") else {
             fatalError("Invalid URL")
         }
@@ -88,10 +88,35 @@ class WatchListNetworkManager {
         task.resume()
     }
     
-    func removeFromWatchList(accountID: Int, mediaType: String, mediaId: Int, sessionId: String, completion: @escaping (SessionIdResponse, Int) -> Void) {
-        guard let apiURL = URL(string: "https://api.themoviedb.org/3/account/\(accountID)/watchlist?api_key=\(Constants.apiKey)&session_id=\(sessionId)") else {
-            fatalError("Invalid URL")
+    func removeWatchList(mediaType: String, mediaID: Int, accountID: String, sessionID: String, completion: @escaping (TokenResponse) -> Void) {
+        guard let apiURL = URL(string: "https://api.themoviedb.org/3/account/\(accountID)/watchlist?api_key=\(Constants.apiKey)&session_id=\(sessionID)") else { fatalError("Invalid URL") }
+        let params: [String: Any] = [
+            "media_type": mediaType,
+            "media_id": mediaID,
+            "watchlist": false
+        ]
+        let jsonData = try? JSONSerialization.data(withJSONObject: params)
+        var request = URLRequest(url: apiURL)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.setValue("application/json;charset=utf-8", forHTTPHeaderField: "Content-Type")
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data else { return }
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let response = try decoder.decode(TokenResponse.self, from: data)
+                //DispatchQueue.main.async {
+                    print(response)
+               // }
+            } catch {
+                print("Error: \(error)")
+            }
+        }
+        task.resume()
     }
+    
 //    func removeFromWatchlist(accountID: Int, mediaType: String, mediaId: Int, sessionId: String, completion: @escaping (SessionResponce, Int) -> Void) {
 //        let parameters: [String: Any] = [
 //            "media_type": mediaType,
@@ -108,5 +133,7 @@ class WatchListNetworkManager {
 //                print("error: \(error)")
 //            }
 //        }
-    }
+//    }
+
 }
+

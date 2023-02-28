@@ -18,7 +18,7 @@ class WatchListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.selectionStyle = .none
     }
 
     func configure(with media: MediaResponse.Media) {

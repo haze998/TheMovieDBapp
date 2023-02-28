@@ -49,7 +49,7 @@ class DetailViewModel {
     func goToWatchList(mediaType: String, mediaID: String, status: Bool) {
         if let accountID = StorageSecure.keychain["accountID"],
            let sessionID = StorageSecure.keychain["sessionID"] {
-            WatchListNetworkManager.shared.actionWatchList(mediaType: mediaType,
+            WatchListNetworkManager.shared.getWatchList(mediaType: mediaType,
                                            mediaID: mediaID,
                                            status: status,
                                            accountID: accountID,

@@ -27,7 +27,7 @@ class WatchListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //goToAuthUser() - todo
-        viewModel.getWatchList {
+        viewModel.fetchedWatchList {
             self.tableView.reloadData()
         }
     }
@@ -108,27 +108,32 @@ extension WatchListViewController: UITableViewDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-//    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let swipeAction = UIContextualAction(style: .normal, title: "Кemove") { [weak self] _, _, completion in
-//
-//        }
-        //        let removeAction = UIContextualAction(style: .normal, title: "Remove") { [weak self]_, _, completion in
-        //            switch self?.segmentController.selectedSegmentIndex {
-        //            case 0:
-        //                self?.viewModel.remove(mediaType: "movie", mediaId: self?.viewModel.arrayOfMoviesWatchlist[indexPath.row].id ?? 0) {
-        //                    self?.viewModel.arrayOfMoviesWatchlist.remove(at: indexPath.row)
-        //                    tableView.reloadData()
-        //                }
-        //            case 1:
-        //                self?.viewModel.remove(mediaType: "tv", mediaId: self?.viewModel.arrayOfTVShowsWatchlist[indexPath.row].id ?? 0) {
-        //                    self?.viewModel.arrayOfTVShowsWatchlist.remove(at: indexPath.row)
-        //                    tableView.reloadData()
-        //                }
-        //            default:
-        //                return
-        //            }
-        //        }
-        //return UISwipeActionsConfiguration()
-    //}
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let removeAction = UIContextualAction(style: .destructive, title: "Remove") { _, _, completion in
+            switch indexPath.section {
+            case 0:
+                self.viewModel.removeFetchedWatchList(mediaType: MediaType.movie.rawValue, mediaId: self.viewModel.moviesList[indexPath.row].id ?? 0)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    tableView.beginUpdates()
+                    self.viewModel.moviesList.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.endUpdates()
+                    tableView.reloadData()
+                }
+            case 1:
+                self.viewModel.removeFetchedWatchList(mediaType: MediaType.tvShow.rawValue, mediaId: self.viewModel.tvShowsList[indexPath.row].id ?? 0)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    tableView.beginUpdates()
+                    self.viewModel.tvShowsList.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.endUpdates()
+                    tableView.reloadData()
+                }
+            default:
+                return
+            }
+        }
+        let swipeActionConfig = UISwipeActionsConfiguration(actions: [removeAction])
+        return swipeActionConfig
+    }
 }
-

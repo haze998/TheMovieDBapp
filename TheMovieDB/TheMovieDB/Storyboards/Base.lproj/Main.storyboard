@@ -135,7 +135,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2VF-Bz-2xO" userLabel="Guest Button">
-                                <rect key="frame" x="209.66666666666663" y="467" width="144.33333333333337" height="25.333333333333314"/>
+                                <rect key="frame" x="210.33333333333337" y="467" width="143.66666666666663" height="25.333333333333314"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Sign in as a Guest ?">
@@ -345,14 +345,12 @@
                                                 </collectionViewFlowLayout>
                                                 <cells/>
                                             </collectionView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZv-CD-noD">
-                                                <rect key="frame" x="324" y="1423" width="61" height="35"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Save"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lss-rH-1TB">
+                                                <rect key="frame" x="159" y="1405" width="75" height="35"/>
+                                                <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                                 <connections>
-                                                    <action selector="addToWatchListButtonPressed:" destination="5SI-IN-N0S" eventType="touchUpInside" id="SPW-HS-8hh"/>
+                                                    <action selector="addToWatchListButtonPressed:" destination="5SI-IN-N0S" eventType="touchUpInside" id="ZMq-qw-Qbs"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -366,13 +364,16 @@
                                             <constraint firstItem="hJS-DA-V9t" firstAttribute="leading" secondItem="i0e-BH-1wV" secondAttribute="trailing" constant="25" id="GJ2-cT-vej"/>
                                             <constraint firstItem="hJS-DA-V9t" firstAttribute="top" secondItem="pGC-hg-Zc4" secondAttribute="bottom" constant="8" id="GyB-2q-EzE"/>
                                             <constraint firstItem="FsR-0r-dQb" firstAttribute="top" secondItem="SFz-pi-Pf4" secondAttribute="bottom" constant="8" id="Hak-va-rYo"/>
+                                            <constraint firstAttribute="bottom" secondItem="Lss-rH-1TB" secondAttribute="bottom" constant="60" id="HjX-TV-yGX"/>
                                             <constraint firstAttribute="trailing" secondItem="FsR-0r-dQb" secondAttribute="trailing" constant="16" id="J11-HQ-wND"/>
                                             <constraint firstAttribute="trailing" secondItem="gHa-Ug-Yfs" secondAttribute="trailing" constant="8" id="Nqr-KZ-g6F"/>
                                             <constraint firstItem="gHa-Ug-Yfs" firstAttribute="top" secondItem="KYc-na-V0I" secondAttribute="bottom" constant="10" id="OY3-0N-asJ"/>
                                             <constraint firstItem="C2z-rH-WPA" firstAttribute="leading" secondItem="6fS-mv-dbh" secondAttribute="leading" id="S26-kw-Rca"/>
+                                            <constraint firstItem="Lss-rH-1TB" firstAttribute="leading" secondItem="6fS-mv-dbh" secondAttribute="leading" constant="159" id="VTa-75-7hW"/>
                                             <constraint firstItem="SFz-pi-Pf4" firstAttribute="leading" secondItem="6fS-mv-dbh" secondAttribute="leading" constant="16" id="XPJ-fM-kSD"/>
                                             <constraint firstItem="bPh-PP-U4t" firstAttribute="top" secondItem="e9o-uA-hpc" secondAttribute="bottom" constant="8" id="afA-at-hfW"/>
                                             <constraint firstItem="kE3-d3-Nk4" firstAttribute="leading" secondItem="pGC-hg-Zc4" secondAttribute="trailing" constant="6" id="b0q-lG-uA3"/>
+                                            <constraint firstAttribute="trailing" secondItem="Lss-rH-1TB" secondAttribute="trailing" constant="159" id="cMq-AG-c7O"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KYc-na-V0I" secondAttribute="trailing" constant="20" symbolic="YES" id="cNg-41-0Bv"/>
                                             <constraint firstItem="wo9-Y6-BeS" firstAttribute="leading" secondItem="e9o-uA-hpc" secondAttribute="trailing" constant="6" id="gtW-TJ-eDN"/>
                                             <constraint firstItem="KYc-na-V0I" firstAttribute="leading" secondItem="hJS-DA-V9t" secondAttribute="trailing" constant="6" id="iaA-Dn-mXJ"/>
@@ -417,7 +418,7 @@
                     </view>
                     <size key="freeformSize" width="393" height="1500"/>
                     <connections>
-                        <outlet property="addToWatchListButton" destination="WZv-CD-noD" id="I0m-Cc-Orc"/>
+                        <outlet property="addToWatchListButton" destination="Lss-rH-1TB" id="1aF-bv-kwc"/>
                         <outlet property="bgDetailView" destination="3Jj-30-CHa" id="Y3X-S1-jo4"/>
                         <outlet property="collectionView" destination="C2z-rH-WPA" id="2oh-Z0-97Y"/>
                         <outlet property="genreLabel" destination="KYc-na-V0I" id="ICJ-yO-RX8"/>

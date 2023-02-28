@@ -15,15 +15,14 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
        setupUI()
-//        let button = UIBarButtonItem(image: UIImage(named: "image_name"), style: .plain, target: self, action: #selector(buttonTapped))
-//        button.imageInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
-//        navigationItem.rightBarButtonItem = button
+        
     }
     
     private func setupUI() {
         let logo = UIImage(named: "logo.png")
         let imageView = UIImageView(image:logo)
         self.navigationItem.titleView = imageView
+        
         
         
     }
