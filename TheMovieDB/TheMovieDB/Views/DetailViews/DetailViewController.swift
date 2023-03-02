@@ -32,6 +32,7 @@ class DetailViewController: UIViewController {
             collectionView.collectionViewLayout = createLayoutBuilder()
         }
     }
+    private let transformer = SDImageResizingTransformer(size: CGSize(width: 350, height: 400), scaleMode: .aspectFill)
     private var viewModel = DetailViewModel()
     // Default media values
     var movieId = 0
@@ -43,16 +44,15 @@ class DetailViewController: UIViewController {
         hideWatchListButton()
         setupUI()
         //updateSavedWatchList()
-       // loadActors()
     }
     
     @IBAction func addToWatchListButtonPressed(_ sender: UIButton) {
         if movieId != 0 {
             viewModel.goToWatchList(mediaType: MediaType.movie.rawValue, mediaID: String(movieId), status: true)
-            updateSavedWatchList()
+            //updateSavedWatchList()
         } else {
             viewModel.goToWatchList(mediaType: MediaType.tvShow.rawValue, mediaID: String(tvShowId), status: true)
-            updateSavedWatchList()
+            //updateSavedWatchList()
         }
         
         
@@ -81,14 +81,14 @@ class DetailViewController: UIViewController {
 //        }
     }
     
-    private func updateSavedWatchList() {
-        ObserveWatchList.shared.getMoviesID {
-            print("update success")
-        }
-        ObserveWatchList.shared.getTVShowsID {
-            print("update success")
-        }
-    }
+//    private func updateSavedWatchList() {
+//        ObserveWatchList.shared.getMoviesID {
+//            print("update success")
+//        }
+//        ObserveWatchList.shared.getTVShowsID {
+//            print("update success")
+//        }
+//    }
     
     private func hideWatchListButton() {
         addToWatchListButton.isHidden = false
@@ -148,7 +148,9 @@ class DetailViewController: UIViewController {
                 titleLabel.text = (movie.title ?? movie.originalTitle ?? "")
                 textView.text = movie.overview
                 runtimeLabel.text = "\(movie.runtime ?? 0) minutes"
-                voteCountLabel.text = "\(movie.voteAverage ?? 0.0) (TMDB)"
+                let removedZeros = movie.voteAverage
+                let rateWithRemovedZeros = String(format: "%.1f", removedZeros ?? 0)
+                voteCountLabel.text = (rateWithRemovedZeros)
                 releaseDateLabel.text = attributedDate
 
                 guard let movieGenresFilter = movie.genres else { return }
@@ -157,6 +159,7 @@ class DetailViewController: UIViewController {
                     movieGenresCounter += (genre.name ?? "") + " "
                 }
                 genreLabel.text = movieGenresCounter
+    
     //
     //            date.text = formattedText
     //            voteAverage.text = "\(round(movie.voteAverage ?? 0.0))"
@@ -181,7 +184,9 @@ class DetailViewController: UIViewController {
                 textView.text = tvShow.overview
                 runtimeLabel.isHidden = true
                 runtimeLabel.text = "\(tvShow.runtime ?? 0)"
-                voteCountLabel.text = "\(tvShow.voteAverage ?? 0.0) (TMDB)"
+                let removedZeros = tvShow.voteAverage
+                let rateWithRemovedZeros = String(format: "%.1f", removedZeros ?? 0)
+                voteCountLabel.text = (rateWithRemovedZeros)
                 releaseDateLabel.text = attributedDate
 
                 guard let tvGenresFilter = tvShow.genres else { return }
@@ -190,6 +195,9 @@ class DetailViewController: UIViewController {
                     tvGenresCounter += (genre.name ?? "") + " "
                 }
                 genreLabel.text = tvGenresCounter
+                
+//
+//                genreLabel.text = genreNames[3]
 
     //            let formattedText = formattedDateFromString(dateString: tvShow.firstAirDate ?? "",
     //                                                        withFormat: "MMM dd, yyyy")
@@ -289,3 +297,4 @@ extension DetailViewController: UICollectionViewDelegate {}
 //        return CGSize(width: itemWith, height: itemHeight)
 //    }
 //}
+
