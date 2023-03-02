@@ -36,7 +36,9 @@ class SearchCollectionViewCell: UICollectionViewCell {
         posterImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         posterImageView.sd_setImage(with: url, placeholderImage: nil, progress: nil) { [ weak self ] _, _, _, _ in
             guard let self = self else { return }
-            self.rateLabel.text = "\(media.voteAverage ?? 0)"
+            let removedZeros = media.voteAverage
+            let rateWithRemovedZeros = String(format: "%.1f", removedZeros ?? 0)
+            self.rateLabel.text = rateWithRemovedZeros
             self.titleLabel.text = (media.title ?? media.originalTitle ?? "")
         }
     }

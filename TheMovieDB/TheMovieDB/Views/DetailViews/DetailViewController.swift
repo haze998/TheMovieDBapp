@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var voteCountLabel: UILabel!
     @IBOutlet weak var runtimeLabel: UILabel!
+    @IBOutlet weak var runtimeImageView: UIImageView!
     @IBOutlet var bgDetailView: UIView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var addToWatchListButton: UIButton!
@@ -35,6 +36,7 @@ class DetailViewController: UIViewController {
     private let transformer = SDImageResizingTransformer(size: CGSize(width: 350, height: 400), scaleMode: .aspectFill)
     private var viewModel = DetailViewModel()
     // Default media values
+    var buttonActive: Bool = false
     var movieId = 0
     var tvShowId = 0
     
@@ -43,10 +45,17 @@ class DetailViewController: UIViewController {
         loadData()
         hideWatchListButton()
         setupUI()
+        addToWatchListButton.setBackgroundImage(UIImage(named: "bookmark"), for: .normal)
         //updateSavedWatchList()
     }
     
     @IBAction func addToWatchListButtonPressed(_ sender: UIButton) {
+        switch buttonActive {
+        case true:
+            addToWatchListButton.setBackgroundImage(UIImage(named: "bookmark"), for: .normal)
+        case false:
+            addToWatchListButton.setBackgroundImage(UIImage(named: "bookmark_pressed"), for: .normal)
+        }
         if movieId != 0 {
             viewModel.goToWatchList(mediaType: MediaType.movie.rawValue, mediaID: String(movieId), status: true)
             //updateSavedWatchList()
@@ -183,7 +192,7 @@ class DetailViewController: UIViewController {
                 titleLabel.text = (tvShow.name ?? tvShow.originalTitle ?? "")
                 textView.text = tvShow.overview
                 runtimeLabel.isHidden = true
-                runtimeLabel.text = "\(tvShow.runtime ?? 0)"
+                runtimeImageView.isHidden = true
                 let removedZeros = tvShow.voteAverage
                 let rateWithRemovedZeros = String(format: "%.1f", removedZeros ?? 0)
                 voteCountLabel.text = (rateWithRemovedZeros)
