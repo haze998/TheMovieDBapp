@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 import youtube_ios_player_helper
+import SwiftEntryKit
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var genreLabel: UILabel!
@@ -45,59 +46,120 @@ class DetailViewController: UIViewController {
         loadData()
         hideWatchListButton()
         setupUI()
-        addToWatchListButton.setBackgroundImage(UIImage(named: "bookmark"), for: .normal)
-        //updateSavedWatchList()
+        updateSavedWatchList()
     }
     
     @IBAction func addToWatchListButtonPressed(_ sender: UIButton) {
-        switch buttonActive {
-        case true:
-            addToWatchListButton.setBackgroundImage(UIImage(named: "bookmark"), for: .normal)
-        case false:
-            addToWatchListButton.setBackgroundImage(UIImage(named: "bookmark_pressed"), for: .normal)
-        }
+        
+        SwiftEntryKit.display(entry: PopUpView(with: setupPopUpMessage()), using: setupAttributes())
+        
         if movieId != 0 {
             viewModel.goToWatchList(mediaType: MediaType.movie.rawValue, mediaID: String(movieId), status: true)
-            //updateSavedWatchList()
+            addToWatchListButton.setImage(UIImage(named: "bookmark_pressed"), for: .normal)
         } else {
             viewModel.goToWatchList(mediaType: MediaType.tvShow.rawValue, mediaID: String(tvShowId), status: true)
-            //updateSavedWatchList()
+            addToWatchListButton.setImage(UIImage(named: "bookmark_pressed"), for: .normal)
         }
-        
-        
-        
-//        switch sender.isSelected {
-//        case true:
-//            print("case true")
-////            var alert = UIAlertController()
-////            if movieId != 0 {
-////                alert = bottomAlert.createAlert(mediaType: MediaType.movie.rawValue,
-////                                                mediaID: String(movieId),
-////                                                sender: sender)
-////            } else {
-////                alert = bottomAlert.createAlert(mediaType: MediaType.tvShow.rawValue,
-////                                                mediaID: String(tvShowId),
-////                                                sender: sender)
-////            }
-//            //self.present(alert, animated: true)
-//        case false:
-//            if movieId != 0 {
-//                viewModel.goToWatchList(mediaType: MediaType.movie.rawValue, mediaID: String(movieId), boolean: true)
-//            } else {
-//                viewModel.goToWatchList(mediaType: MediaType.tvShow.rawValue, mediaID: String(tvShowId), boolean: true)
-//            }
-//            sender.isSelected.toggle()
-//        }
     }
     
-//    private func updateSavedWatchList() {
-//        ObserveWatchList.shared.getMoviesID {
-//            print("update success")
-//        }
-//        ObserveWatchList.shared.getTVShowsID {
-//            print("update success")
-//        }
-//    }
+    private func setupPopUpMessage() -> EKPopUpMessage {
+        let image = UIImage(named: "done")!.withRenderingMode(.alwaysTemplate)
+        let title = "Awesome!"
+        let description =
+        """
+        
+        The movie was successfully added to your watch list!
+        
+        """
+        
+        let themeImage = EKPopUpMessage.ThemeImage(image: EKProperty.ImageContent(image: image, size: CGSize(width: 60, height: 60), tint: .white, contentMode: .scaleAspectFit))
+        
+        let titleLabel = EKProperty.LabelContent(text: title, style: .init(
+            font: UIFont(name: "CodecPro-News", size: 30) ?? .systemFont(ofSize: 20),
+            color: .white,
+            alignment: .center))
+        
+        let descriptionLabel = EKProperty.LabelContent(text: description, style: .init(
+            font: UIFont(name: "CodecPro-News", size: 20) ?? .systemFont(ofSize: 20),
+            color: .white,
+            alignment: .center))
+        
+        let button = EKProperty.ButtonContent(
+            label: .init(
+                text: "OK",
+                style: .init(
+                    font: UIFont(name: "CodecPro-News", size: 20) ?? .systemFont(ofSize: 16),
+                    color: .white
+                )
+            ),
+            backgroundColor: .init(red: 12, green: 9, blue: 26),
+            highlightedBackgroundColor: .clear
+        )
+        
+        
+        
+        let message = EKPopUpMessage(themeImage: themeImage, title: titleLabel, description: descriptionLabel, button: button) {
+            SwiftEntryKit.dismiss()
+        }
+        return message
+    }
+    
+    private func setupAttributes() -> EKAttributes {
+        var attributes = EKAttributes.bottomFloat
+        attributes.displayDuration = .infinity
+        attributes.screenBackground = .color(color: .init(light: UIColor(white: 1.0/255.0, alpha: 0.5), dark: UIColor(white: 1.0/255.0, alpha: 0.5)))
+        attributes.shadow = .active(
+            with: .init(
+                color: .black,
+                opacity: 0.3,
+                radius: 8
+            )
+        )
+        
+        attributes.entryBackground = .color(color: .init(red: 12, green: 9, blue: 26))
+        attributes.entryBackground = .gradient(gradient: .init(colors: [EKColor(
+            .init(cgColor: UIColor(red: 0.247, green: 0.216, blue: 0.498, alpha: 1).cgColor)), EKColor(.init(cgColor: UIColor(red: 0.263, green: 0.659, blue: 0.831, alpha: 1).cgColor))], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+        
+        attributes.roundCorners = .all(radius: 25)
+        
+        attributes.screenInteraction = .dismiss
+        attributes.entryInteraction = .absorbTouches
+        attributes.scroll = .enabled(
+            swipeable: true,
+            pullbackAnimation: .jolt
+        )
+        attributes.entranceAnimation = .init(
+            translate: .init(
+                duration: 0.7,
+                spring: .init(damping: 1, initialVelocity: 0)
+            ),
+            scale: .init(
+                from: 1.05,
+                to: 1,
+                duration: 0.4,
+                spring: .init(damping: 1, initialVelocity: 0)
+            )
+        )
+        attributes.exitAnimation = .init(
+            translate: .init(duration: 0.2)
+        )
+        attributes.popBehavior = .animated(
+            animation: .init(
+                translate: .init(duration: 0.2))
+        )
+        attributes.positionConstraints.verticalOffset = 10
+        attributes.statusBar = .dark
+        return attributes
+    }
+    
+    private func updateSavedWatchList() {
+        ObserveWatchList.shared.getMoviesID {
+            print("updated")
+        }
+        ObserveWatchList.shared.getTVShowsID {
+            print("updated")
+        }
+    }
     
     private func hideWatchListButton() {
         addToWatchListButton.isHidden = false
@@ -110,6 +172,7 @@ class DetailViewController: UIViewController {
         let bgColor = UIColor(red: 0.05, green: 0.04, blue: 0.10, alpha: 1.00)
         self.bgDetailView.backgroundColor = bgColor
         collectionView.backgroundColor = .clear
+        addToWatchListButton.setBackgroundImage(UIImage(named: "bookmark"), for: .normal)
     }
     // MARK: - Loading Data
     private func loadData() {

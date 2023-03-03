@@ -23,7 +23,7 @@ class SearchCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupUI() {
-        containerView.layer.cornerRadius = 20
+        containerView.layer.cornerRadius = 0
         containerView.clipsToBounds = true
         containerView.backgroundColor = .clear
         stackView.layer.cornerRadius = 5

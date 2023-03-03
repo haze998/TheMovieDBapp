@@ -41,14 +41,14 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ratestar" translatesAutoresizingMaskIntoConstraints="NO" id="KOc-4x-twh">
-                        <rect key="frame" x="158" y="198.66666666666666" width="15" height="15"/>
+                        <rect key="frame" x="158" y="204" width="15" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="15" id="QJa-Jb-KkZ"/>
-                            <constraint firstAttribute="height" constant="15" id="dvq-nt-OqV"/>
+                            <constraint firstAttribute="width" constant="15" id="JYe-yv-dAQ"/>
+                            <constraint firstAttribute="height" constant="15" id="Lku-Mi-Y7D"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNB-q8-k61">
-                        <rect key="frame" x="178" y="195.66666666666666" width="39" height="13"/>
+                        <rect key="frame" x="181" y="205" width="39" height="13"/>
                         <fontDescription key="fontDescription" name="CodecPro-News" family="Codec Pro" pointSize="15"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -57,19 +57,19 @@
                 <constraints>
                     <constraint firstItem="Jdq-Ep-sQg" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.695652" id="3ZX-Yt-uoI"/>
                     <constraint firstAttribute="trailing" secondItem="RzV-KH-TnB" secondAttribute="trailing" constant="8" id="4dc-V1-scJ"/>
-                    <constraint firstItem="DNB-q8-k61" firstAttribute="leading" secondItem="KOc-4x-twh" secondAttribute="trailing" constant="5" id="HaT-ah-IBt"/>
+                    <constraint firstItem="KOc-4x-twh" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="4zs-wK-Nze"/>
                     <constraint firstAttribute="bottom" secondItem="2t0-nl-HWA" secondAttribute="bottom" id="Jpw-sz-cjg"/>
-                    <constraint firstItem="DNB-q8-k61" firstAttribute="top" secondItem="Jdq-Ep-sQg" secondAttribute="bottom" constant="5" id="L78-rw-kqZ"/>
                     <constraint firstItem="2t0-nl-HWA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="M7D-eh-lnF"/>
                     <constraint firstItem="RzV-KH-TnB" firstAttribute="leading" secondItem="2t0-nl-HWA" secondAttribute="trailing" constant="8" id="OZI-20-NDN"/>
                     <constraint firstItem="2t0-nl-HWA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ps7-QN-tRY"/>
+                    <constraint firstItem="DNB-q8-k61" firstAttribute="centerY" secondItem="KOc-4x-twh" secondAttribute="centerY" id="TaQ-MF-PdL"/>
                     <constraint firstItem="Jdq-Ep-sQg" firstAttribute="leading" secondItem="2t0-nl-HWA" secondAttribute="trailing" constant="8" id="VFc-lw-uXE"/>
                     <constraint firstItem="RzV-KH-TnB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="VSd-zE-TW6"/>
+                    <constraint firstItem="KOc-4x-twh" firstAttribute="leading" secondItem="2t0-nl-HWA" secondAttribute="trailing" constant="8" id="arm-ve-8Sd"/>
                     <constraint firstItem="Jdq-Ep-sQg" firstAttribute="top" secondItem="RzV-KH-TnB" secondAttribute="bottom" constant="8" id="bVo-Ms-6P7"/>
+                    <constraint firstItem="DNB-q8-k61" firstAttribute="leading" secondItem="KOc-4x-twh" secondAttribute="trailing" constant="8" id="e8v-Z2-KXs"/>
                     <constraint firstAttribute="trailing" secondItem="Jdq-Ep-sQg" secondAttribute="trailing" constant="8" id="eNA-dd-Otf"/>
                     <constraint firstItem="2t0-nl-HWA" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.412088" id="hQM-jw-q38"/>
-                    <constraint firstItem="KOc-4x-twh" firstAttribute="top" secondItem="Jdq-Ep-sQg" secondAttribute="bottom" constant="8" id="ops-CK-qc2"/>
-                    <constraint firstItem="KOc-4x-twh" firstAttribute="leading" secondItem="2t0-nl-HWA" secondAttribute="trailing" constant="8" id="xKt-Pf-DWV"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -81,7 +81,7 @@
                 <outlet property="textOverview" destination="Jdq-Ep-sQg" id="Btj-GG-MTd"/>
                 <outlet property="titleLabel" destination="RzV-KH-TnB" id="3Pj-X8-p2t"/>
             </connections>
-            <point key="canvasLocation" x="-46" y="29"/>
+            <point key="canvasLocation" x="-47.328244274809158" y="28.87323943661972"/>
         </tableViewCell>
     </objects>
     <resources>

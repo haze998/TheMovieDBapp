@@ -26,7 +26,7 @@ final class ObserveWatchList {
                             idMovieNumbers.append(id)
                         }
                     }
-                    self.movieList = idMovieNumbers
+                    self.movieList.append(contentsOf: idMovieNumbers)
                 }
             }
         }
@@ -44,7 +44,7 @@ final class ObserveWatchList {
                             idTVNumbers.append(id)
                         }
                     }
-                    self.tvShowList = idTVNumbers
+                    self.tvShowList.append(contentsOf: idTVNumbers)
                 }
             }
         }

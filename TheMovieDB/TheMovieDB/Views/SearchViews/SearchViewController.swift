@@ -65,13 +65,7 @@ class SearchViewController: UIViewController {
                                                       leading: 4,
                                                       bottom: 8,
                                                       trailing: 0)
-//        //let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-//                                                heightDimension: .fractionalHeight(0.05))
-//        //let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
-//                                                                 elementKind: UICollectionView.elementKindSectionHeader,
-//                                                                 alignment: .topLeading)
         let section = NSCollectionLayoutSection(group: group)
-        //section.boundarySupplementaryItems = [header]
         section.interGroupSpacing = 0
         return section
     }
