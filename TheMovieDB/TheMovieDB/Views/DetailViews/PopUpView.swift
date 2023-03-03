@@ -70,7 +70,7 @@ extension PopUpView {
         descriptionLabel.forceContentWrap(.vertically)
         
         addSubview(actionButton)
-        let height: CGFloat = 45
+        let height: CGFloat = 50
         actionButton.set(.height, of: height)
         actionButton.layout(.top, to: .bottom, of: descriptionLabel, offset: 30)
         actionButton.layoutToSuperview(.bottom, offset: -30)

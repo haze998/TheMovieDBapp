@@ -347,26 +347,7 @@ extension DetailViewController: UICollectionViewDataSource {
             return cell
         }
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        if kind == UICollectionView.elementKindSectionHeader {
-//            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ActorHeaderSection.reuseId, for: indexPath) as? ActorHeaderSection else { return UICollectionReusableView() }
-//
-//            sectionHeader.label.text = "Actors"
-//            return sectionHeader
-//        }
-//        return UICollectionReusableView()
-//    }
-    
 }
 
 extension DetailViewController: UICollectionViewDelegate {}
-//
-//extension DetailViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let itemHeight = collectionView.bounds.height
-//        let itemWith = collectionView.bounds.width / 6
-//        return CGSize(width: itemWith, height: itemHeight)
-//    }
-//}
 

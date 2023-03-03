@@ -319,8 +319,11 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2C5-4I-gfs">
-                                                <rect key="frame" x="112.66666666666667" y="698.33333333333337" width="41.333333333333329" height="14"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2C5-4I-gfs">
+                                                <rect key="frame" x="113" y="698.33333333333337" width="250" height="14"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="xvv-ZV-xmf"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="CodecPro-Light" family="Codec Pro" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -402,7 +405,7 @@
                                             <constraint firstItem="mzd-B4-uem" firstAttribute="centerY" secondItem="3zT-Xl-Cjk" secondAttribute="centerY" id="7bE-ta-zDD"/>
                                             <constraint firstItem="3zT-Xl-Cjk" firstAttribute="top" secondItem="cyg-iD-qfQ" secondAttribute="bottom" constant="18" id="8Hv-lc-tdw"/>
                                             <constraint firstAttribute="trailing" secondItem="gmD-Ev-Fgs" secondAttribute="trailing" id="A0o-ja-fsH"/>
-                                            <constraint firstItem="2C5-4I-gfs" firstAttribute="leading" secondItem="5d9-hR-9d5" secondAttribute="trailing" constant="8" id="Bc8-9b-1bG"/>
+                                            <constraint firstItem="2C5-4I-gfs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5d9-hR-9d5" secondAttribute="trailing" constant="8" symbolic="YES" id="Bc8-9b-1bG"/>
                                             <constraint firstItem="kbz-pk-nUW" firstAttribute="top" secondItem="Fkh-K3-vzL" secondAttribute="bottom" constant="24" id="CIm-Ap-3Za"/>
                                             <constraint firstItem="skU-We-8dR" firstAttribute="top" secondItem="Fkh-K3-vzL" secondAttribute="bottom" constant="24" id="EDN-Vm-wQd"/>
                                             <constraint firstItem="uhC-ga-V8U" firstAttribute="leading" secondItem="vxy-Gw-1Xd" secondAttribute="leading" constant="16" id="Ffh-L7-Mzg"/>
@@ -429,6 +432,7 @@
                                             <constraint firstAttribute="trailing" secondItem="Y8x-OI-lJV" secondAttribute="trailing" id="k40-rc-8ku"/>
                                             <constraint firstItem="cyg-iD-qfQ" firstAttribute="leading" secondItem="vxy-Gw-1Xd" secondAttribute="leading" constant="16" id="kgd-UP-mV4"/>
                                             <constraint firstItem="cyg-iD-qfQ" firstAttribute="top" secondItem="uhC-ga-V8U" secondAttribute="bottom" constant="18" id="kyC-cP-v6d"/>
+                                            <constraint firstAttribute="trailing" secondItem="2C5-4I-gfs" secondAttribute="trailing" constant="30" id="mfA-om-381"/>
                                             <constraint firstItem="LF7-Gb-L2W" firstAttribute="leading" secondItem="skU-We-8dR" secondAttribute="trailing" constant="8" id="n6x-HG-ZaZ"/>
                                             <constraint firstItem="8cy-Gg-9kf" firstAttribute="leading" secondItem="kbz-pk-nUW" secondAttribute="trailing" constant="8" id="ooz-GA-s7O"/>
                                             <constraint firstItem="Fkh-K3-vzL" firstAttribute="top" secondItem="5gK-fr-FPk" secondAttribute="bottom" constant="25" id="rTF-A8-ARI"/>
@@ -641,8 +645,8 @@
         <image name="bookmark" width="26" height="32"/>
         <image name="calendar 1" width="512" height="512"/>
         <image name="cast" width="512" height="512"/>
-        <image name="film" width="512" height="512"/>
         <image name="film" catalog="system" width="128" height="93"/>
+        <image name="film" width="512" height="512"/>
         <image name="logout" width="24" height="24"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="star" catalog="system" width="128" height="116"/>
