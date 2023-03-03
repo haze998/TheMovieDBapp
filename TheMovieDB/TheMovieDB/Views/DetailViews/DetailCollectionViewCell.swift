@@ -36,7 +36,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
     
     func setupUI() {
         actorImageView.contentMode = .scaleAspectFill
-        containerView.layer.cornerRadius = 45
+        containerView.layer.cornerRadius = containerView.frame.width / 2
         containerView.clipsToBounds = true
         containerView.backgroundColor = .clear
     }

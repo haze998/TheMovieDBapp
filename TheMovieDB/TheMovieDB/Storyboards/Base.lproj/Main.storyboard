@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wsc-cn-13W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UIV-wM-V9R">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -100,7 +100,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="U9T-Wq-DEF">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" adjustsFontSizeToFit="NO" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="U9T-Wq-DEF">
                                 <rect key="frame" x="39" y="407" width="315" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="DZD-7e-54h"/>
@@ -109,7 +109,7 @@
                                 <fontDescription key="fontDescription" name="CodecPro-News" family="Codec Pro" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Login" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iGV-LI-Pbs" userLabel="Login Text Field">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Login" adjustsFontSizeToFit="NO" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iGV-LI-Pbs" userLabel="Login Text Field">
                                 <rect key="frame" x="39" y="337" width="315" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="vif-z9-Xlg"/>
@@ -349,7 +349,7 @@
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmD-Ev-Fgs" customClass="YTPlayerView">
-                                                <rect key="frame" x="0.0" y="1024.3333333333333" width="393" height="269.66666666666674"/>
+                                                <rect key="frame" x="0.0" y="1036.3333333333333" width="393" height="257.66666666666674"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkh-K3-vzL">
@@ -381,10 +381,10 @@
                                                 </constraints>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Y8x-OI-lJV">
-                                                <rect key="frame" x="0.0" y="888.33333333333337" width="393" height="128"/>
+                                                <rect key="frame" x="0.0" y="888.33333333333326" width="393" height="145"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="128" id="m68-bP-p9E"/>
+                                                    <constraint firstAttribute="height" constant="145" id="m68-bP-p9E"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CTi-cP-AVU">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -417,7 +417,7 @@
                                             <constraint firstItem="uhC-ga-V8U" firstAttribute="top" secondItem="kbz-pk-nUW" secondAttribute="bottom" constant="28" id="MJp-Nm-Dsb"/>
                                             <constraint firstItem="ScG-tH-Rfd" firstAttribute="leading" secondItem="LF7-Gb-L2W" secondAttribute="trailing" constant="16" id="OYe-OQ-foy"/>
                                             <constraint firstAttribute="bottom" secondItem="gmD-Ev-Fgs" secondAttribute="bottom" constant="6" id="Odb-q6-2pf"/>
-                                            <constraint firstItem="gmD-Ev-Fgs" firstAttribute="top" secondItem="Y8x-OI-lJV" secondAttribute="bottom" constant="8" id="PIl-d4-naM"/>
+                                            <constraint firstItem="gmD-Ev-Fgs" firstAttribute="top" secondItem="Y8x-OI-lJV" secondAttribute="bottom" constant="3" id="PIl-d4-naM"/>
                                             <constraint firstItem="5d9-hR-9d5" firstAttribute="leading" secondItem="uhC-ga-V8U" secondAttribute="trailing" constant="8" id="Pk6-Ye-lJS"/>
                                             <constraint firstItem="5d9-hR-9d5" firstAttribute="centerY" secondItem="uhC-ga-V8U" secondAttribute="centerY" id="See-3h-Kcm"/>
                                             <constraint firstItem="kbz-pk-nUW" firstAttribute="leading" secondItem="vxy-Gw-1Xd" secondAttribute="leading" constant="16" id="TGc-91-eE9"/>
@@ -562,6 +562,20 @@
                                     <outlet property="delegate" destination="Og8-zU-iQ9" id="a3n-zU-V2Y"/>
                                 </connections>
                             </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LvJ-tY-vw5" customClass="LottieAnimationView" customModule="Lottie">
+                                <rect key="frame" x="71" y="275" width="250" height="300"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="dlV-OK-WU3"/>
+                                    <constraint firstAttribute="height" constant="300" id="dt2-oI-Wtp"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the movie name..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvu-Pm-num">
+                                <rect key="frame" x="84.666666666666686" y="575" width="224" height="18"/>
+                                <fontDescription key="fontDescription" name="CodecPro-News" family="Codec Pro" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mbf-4b-Uli">
                                 <rect key="frame" x="0.0" y="198" width="393" height="571"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -581,27 +595,37 @@
                                     <segment title="Serials"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" red="0.2627450980392157" green="0.6588235294117647" blue="0.83137254901960778" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="Og8-zU-iQ9" eventType="valueChanged" id="Ala-3B-d6y"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="W17-sX-l19"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="W17-sX-l19" firstAttribute="trailing" secondItem="LvJ-tY-vw5" secondAttribute="trailing" constant="72" id="7U5-wI-wD8"/>
                             <constraint firstItem="khF-R6-yxm" firstAttribute="trailing" secondItem="W17-sX-l19" secondAttribute="trailing" id="CLe-YV-H4Z"/>
                             <constraint firstItem="khF-R6-yxm" firstAttribute="leading" secondItem="W17-sX-l19" secondAttribute="leading" id="GHO-M4-eBZ"/>
+                            <constraint firstItem="fvu-Pm-num" firstAttribute="centerX" secondItem="W17-sX-l19" secondAttribute="centerX" id="Igv-sf-pJ7"/>
                             <constraint firstItem="mbf-4b-Uli" firstAttribute="top" secondItem="khF-R6-yxm" secondAttribute="bottom" constant="8" id="JAQ-qh-iVe"/>
+                            <constraint firstItem="LvJ-tY-vw5" firstAttribute="top" secondItem="khF-R6-yxm" secondAttribute="bottom" constant="85" id="JwN-f5-Cb4"/>
                             <constraint firstItem="mbf-4b-Uli" firstAttribute="bottom" secondItem="W17-sX-l19" secondAttribute="bottom" id="NF0-36-9Fy"/>
+                            <constraint firstItem="LvJ-tY-vw5" firstAttribute="leading" secondItem="W17-sX-l19" secondAttribute="leading" constant="71" id="UKe-2X-BR0"/>
                             <constraint firstItem="ZF0-yZ-Q85" firstAttribute="top" secondItem="W17-sX-l19" secondAttribute="top" id="chM-3n-ysd"/>
                             <constraint firstItem="ZF0-yZ-Q85" firstAttribute="trailing" secondItem="W17-sX-l19" secondAttribute="trailing" id="dfK-Ny-7qL"/>
                             <constraint firstItem="khF-R6-yxm" firstAttribute="top" secondItem="ZF0-yZ-Q85" secondAttribute="bottom" id="jJK-O9-xQz"/>
                             <constraint firstItem="mbf-4b-Uli" firstAttribute="leading" secondItem="W17-sX-l19" secondAttribute="leading" id="pP1-pG-fid"/>
                             <constraint firstItem="mbf-4b-Uli" firstAttribute="trailing" secondItem="W17-sX-l19" secondAttribute="trailing" id="tDj-BA-tl0"/>
+                            <constraint firstItem="fvu-Pm-num" firstAttribute="top" secondItem="LvJ-tY-vw5" secondAttribute="bottom" id="u4d-9w-eDn"/>
                             <constraint firstItem="ZF0-yZ-Q85" firstAttribute="leading" secondItem="W17-sX-l19" secondAttribute="leading" id="vGa-3N-vRH"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="azp-68-12H"/>
                     <connections>
                         <outlet property="collectionView" destination="mbf-4b-Uli" id="ecI-xa-MeD"/>
+                        <outlet property="searchAnimationView" destination="LvJ-tY-vw5" id="4rv-Nr-azQ"/>
                         <outlet property="searchBar" destination="ZF0-yZ-Q85" id="5jN-6R-obT"/>
+                        <outlet property="searchResultLabel" destination="fvu-Pm-num" id="Pw9-3S-TLs"/>
                         <outlet property="segmentControl" destination="khF-R6-yxm" id="3Vw-3m-Lsl"/>
                     </connections>
                 </viewController>
@@ -640,13 +664,16 @@
             <point key="canvasLocation" x="2458.7786259541986" y="453.52112676056339"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="LvJ-tY-vw5"/>
+    </designables>
     <resources>
         <image name="Tmdb.new.logo" width="185.03999328613281" height="133.39999389648438"/>
         <image name="bookmark" width="26" height="32"/>
         <image name="calendar 1" width="512" height="512"/>
         <image name="cast" width="512" height="512"/>
-        <image name="film" catalog="system" width="128" height="93"/>
         <image name="film" width="512" height="512"/>
+        <image name="film" catalog="system" width="128" height="93"/>
         <image name="logout" width="24" height="24"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="star" catalog="system" width="128" height="116"/>

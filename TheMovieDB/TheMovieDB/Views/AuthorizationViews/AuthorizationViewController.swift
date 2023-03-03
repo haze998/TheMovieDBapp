@@ -130,6 +130,7 @@ class AuthorizationViewController: UIViewController  {
         loginButton.titleLabel?.font = UIFont(name: "CodecPro-News", size: 20.0)
         
         // text fields
+        loginTextField.tintColor = .white
         loginTextField.borderStyle = .roundedRect
         loginTextField.layer.cornerRadius = 20
         loginTextField.clipsToBounds = true
@@ -140,7 +141,9 @@ class AuthorizationViewController: UIViewController  {
             string: "Login",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
         )
+        loginTextField.font = UIFont.systemFont(ofSize: 16)
         
+        passwordTextField.tintColor = .white
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.layer.cornerRadius = 20
         passwordTextField.clipsToBounds = true
@@ -151,6 +154,7 @@ class AuthorizationViewController: UIViewController  {
             string: "Password",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
         )
+        passwordTextField.font = UIFont.systemFont(ofSize: 16)
         passwordTextField.isSecureTextEntry = true
         
         

@@ -22,9 +22,7 @@ class TabBarViewController: UITabBarController {
         let logo = UIImage(named: "logo.png")
         let imageView = UIImageView(image:logo)
         self.navigationItem.titleView = imageView
-        
-        
-        
+ 
     }
     
     @IBAction func logoutButtonPressed(_ sender: UIButton) {

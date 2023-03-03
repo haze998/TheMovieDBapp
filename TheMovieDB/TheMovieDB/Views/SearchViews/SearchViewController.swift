@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class SearchViewController: UIViewController {
 
@@ -14,8 +15,9 @@ class SearchViewController: UIViewController {
             searchBar.delegate = self
         }
     }
-    
     @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var searchAnimationView: LottieAnimationView!
+    @IBOutlet weak var searchResultLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.delegate = self
@@ -36,6 +38,17 @@ class SearchViewController: UIViewController {
         setupUI()
     }
     
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0 :
+            searchResultLabel.text = "Enter the movie name..."
+        case 1:
+            searchResultLabel.text = "Enter the name of the TV show ..."
+        default:
+            break
+        }
+    }
+    
     private func setupUI() {
         let bgColor = UIColor(red: 0.05, green: 0.04, blue: 0.10, alpha: 1.00)
         self.view.backgroundColor = bgColor
@@ -47,6 +60,9 @@ class SearchViewController: UIViewController {
         
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
+        searchAnimationView.animation = .named("searching")
+        searchAnimationView.loopMode = .loop
+        searchAnimationView.play()
         
     }
     
@@ -83,32 +99,67 @@ extension SearchViewController: UISearchBarDelegate {
         case 0:
             if searchBar.text == "" {
                 DispatchQueue.main.async {
+                    self.searchAnimationView.isHidden = false
+                    self.searchResultLabel.isHidden = false
                     self.viewModel.searchedMedia.removeAll()
                     self.collectionView.reloadData()
                 }
             } else {
                 guard let query = searchBar.text else { return }
+                searchAnimationView.isHidden = true
+                searchResultLabel.isHidden = true
                 self.viewModel.searchedMedia.removeAll()
                 self.viewModel.currentPage = 0
                 //          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
                 viewModel.searchMovie(query: query) {
+                    if self.viewModel.searchedMedia.isEmpty {
+                        self.searchAnimationView.isHidden = false
+                        self.searchAnimationView.animation = .named("noresult")
+                        self.searchAnimationView.loopMode = .loop
+                        self.searchAnimationView.play()
+                        self.searchResultLabel.isHidden = false
+                        self.searchResultLabel.text = "No movies found"
+                    } else {
+                        self.searchResultLabel.text = "Enter the movie name..."
+                        self.searchAnimationView.animation = .named("searching")
+                        self.searchAnimationView.loopMode = .loop
+                        self.searchAnimationView.play()
+                    }
                     DispatchQueue.main.async {
-                        self.collectionView.reloadData()
+                            self.collectionView.reloadData()
                     }
                 }
             }
         case 1:
             if searchBar.text == "" {
                 DispatchQueue.main.async {
+                    self.searchAnimationView.isHidden = false
+                    self.searchResultLabel.isHidden = false
                     self.viewModel.searchedMedia.removeAll()
                     self.collectionView.reloadData()
                 }
             } else {
                 guard let query = searchBar.text else { return }
+                searchAnimationView.isHidden = true
+                searchResultLabel.isHidden = true
                 self.viewModel.searchedMedia.removeAll()
                 self.viewModel.currentPage = 0
-                //          DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                //DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
                 viewModel.searchTV(query: query) {
+                    if self.viewModel.searchedMedia.isEmpty {
+                        self.searchAnimationView.isHidden = false
+                        self.searchAnimationView.animation = .named("noresult")
+                        self.searchAnimationView.loopMode = .loop
+                        self.searchAnimationView.play()
+                        self.searchResultLabel.isHidden = false
+                        self.searchResultLabel.text = "No TV's show found"
+                    } else {
+                        self.searchResultLabel.text = "Enter the name of the TV show ..."
+                        self.searchAnimationView.animation = .named("searching")
+                        self.searchAnimationView.loopMode = .loop
+                        self.searchAnimationView.play()
+                        
+                    }
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
                     }

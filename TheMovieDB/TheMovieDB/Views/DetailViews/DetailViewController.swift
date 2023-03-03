@@ -28,9 +28,6 @@ class DetailViewController: UIViewController {
             collectionView.dataSource = self
             let nib = UINib(nibName: "DetailCollectionViewCell", bundle: nil)
             collectionView.register(nib, forCellWithReuseIdentifier: "DetailCollectionViewCell")
-//            collectionView.register(ActorHeaderSection.self,
-//                                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-//                                    withReuseIdentifier: ActorHeaderSection.reuseId)
             collectionView.collectionViewLayout = createLayoutBuilder()
         }
     }
@@ -46,11 +43,25 @@ class DetailViewController: UIViewController {
         loadData()
         hideWatchListButton()
         setupUI()
-        updateSavedWatchList()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ObserveWatchList.shared.getMoviesID { iDs in
+            for id in iDs {
+                if id == self.movieId {
+                    self.addToWatchListButton.isSelected = true
+                        self.addToWatchListButton.setImage(UIImage(named: "bookmark_pressed"), for: .normal)
+                        self.addToWatchListButton.layoutIfNeeded()
+                    
+                    
+                }
+            }
+        }
     }
     
     @IBAction func addToWatchListButtonPressed(_ sender: UIButton) {
-        
+        //addToWatchListButton.isSelected = true
         SwiftEntryKit.display(entry: PopUpView(with: setupPopUpMessage()), using: setupAttributes())
         
         if movieId != 0 {
@@ -68,7 +79,7 @@ class DetailViewController: UIViewController {
         let description =
         """
         
-        The movie was successfully added to your watch list!
+        The movie/tv show was successfully added to your watch list!
         
         """
         
@@ -152,14 +163,22 @@ class DetailViewController: UIViewController {
         return attributes
     }
     
-    private func updateSavedWatchList() {
-        ObserveWatchList.shared.getMoviesID {
-            print("updated")
-        }
-        ObserveWatchList.shared.getTVShowsID {
-            print("updated")
-        }
-    }
+//    private func updateSavedWatchList() {
+//        ObserveWatchList.shared.getMoviesID {
+//            ObserveWatchList.shared.movieList.forEach { movie in
+//                if movie == movieId {
+//                    addToWatchListButton.setImage(UIImage(named: "bookmark_pressed"), for: .normal)
+//                }
+//            }
+//        }
+//        ObserveWatchList.shared.getTVShowsID {
+//            ObserveWatchList.shared.tvShowList.forEach { tv in
+//                if tv == tvShowId {
+//                    addToWatchListButton.setImage(UIImage(named: "bookmark_pressed"), for: .normal)
+//                }
+//            }
+//        }
+//    }
     
     private func hideWatchListButton() {
         addToWatchListButton.isHidden = false
@@ -231,21 +250,6 @@ class DetailViewController: UIViewController {
                     movieGenresCounter += (genre.name ?? "") + " "
                 }
                 genreLabel.text = movieGenresCounter
-    
-    //
-    //            date.text = formattedText
-    //            voteAverage.text = "\(round(movie.voteAverage ?? 0.0))"
-    //            overview.text = movie.overview
-    //            genresName.removeAll()
-    //            guard let genresResponse = movie.genres else { return }
-    //            var genresList = ""
-    //            for genre in genresResponse {
-    //                genresList += (genre.name ?? "") + "\n"
-    //            }
-    //            genres.text = genresList
-    //            for int in CheckInWatchList.shared.movieList where movie.id == int {
-    //                isFavourite = true
-    //            }
             } else {
                 guard let tvShow = viewModel.currentTVShow else { return }
                 self.navigationItem.title = tvShow.name
@@ -267,29 +271,7 @@ class DetailViewController: UIViewController {
                     tvGenresCounter += (genre.name ?? "") + " "
                 }
                 genreLabel.text = tvGenresCounter
-                
-//
-//                genreLabel.text = genreNames[3]
-
-    //            let formattedText = formattedDateFromString(dateString: tvShow.firstAirDate ?? "",
-    //                                                        withFormat: "MMM dd, yyyy")
-    //            date.text = formattedText
-    //            voteAverage.text = "\(round(tvShow.voteAverage ?? 0.0))"
-    //            overview.text = tvShow.overview
-    //            genresName.removeAll()
-    //            guard let genresResponse = tvShow.genres else { return }
-    //            var genresList = ""
-    //            for genre in genresResponse {
-    //                genresList += (genre.name ?? "") + "\n"
-    //            }
-    //            genres.text = genresList
-    //            for int in CheckInWatchList.shared.tvShowList where tvShow.id == int {
-    //                isFavourite = true
-    //            }
             }
-    //        if isFavourite == true {
-    //            watchListButton.isSelected = true
-    //        }
         }
     
     private func createLayout() -> NSCollectionLayoutSection? {
@@ -308,13 +290,7 @@ class DetailViewController: UIViewController {
                                                       leading: 4,
                                                       bottom: 8,
                                                       trailing: 4)
-//        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-//                                                heightDimension: .fractionalHeight(0.05))
-//        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
-//                                                                 elementKind: UICollectionView.elementKindSectionHeader,
-//                                                                 alignment: .topLeading)
         let section = NSCollectionLayoutSection(group: group)
-        //section.boundarySupplementaryItems = [header]
         section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
         return section
     }

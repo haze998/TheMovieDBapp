@@ -16,6 +16,7 @@ class WatchListNetworkManager {
         guard let apiURL = URL(string: "\(Constants.mainURL)account/\(accountID)/watchlist/movies?api_key=\(Constants.apiKey)&language=en-US&session_id=\(sessionID)&page=1") else {
             fatalError("Invalid URL")
         }
+        debugPrint(apiURL)
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: apiURL) { data, response, error in
             guard let data = data else { return }
