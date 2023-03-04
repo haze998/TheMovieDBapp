@@ -229,6 +229,8 @@ extension WatchListViewController: UITableViewDelegate {
                 return
             }
         }
+        removeAction.image = UIImage(named: "trash")
+        removeAction.backgroundColor = UIColor(red: 12, green: 9, blue: 26, alpha: 0)
         let swipeActionConfig = UISwipeActionsConfiguration(actions: [removeAction])
         return swipeActionConfig
     }

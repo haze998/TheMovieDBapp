@@ -41,9 +41,9 @@ class OnboardViewController: UIViewController {
         setupUI()
         
         slides = [
-            OnboardingSlideModel(title: "Everything about movies, series, anime and much more.", description: "Stay on top of information about movies, series, anime and more.", animationName: "girlsMovie"),
-            OnboardingSlideModel(title: "Everything about movies, series, anime and much more.", description: "Stay on top of information about movies, series, anime and more.", animationName: "camera"),
-            OnboardingSlideModel(title: "Everything about movies, series, anime and much more.", description: "Stay on top of information about movies, series, anime and more.", animationName: "movieMan"),
+            OnboardingSlideModel(title: "The best way to have a good time is to watch a cool movie.", description: "So grab something yummy and make yourself comfortable.", animationName: "girlsMovie"),
+            OnboardingSlideModel(title: "You'll find everything about movies, TV shows, anime, and much more.", description: "Stay on top of information about movies, TV shows, anime, and more.", animationName: "camera"),
+            OnboardingSlideModel(title: "We'll help you brighten up your evening with our app.", description: "A huge collection of movies, daily top updates and much more you'll find in the TMDB app.", animationName: "movieMan"),
         ]
     }
     
