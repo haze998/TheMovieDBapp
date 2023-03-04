@@ -36,6 +36,19 @@ final class HeaderSectionCollectionViewCell: UICollectionViewCell {
         label.minimumContentSizeCategory = .accessibilityMedium
         label.font = UIFont(name: "CodecPro-Bold", size: 30.0)
         label.textColor = .white
+        
+        let gradientView = CAGradientLayer()
+        gradientView.colors = [
+            UIColor(red: 0.247, green: 0.216, blue: 0.498, alpha: 1).cgColor,
+            UIColor(red: 0.263, green: 0.659, blue: 0.831, alpha: 1).cgColor
+          ]
+        gradientView.locations = [0, 1]
+        gradientView.startPoint = CGPoint(x: 0.25, y: 0.5)
+        gradientView.endPoint = CGPoint(x: 0.75, y: 0.5)
+        gradientView.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: -1.14, b: 1.43, c: -1.43, d: -87.17, tx: 1.85, ty: 43.16))
+        gradientView.bounds = leftElemnt.bounds.insetBy(dx: -0.5 * leftElemnt.bounds.size.width, dy: -0.5 * leftElemnt.bounds.size.height)
+        gradientView.position = leftElemnt.center
+        leftElemnt.layer.insertSublayer(gradientView, at: 0)
         leftElemnt.backgroundColor = UIColor(red: 0.26, green: 0.66, blue: 0.83, alpha: 1.00)
         leftElemnt.translatesAutoresizingMaskIntoConstraints = false
         leftElemnt.layer.cornerRadius = 4

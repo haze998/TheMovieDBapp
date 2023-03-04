@@ -31,9 +31,8 @@ class DetailViewController: UIViewController {
             collectionView.collectionViewLayout = createLayoutBuilder()
         }
     }
-    private let transformer = SDImageResizingTransformer(size: CGSize(width: 350, height: 400), scaleMode: .aspectFill)
     private var viewModel = DetailViewModel()
-    // Default media values
+    // Default values
     var buttonActive: Bool = false
     var movieId = 0
     var tvShowId = 0
@@ -47,21 +46,26 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ObserveWatchList.shared.getMoviesID { iDs in
-            for id in iDs {
+        viewModel.getMoviesID { movieIDs in
+            for id in movieIDs {
                 if id == self.movieId {
                     self.addToWatchListButton.isSelected = true
                         self.addToWatchListButton.setImage(UIImage(named: "bookmark_pressed"), for: .normal)
-                        self.addToWatchListButton.layoutIfNeeded()
-                    
-                    
+                }
+            }
+        }
+        viewModel.getTVShowsID { tvShowIDs in
+            for id in tvShowIDs {
+                if id == self.tvShowId {
+                    self.addToWatchListButton.isSelected = true
+                    self.addToWatchListButton.setImage(UIImage(named: "bookmark_pressed"), for: .normal)
                 }
             }
         }
     }
     
     @IBAction func addToWatchListButtonPressed(_ sender: UIButton) {
-        //addToWatchListButton.isSelected = true
+        
         SwiftEntryKit.display(entry: PopUpView(with: setupPopUpMessage()), using: setupAttributes())
         
         if movieId != 0 {
@@ -79,7 +83,7 @@ class DetailViewController: UIViewController {
         let description =
         """
         
-        The movie/tv show was successfully added to your watch list!
+        The movie was successfully added to your watch list!
         
         """
         
@@ -106,8 +110,6 @@ class DetailViewController: UIViewController {
             backgroundColor: .init(red: 12, green: 9, blue: 26),
             highlightedBackgroundColor: .clear
         )
-        
-        
         
         let message = EKPopUpMessage(themeImage: themeImage, title: titleLabel, description: descriptionLabel, button: button) {
             SwiftEntryKit.dismiss()
@@ -162,23 +164,6 @@ class DetailViewController: UIViewController {
         attributes.statusBar = .dark
         return attributes
     }
-    
-//    private func updateSavedWatchList() {
-//        ObserveWatchList.shared.getMoviesID {
-//            ObserveWatchList.shared.movieList.forEach { movie in
-//                if movie == movieId {
-//                    addToWatchListButton.setImage(UIImage(named: "bookmark_pressed"), for: .normal)
-//                }
-//            }
-//        }
-//        ObserveWatchList.shared.getTVShowsID {
-//            ObserveWatchList.shared.tvShowList.forEach { tv in
-//                if tv == tvShowId {
-//                    addToWatchListButton.setImage(UIImage(named: "bookmark_pressed"), for: .normal)
-//                }
-//            }
-//        }
-//    }
     
     private func hideWatchListButton() {
         addToWatchListButton.isHidden = false
@@ -291,7 +276,7 @@ class DetailViewController: UIViewController {
                                                       bottom: 8,
                                                       trailing: 4)
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+        section.orthogonalScrollingBehavior = .continuous
         return section
     }
     
@@ -313,6 +298,7 @@ extension DetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as? DetailCollectionViewCell else { return UICollectionViewCell() }
+        
         if viewModel.movieActorsArray.count != 0 {
             let currentActor = viewModel.movieActorsArray[indexPath.row]
             cell.configure(actor: currentActor)

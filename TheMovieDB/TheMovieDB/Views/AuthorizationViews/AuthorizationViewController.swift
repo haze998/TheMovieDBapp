@@ -123,7 +123,6 @@ class AuthorizationViewController: UIViewController  {
         gradientButton.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: -1.14, b: 1.43, c: -1.43, d: -87.17, tx: 1.85, ty: 43.16))
         gradientButton.bounds = view.bounds.insetBy(dx: -0.5*view.bounds.size.width, dy: -0.5*view.bounds.size.height)
         gradientButton.position = view.center
-        
         loginButton.layer.insertSublayer(gradientButton, at: 0)
         loginButton.layer.cornerRadius = 20
         loginButton.layer.masksToBounds = true
