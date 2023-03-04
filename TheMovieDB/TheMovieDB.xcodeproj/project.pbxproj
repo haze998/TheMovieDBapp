@@ -70,6 +70,11 @@
 		06B9853B297D969600777123 /* AuthorizationNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9853A297D969600777123 /* AuthorizationNetworkManager.swift */; };
 		06B9853D297D974E00777123 /* AuthorizationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9853C297D974E00777123 /* AuthorizationModels.swift */; };
 		06B9853F297D9AA200777123 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B9853E297D9AA200777123 /* OnboardViewController.swift */; };
+		06D5C6CB29B37E8A0044318A /* MovieRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D5C6CA29B37E8A0044318A /* MovieRealmModel.swift */; };
+		06D5C6CD29B3870F0044318A /* TVShowRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D5C6CC29B3870F0044318A /* TVShowRealmModel.swift */; };
+		06D5C6CF29B389480044318A /* MovieRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D5C6CE29B389480044318A /* MovieRealmManager.swift */; };
+		06D5C6D129B3903E0044318A /* TVShowRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D5C6D029B3903E0044318A /* TVShowRealmManager.swift */; };
+		06D5C6D529B39E200044318A /* GuestPopUpAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D5C6D429B39E200044318A /* GuestPopUpAlert.swift */; };
 		06E7113F29B249CF002AD787 /* searching.json in Resources */ = {isa = PBXBuildFile; fileRef = 06E7113B29B249CF002AD787 /* searching.json */; };
 		06E7114629B2836C002AD787 /* noresult.json in Resources */ = {isa = PBXBuildFile; fileRef = 06E7114429B2836C002AD787 /* noresult.json */; };
 		06E93AC4298D37C4006711F6 /* GenresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E93AC3298D37C4006711F6 /* GenresCollectionViewCell.swift */; };
@@ -147,6 +152,11 @@
 		06B9853A297D969600777123 /* AuthorizationNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationNetworkManager.swift; sourceTree = "<group>"; };
 		06B9853C297D974E00777123 /* AuthorizationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationModels.swift; sourceTree = "<group>"; };
 		06B9853E297D9AA200777123 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
+		06D5C6CA29B37E8A0044318A /* MovieRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRealmModel.swift; sourceTree = "<group>"; };
+		06D5C6CC29B3870F0044318A /* TVShowRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowRealmModel.swift; sourceTree = "<group>"; };
+		06D5C6CE29B389480044318A /* MovieRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRealmManager.swift; sourceTree = "<group>"; };
+		06D5C6D029B3903E0044318A /* TVShowRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowRealmManager.swift; sourceTree = "<group>"; };
+		06D5C6D429B39E200044318A /* GuestPopUpAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestPopUpAlert.swift; sourceTree = "<group>"; };
 		06E7113B29B249CF002AD787 /* searching.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = searching.json; sourceTree = "<group>"; };
 		06E7114429B2836C002AD787 /* noresult.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noresult.json; sourceTree = "<group>"; };
 		06E93AC3298D37C4006711F6 /* GenresCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -196,6 +206,7 @@
 				06424624299BBCA80031F332 /* WatchListViewController.swift */,
 				06592F2E29ABAC4900AD313F /* WatchListTableViewCell.swift */,
 				06592F2F29ABAC4900AD313F /* WatchListTableViewCell.xib */,
+				06D5C6D429B39E200044318A /* GuestPopUpAlert.swift */,
 			);
 			path = WatchListViews;
 			sourceTree = "<group>";
@@ -289,11 +300,13 @@
 				06312C19299FBFE700AE26C0 /* CastAndCrewResultModels.swift */,
 				06312C1B299FC03600AE26C0 /* CrewModels.swift */,
 				06FAAED629AA3E2900C46E82 /* AccountModel.swift */,
+				06D5C6CA29B37E8A0044318A /* MovieRealmModel.swift */,
+				06D5C6CC29B3870F0044318A /* TVShowRealmModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		065F61AB2987E2F40058CD47 /* NetworkManagers */ = {
+		065F61AB2987E2F40058CD47 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				06B9853A297D969600777123 /* AuthorizationNetworkManager.swift */,
@@ -302,8 +315,10 @@
 				0613E53A29A0F278000A58B5 /* CastNetworkManager.swift */,
 				0678E8B029A23E9C006AE959 /* SearchNetworkManager.swift */,
 				06592F2A29AB9C4E00AD313F /* WatchListNetworkManager.swift */,
+				06D5C6CE29B389480044318A /* MovieRealmManager.swift */,
+				06D5C6D029B3903E0044318A /* TVShowRealmManager.swift */,
 			);
-			path = NetworkManagers;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		066904F629931E9500302EE4 /* Constants */ = {
@@ -364,7 +379,7 @@
 				065F61AA2987E2380058CD47 /* Models */,
 				065F61A62987E0B10058CD47 /* Views */,
 				065F61A52987E0430058CD47 /* ViewModels */,
-				065F61AB2987E2F40058CD47 /* NetworkManagers */,
+				065F61AB2987E2F40058CD47 /* Managers */,
 				06B98536297D949600777123 /* DefaultFiles */,
 				06B98537297D94C100777123 /* Storyboards */,
 				06D5C6C929B378BE0044318A /* Extensions */,
@@ -584,9 +599,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				06A9088F29856A8100691E6F /* GenresViewController.swift in Sources */,
+				06D5C6CB29B37E8A0044318A /* MovieRealmModel.swift in Sources */,
 				06424629299BD4220031F332 /* DetailNetworkManager.swift in Sources */,
 				06312C1F299FC1BD00AE26C0 /* DetailCollectionViewCell.swift in Sources */,
+				06D5C6D129B3903E0044318A /* TVShowRealmManager.swift in Sources */,
 				0656ECC829969302003C6929 /* DetailViewController.swift in Sources */,
+				06D5C6D529B39E200044318A /* GuestPopUpAlert.swift in Sources */,
 				06B98539297D958B00777123 /* AuthorizationViewController.swift in Sources */,
 				06E93AC4298D37C4006711F6 /* GenresCollectionViewCell.swift in Sources */,
 				0678E8B329A23F08006AE959 /* SearchViewModel.swift in Sources */,
@@ -604,7 +622,9 @@
 				0613E53B29A0F278000A58B5 /* CastNetworkManager.swift in Sources */,
 				0642462D299BDAD60031F332 /* DetailViewModel.swift in Sources */,
 				0609654629B1783400281C67 /* PopUpView.swift in Sources */,
+				06D5C6CD29B3870F0044318A /* TVShowRealmModel.swift in Sources */,
 				06FAAED729AA3E2900C46E82 /* AccountModel.swift in Sources */,
+				06D5C6CF29B389480044318A /* MovieRealmManager.swift in Sources */,
 				066904F829931ECE00302EE4 /* Constants.swift in Sources */,
 				06B9853B297D969600777123 /* AuthorizationNetworkManager.swift in Sources */,
 				06FAAEDA29AA3F6A00C46E82 /* StorageSecure.swift in Sources */,

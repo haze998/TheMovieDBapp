@@ -1,6 +1,11 @@
 PODS:
   - KeychainAccess (4.2.2)
   - lottie-ios (4.0.0)
+  - Realm (10.33.0):
+    - Realm/Headers (= 10.33.0)
+  - Realm/Headers (10.33.0)
+  - RealmSwift (10.33.0):
+    - Realm (= 10.33.0)
   - SDWebImage (5.14.3):
     - SDWebImage/Core (= 5.14.3)
   - SDWebImage/Core (5.14.3)
@@ -10,6 +15,7 @@ PODS:
 DEPENDENCIES:
   - KeychainAccess
   - lottie-ios
+  - RealmSwift (~> 10)
   - SDWebImage
   - SwiftEntryKit (= 2.0.0)
   - youtube-ios-player-helper
@@ -18,6 +24,8 @@ SPEC REPOS:
   trunk:
     - KeychainAccess
     - lottie-ios
+    - Realm
+    - RealmSwift
     - SDWebImage
     - SwiftEntryKit
     - youtube-ios-player-helper
@@ -25,10 +33,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   lottie-ios: 0b5919ae7673fd7a1c36122b7cb6a9050e9c9f58
+  Realm: d4f810e161fa2c2c589b9860b6eb09238deacd73
+  RealmSwift: cef9946f09f2333a8f2ac8bac4f8de52fb9f5ac3
   SDWebImage: 9c36e66c8ce4620b41a7407698dda44211a96764
   SwiftEntryKit: 61b5fa36f34a97dd8013e48a7345bc4c4720be9a
   youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
 
-PODFILE CHECKSUM: 4e59a204a89c8f4f2099beb3a28b9cf6306bda85
+PODFILE CHECKSUM: 01d42e4831ed723219bdd79b446446d4bb2a68a2
 
 COCOAPODS: 1.11.3

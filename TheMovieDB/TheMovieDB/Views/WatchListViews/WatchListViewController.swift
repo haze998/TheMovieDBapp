@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftEntryKit
 
 class WatchListViewController: UIViewController {
 
@@ -17,7 +18,7 @@ class WatchListViewController: UIViewController {
             tableView.register(nib, forCellReuseIdentifier: "WatchListTableViewCell")
         }
     }
-    var viewModel = WatchListViewModel()
+    private var viewModel = WatchListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class WatchListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //goToAuthUser() - todo
+        goToAuthUser()
         viewModel.fetchedWatchList {
             self.tableView.reloadData()
         }
@@ -35,6 +36,101 @@ class WatchListViewController: UIViewController {
     private func setupUI() {
         let bgColor = UIColor(red: 0.05, green: 0.04, blue: 0.10, alpha: 1.00)
         self.view.backgroundColor = bgColor
+    }
+    
+    private func goToAuthUser() {
+        if StorageSecure.keychain["guestID"] != nil {
+            SwiftEntryKit.display(entry: PopUpView(with: setupPopUpMessage()), using: setupAttributes())
+            //let guestAlert = alert.guestAlert()
+            //self.tabBarController?.present(guestAlert, animated: true) // test later
+        }
+    }
+    
+    private func setupPopUpMessage() -> EKPopUpMessage {
+        let image = UIImage(named: "key")!.withRenderingMode(.alwaysTemplate)
+        let title = "NO ACCES"
+        let description =
+        """
+        
+        You must be authorized to access the Watch List!
+        
+        """
+        
+        let themeImage = EKPopUpMessage.ThemeImage(image: EKProperty.ImageContent(image: image, size: CGSize(width: 60, height: 60), tint: .white, contentMode: .scaleAspectFit))
+        
+        let titleLabel = EKProperty.LabelContent(text: title, style: .init(
+            font: UIFont(name: "CodecPro-News", size: 30) ?? .systemFont(ofSize: 20),
+            color: .white,
+            alignment: .center))
+        
+        let descriptionLabel = EKProperty.LabelContent(text: description, style: .init(
+            font: UIFont(name: "CodecPro-News", size: 20) ?? .systemFont(ofSize: 20),
+            color: .white,
+            alignment: .center))
+        
+        let button = EKProperty.ButtonContent(
+            label: .init(
+                text: "OK",
+                style: .init(
+                    font: UIFont(name: "CodecPro-News", size: 20) ?? .systemFont(ofSize: 16),
+                    color: .white
+                )
+            ),
+            backgroundColor: .init(red: 12, green: 9, blue: 26),
+            highlightedBackgroundColor: .clear
+        )
+        
+        let message = EKPopUpMessage(themeImage: themeImage, title: titleLabel, description: descriptionLabel, button: button) {
+            SwiftEntryKit.dismiss()
+        }
+        return message
+    }
+    
+    private func setupAttributes() -> EKAttributes {
+        var attributes = EKAttributes.centerFloat
+        attributes.displayDuration = .infinity
+        attributes.screenBackground = .color(color: .init(light: UIColor(white: 1.0/255.0, alpha: 0.5), dark: UIColor(white: 1.0/255.0, alpha: 0.5)))
+        attributes.shadow = .active(
+            with: .init(
+                color: .black,
+                opacity: 0.3,
+                radius: 8
+            )
+        )
+        
+        attributes.entryBackground = .color(color: .init(red: 12, green: 9, blue: 26))
+        attributes.entryBackground = .color(color: .init(.red))
+        
+        attributes.roundCorners = .all(radius: 25)
+        
+        attributes.screenInteraction = .dismiss
+        attributes.entryInteraction = .absorbTouches
+        attributes.scroll = .enabled(
+            swipeable: true,
+            pullbackAnimation: .jolt
+        )
+        attributes.entranceAnimation = .init(
+            translate: .init(
+                duration: 0.7,
+                spring: .init(damping: 1, initialVelocity: 0)
+            ),
+            scale: .init(
+                from: 1.05,
+                to: 1,
+                duration: 0.4,
+                spring: .init(damping: 1, initialVelocity: 0)
+            )
+        )
+        attributes.exitAnimation = .init(
+            translate: .init(duration: 0.2)
+        )
+        attributes.popBehavior = .animated(
+            animation: .init(
+                translate: .init(duration: 0.2))
+        )
+        attributes.positionConstraints.verticalOffset = 10
+        attributes.statusBar = .dark
+        return attributes
     }
 }
 

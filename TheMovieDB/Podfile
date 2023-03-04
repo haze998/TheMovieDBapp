@@ -9,6 +9,7 @@ target 'TheMovieDB' do
   pod "youtube-ios-player-helper"
   pod 'KeychainAccess'
   pod 'SwiftEntryKit', '2.0.0'
+  pod 'RealmSwift', '~>10'
 
   # Pods for TheMovieDB
 
