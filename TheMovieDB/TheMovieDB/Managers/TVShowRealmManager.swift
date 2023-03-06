@@ -31,7 +31,7 @@ struct TVShowRealmManager {
            try? realm?.write {
                realm?.add(tvShowRealm)
            }
-           completion()
+           
        }
     
     // MARK: - Reset Realm TV show storage

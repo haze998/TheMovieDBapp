@@ -70,9 +70,11 @@ class DetailViewController: UIViewController {
         
         if movieId != 0 {
             viewModel.goToWatchList(mediaType: MediaType.movie.rawValue, mediaID: String(movieId), status: true)
+            MovieRealmManager.shared.saveMovie(type: .movie, movie: viewModel.currentMovie)
             addToWatchListButton.setImage(UIImage(named: "bookmark_pressed"), for: .normal)
         } else {
             viewModel.goToWatchList(mediaType: MediaType.tvShow.rawValue, mediaID: String(tvShowId), status: true)
+            MovieRealmManager.shared.saveMovie(type: .tvShow, tvShow: viewModel.currentTVShow)
             addToWatchListButton.setImage(UIImage(named: "bookmark_pressed"), for: .normal)
         }
     }

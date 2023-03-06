@@ -16,22 +16,54 @@ class MovieRealmManager {
     
     private init() { }
     
-    func saveMovie(movie: MediaResponse.Media, completion: @escaping(() -> ())) {
-        
-        let movieRealm = MovieRealm()
-        
-        movieRealm.id = movie.id ?? 0
-        movieRealm.title = movie.title
-        movieRealm.name = movie.name
-        movieRealm.overview = movie.overview ?? ""
-        movieRealm.posterPath = movie.posterPath
-        movieRealm.backdropPath = movie.backdropPath
-        movieRealm.voteAverage = movie.voteAverage ?? 0
-        
-        try? realm?.write {
-            realm?.add(movieRealm)
+    func saveMovie(type: MediaType, movie: MediaResponse.Media? = nil, tvShow: MediaResponse.Media? = nil) {
+        switch type {
+            
+        case .movie:
+            let movieRealm = MovieRealm()
+            
+            movieRealm.id = movie?.id  ?? 0
+            movieRealm.title = movie?.title
+            movieRealm.name = movie?.name
+            movieRealm.overview = movie?.overview ?? ""
+            movieRealm.posterPath = movie?.posterPath
+            movieRealm.backdropPath = movie?.backdropPath
+            movieRealm.voteAverage = movie?.voteAverage ?? 0
+            
+            try? realm?.write {
+                realm?.add(movieRealm)
+            }
+        case .tvShow:
+            let tvShowRealm = MovieRealm()
+
+            tvShowRealm.id = tvShow?.id ?? 0
+            tvShowRealm.title = tvShow?.title
+            tvShowRealm.name = tvShow?.name
+            tvShowRealm.backdropPath = tvShow?.backdropPath
+            tvShowRealm.overview = tvShow?.overview ?? ""
+            tvShowRealm.posterPath = tvShow?.posterPath
+            tvShowRealm.voteAverage = tvShow?.voteAverage ?? 0
+
+               try? realm?.write {
+                   realm?.add(tvShowRealm)
+               }
+        case .getImage:
+            break
         }
-        completion()
+    }
+    
+    func getMedia() -> [MovieRealm] {
+        var array: [MovieRealm] = []
+        guard let media = realm?.objects(MovieRealm.self) else { return [MovieRealm]()}
+        array = Array(media)
+        return array
+        
+    }
+    
+    func removeMedia(media: MovieRealm) {
+        try? realm?.write({
+            realm?.delete(media)
+        })
     }
     
     
@@ -57,11 +89,11 @@ class MovieRealmManager {
 //    }
     
     // MARK: - Reset Realm movie storage
-    func resetMovieCache() {
-        let realm = try? Realm()
-        try? realm?.write({
-            realm?.delete(MovieRealm())
-        })
-    }
+//    func resetMovieCache() {
+//        let realm = try? Realm()
+//        try? realm?.write({
+//            realm?.delete(MovieRealm())
+//        })
+//    }
 }
 

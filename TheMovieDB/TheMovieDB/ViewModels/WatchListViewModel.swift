@@ -10,6 +10,7 @@ import Foundation
 final class WatchListViewModel {
     var moviesList: [MediaResponse.Media] = []
     var tvShowsList: [MediaResponse.Media] = []
+    var realmList: [MovieRealm] = []
     
     func fetchedWatchList(completion: @escaping () -> Void) {
         if StorageSecure.keychain["guestID"] != nil {
@@ -45,4 +46,15 @@ final class WatchListViewModel {
             }
         }
     }
+    
+    func getRealmMedia() {
+        realmList = MovieRealmManager.shared.getMedia()
+    }
+    
+    func removeRealmMedia(media: MovieRealm) {
+        MovieRealmManager.shared.removeMedia(media: media)
+        realmList.removeAll()
+        realmList = MovieRealmManager.shared.getMedia()
+    }
+    
 }

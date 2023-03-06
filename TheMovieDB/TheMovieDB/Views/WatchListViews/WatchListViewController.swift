@@ -23,11 +23,13 @@ class WatchListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         goToAuthUser()
+        viewModel.getRealmMedia()
         viewModel.fetchedWatchList {
             self.tableView.reloadData()
         }
@@ -136,8 +138,10 @@ extension WatchListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return viewModel.moviesList.count
-        } else {
+        } else if section == 1 {
             return viewModel.tvShowsList.count
+        } else {
+            return viewModel.realmList.count
         }
     }
     
@@ -154,7 +158,7 @@ extension WatchListViewController: UITableViewDataSource {
         } else if section == 1 && !viewModel.tvShowsList.isEmpty {
             return "TV Shows"
         } else {
-            return ""
+            return "Realm Storage"
         }
     }
     
@@ -169,6 +173,10 @@ extension WatchListViewController: UITableViewDataSource {
             let media = viewModel.tvShowsList[indexPath.row]
             cell.configure(with: media)
             return cell
+        case 2:
+            let media = viewModel.realmList[indexPath.row]
+            cell.configureRealm(with: media)
+            return cell
         default:
             return UITableViewCell()
         }
@@ -178,7 +186,7 @@ extension WatchListViewController: UITableViewDataSource {
 extension WatchListViewController: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        3
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -219,6 +227,14 @@ extension WatchListViewController: UITableViewDelegate {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     tableView.beginUpdates()
                     self.viewModel.tvShowsList.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.endUpdates()
+                    tableView.reloadData()
+                }
+            case 2:
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    tableView.beginUpdates()
+                    self.viewModel.removeRealmMedia(media: self.viewModel.realmList[indexPath.row])
                     tableView.deleteRows(at: [indexPath], with: .fade)
                     tableView.endUpdates()
                     tableView.reloadData()
