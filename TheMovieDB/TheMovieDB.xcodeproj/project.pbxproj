@@ -28,6 +28,7 @@
 		06424629299BD4220031F332 /* DetailNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06424628299BD4220031F332 /* DetailNetworkManager.swift */; };
 		0642462B299BD5CF0031F332 /* VideoPlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642462A299BD5CF0031F332 /* VideoPlayerModel.swift */; };
 		0642462D299BDAD60031F332 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0642462C299BDAD60031F332 /* DetailViewModel.swift */; };
+		0645A81B29B4E46D00E4190E /* RealmStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0645A81A29B4E46D00E4190E /* RealmStorageManager.swift */; };
 		06499CDF297FFE3E008F120F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06499CDE297FFE3E008F120F /* Assets.xcassets */; };
 		065339AC29893ABB002CE23E /* GenresModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065339AB29893ABB002CE23E /* GenresModels.swift */; };
 		065339AE2989408B002CE23E /* GenresNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065339AD2989408B002CE23E /* GenresNetworkManager.swift */; };
@@ -108,6 +109,7 @@
 		06424628299BD4220031F332 /* DetailNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNetworkManager.swift; sourceTree = "<group>"; };
 		0642462A299BD5CF0031F332 /* VideoPlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerModel.swift; sourceTree = "<group>"; };
 		0642462C299BDAD60031F332 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		0645A81A29B4E46D00E4190E /* RealmStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageManager.swift; sourceTree = "<group>"; };
 		06499CDE297FFE3E008F120F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		065339AB29893ABB002CE23E /* GenresModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresModels.swift; sourceTree = "<group>"; };
 		065339AD2989408B002CE23E /* GenresNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresNetworkManager.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 		065F61AA2987E2380058CD47 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				06BC5EB329B63C9B002EC094 /* RealmModel */,
 				06B9853C297D974E00777123 /* AuthorizationModels.swift */,
 				0631C19829802F1100215476 /* OnboardingSlideModel.swift */,
 				065339AB29893ABB002CE23E /* GenresModels.swift */,
@@ -300,8 +303,6 @@
 				06312C19299FBFE700AE26C0 /* CastAndCrewResultModels.swift */,
 				06312C1B299FC03600AE26C0 /* CrewModels.swift */,
 				06FAAED629AA3E2900C46E82 /* AccountModel.swift */,
-				06D5C6CA29B37E8A0044318A /* MovieRealmModel.swift */,
-				06D5C6CC29B3870F0044318A /* TVShowRealmModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -317,6 +318,7 @@
 				06592F2A29AB9C4E00AD313F /* WatchListNetworkManager.swift */,
 				06D5C6CE29B389480044318A /* MovieRealmManager.swift */,
 				06D5C6D029B3903E0044318A /* TVShowRealmManager.swift */,
+				0645A81A29B4E46D00E4190E /* RealmStorageManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -407,6 +409,15 @@
 				06B9852B297D940700777123 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		06BC5EB329B63C9B002EC094 /* RealmModel */ = {
+			isa = PBXGroup;
+			children = (
+				06D5C6CA29B37E8A0044318A /* MovieRealmModel.swift */,
+				06D5C6CC29B3870F0044318A /* TVShowRealmModel.swift */,
+			);
+			path = RealmModel;
 			sourceTree = "<group>";
 		};
 		06D5C6C929B378BE0044318A /* Extensions */ = {
@@ -601,6 +612,7 @@
 				06A9088F29856A8100691E6F /* GenresViewController.swift in Sources */,
 				06D5C6CB29B37E8A0044318A /* MovieRealmModel.swift in Sources */,
 				06424629299BD4220031F332 /* DetailNetworkManager.swift in Sources */,
+				0645A81B29B4E46D00E4190E /* RealmStorageManager.swift in Sources */,
 				06312C1F299FC1BD00AE26C0 /* DetailCollectionViewCell.swift in Sources */,
 				06D5C6D129B3903E0044318A /* TVShowRealmManager.swift in Sources */,
 				0656ECC829969302003C6929 /* DetailViewController.swift in Sources */,

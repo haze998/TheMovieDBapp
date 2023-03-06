@@ -28,10 +28,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    
-    //private var searchActive : Bool = false
     var viewModel = SearchViewModel()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -26,15 +26,6 @@ class AuthorizationViewController: UIViewController  {
     @IBOutlet weak var alertLabel: UILabel!
     
     let viewModel = AuthorizationViewModel()
-//    private var username: String? {
-//        return loginTextField.text
-//    }
-//
-//    private var password: String? {
-//        return passwordTextField.text
-//    }
-//    private var username: String?
-//    private var password: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -179,16 +170,4 @@ extension AuthorizationViewController: UITextFieldDelegate {
     }
    
 }
-
-//extension UITextField {
-//    func setGradient(startColor:UIColor,endColor:UIColor) {
-//        let gradient:CAGradientLayer = CAGradientLayer()
-//        gradient.colors = [startColor.cgColor, endColor.cgColor]
-//        gradient.locations = [0.0 , 1.0]
-//        gradient.startPoint = CGPoint(x: 1.0, y: 1.0)
-//        gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
-//        gradient.frame = self.bounds
-//        self.layer.addSublayer(gradient)
-//    }
-//}
 

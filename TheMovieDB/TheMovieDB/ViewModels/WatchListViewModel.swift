@@ -44,14 +44,5 @@ final class WatchListViewModel {
                 print(session)
             }
         }
-        
-        //    public func remove(mediaType: String, mediaId: Int, completion: @escaping() -> Void) {
-        //        guard let dictionary = Locksmith.loadDataForUserAccount(userAccount: "Session") else { return }
-        //        NetworkManager.shared.removeFromWatchlist(accountID: dictionary["account"] as! Int, mediaType: mediaType, mediaId: mediaId, sessionId: dictionary["session"] as! String) { session, mediaId in
-        //            print(session, mediaId)
-        //            completion()
-        //        }
-        //    }
-        
     }
 }

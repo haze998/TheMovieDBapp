@@ -11,7 +11,6 @@ enum MediaType: String {
     case movie = "movie"
     case tvShow = "tv"
     case getImage = "https://image.tmdb.org/t/p/original"
-    //case movies = "movies"
 }
 
 enum Media {

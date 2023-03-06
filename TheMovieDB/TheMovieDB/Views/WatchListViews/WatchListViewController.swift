@@ -41,8 +41,6 @@ class WatchListViewController: UIViewController {
     private func goToAuthUser() {
         if StorageSecure.keychain["guestID"] != nil {
             SwiftEntryKit.display(entry: PopUpView(with: setupPopUpMessage()), using: setupAttributes())
-            //let guestAlert = alert.guestAlert()
-            //self.tabBarController?.present(guestAlert, animated: true) // test later
         }
     }
     

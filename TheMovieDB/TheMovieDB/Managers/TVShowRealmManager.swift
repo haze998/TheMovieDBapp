@@ -18,7 +18,7 @@ struct TVShowRealmManager {
 
     func saveTvShow(tvShow: MediaResponse.Media, completion: @escaping () -> Void) {
 
-           let tvShowRealm = TvShowRealm()
+        let tvShowRealm = TvShowRealm()
 
         tvShowRealm.id = tvShow.id ?? 0
         tvShowRealm.title = tvShow.title
@@ -33,27 +33,6 @@ struct TVShowRealmManager {
            }
            completion()
        }
-    
-//    private func convertToMoviesList(tvShowsRealm: [TvShowRealm]) -> [MediaResponse.Media] {
-//
-//        var tvShows = [MediaResponse.Media]()
-//        for tvShowRealm in tvShowsRealm {
-//            let tvShow = try! MediaResponse.Media(from: tvShowRealm as! Decoder)
-//            tvShows.append(tvShow)
-//        }
-//        return tvShows
-//    }
-//
-//    func getAllMovies(completion: ([MediaResponse.Media]) -> Void) {
-//
-//           var tvShowRealm = [TvShowRealm]()
-//           guard let tvShowResults = realm?.objects(TvShowRealm.self) else { return }
-//           for tvShow in tvShowResults {
-//            tvShowRealm.append(tvShow)
-//           }
-//
-//           completion(convertToMoviesList(tvShowsRealm: tvShowRealm))
-//       }
     
     // MARK: - Reset Realm TV show storage
     func resetTVShowCache() {

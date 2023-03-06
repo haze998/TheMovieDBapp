@@ -34,8 +34,9 @@ class MovieRealmManager {
         completion()
     }
     
+    
 //    private func convertToMoviesList(moviesRealm: [MovieRealm]) -> [MediaResponse.Media] {
-//   
+//
 //        var movies = [MediaResponse.Media]()
 //           for movieRealm in moviesRealm {
 //               let movie = try! MediaResponse.Media(from: movieRealm as! Decoder)
@@ -43,11 +44,11 @@ class MovieRealmManager {
 //           }
 //           return movies
 //       }
-//    
+//
 //    func getAllMovies(completion: ([MediaResponse.Media]) -> Void) {
-//        
+//
 //        var moviesRealm = [MovieRealm]()
-//        
+//
 //        guard let moviesResult = realm?.objects(MovieRealm.self) else { return }
 //        for movie in moviesResult {
 //            moviesRealm.append(movie)

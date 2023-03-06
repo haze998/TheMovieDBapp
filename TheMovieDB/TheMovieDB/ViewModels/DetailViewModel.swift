@@ -48,14 +48,6 @@ class DetailViewModel {
         }
     }
     
-//    public func getWatchlist(type: String, completion: @escaping () -> Void) {
-//        guard let dictionary = Locksmith.loadDataForUserAccount(userAccount: "Session") else { return }
-//        NetworkManager.shared.getWatchlist(type: type, accountId: dictionary["account"] as! Int, sessionId: dictionary["session"] as! String) { media in
-//            self.watchlist = media
-//            completion()
-//        }
-//    }
-    
     func goToWatchList(mediaType: String, mediaID: String, status: Bool) {
         if let accountID = StorageSecure.keychain["accountID"],
            let sessionID = StorageSecure.keychain["sessionID"] {

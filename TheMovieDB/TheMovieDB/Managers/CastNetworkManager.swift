@@ -50,31 +50,4 @@ class CastNetworkManager {
         }
         task.resume()
     }
-//    func requestMovieActors(movieId: Movie?, completion: @escaping(([Cast]?) -> ())) {
-//        if let movieIdForUrl = movieId?.id{
-//            let url = Constants.network.moviePath + "/\(movieIdForUrl)" + Constants.network.movieActorsPath
-//
-//            AF.request(url).responseJSON { responce in
-//                let decoder = JSONDecoder()
-//                if let data = try? decoder.decode(CastAndCrewResult.self, from: responce.data!) {
-//                    let actors = data.cast ?? []
-//                    completion(actors)
-//                }
-//            }
-//        }
-//    }
-//
-//    func requestTVShowActors(tvShowId: TvShow?, completion: @escaping(([Cast]?) -> ())) {
-//        if let tvShowIdForUrl = tvShowId?.id{
-//            let url = Constants.network.tvShowPath + "/\(tvShowIdForUrl)" + Constants.network.tvShowActorsPath
-//
-//            AF.request(url).responseJSON { responce in
-//                let decoder = JSONDecoder()
-//                if let data = try? decoder.decode(CastAndCrewResult.self, from: responce.data!) {
-//                    let actors = data.cast ?? []
-//                    completion(actors)
-//                }
-//            }
-//        }
-//    }
 }

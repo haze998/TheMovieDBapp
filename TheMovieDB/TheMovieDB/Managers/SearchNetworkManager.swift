@@ -9,6 +9,7 @@ import Foundation
 
 class SearchNetworkManager {
     static let shared = SearchNetworkManager()
+    
     // MARK: - SearchViewController requests
     func getSearchRequest(page: Int, searchQuery: String, mediaType: String, completion: @escaping ((MediaResponse) -> Void)) {
         guard let apiURL = URL(string: "https://api.themoviedb.org/3/search/\(mediaType)?api_key=\(Constants.apiKey)&page=\(page)&query=\(searchQuery)") else { fatalError("Invalid URL") }

@@ -42,7 +42,6 @@ class GenresViewController: UIViewController {
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .normal)
         
-//        l
         segmentControl.addTarget(self, action: #selector(segmentWidget), for: .valueChanged)
         
         collectionView.backgroundColor = .clear
@@ -92,19 +91,16 @@ class GenresViewController: UIViewController {
 extension GenresViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //let detailVC = DetailViewController()
       guard let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
         switch segmentControl.selectedSegmentIndex {
         case 0:
             let genre = viewModel.sortedMovies.keys.sorted(by: <)[indexPath.section]
             let media = viewModel.sortedMovies[genre]![indexPath.item]
-            //detailVC.movieId = media.id!
             vc.movieId = media.id!
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
             let genre = viewModel.sortedTVs.keys.sorted(by: <)[indexPath.section]
             let media = viewModel.sortedTVs[genre]![indexPath.item]
-            //detailVC.tvShowId = media.id!
             vc.tvShowId = media.id!
             self.navigationController?.pushViewController(vc, animated: true)
         default: break

@@ -12,8 +12,6 @@ class SearchViewModel {
     public var currentPage = 0
     public let totalPages = 5
     var searchedMedia: [MediaResponse.Media] = []
-    //public var genres = [Genre]()
-    //public var popular  = [Media]()
     
     public func searchMovie(query: String, completion: @escaping () -> Void) {
         currentPage += 1

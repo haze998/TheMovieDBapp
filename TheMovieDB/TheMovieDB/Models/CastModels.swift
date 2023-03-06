@@ -20,20 +20,4 @@ struct Cast : Codable {
     let character : String?
     let creditId : String?
     let order : Int?
-    
-//    enum CodingKeys: String, CodingKey {
-//        
-//        case adult = "adult"
-//        case gender = "gender"
-//        case id = "id"
-//        case knownForDepartment = "known_for_department"
-//        case name = "name"
-//        case originalName = "original_name"
-//        case popularity = "popularity"
-//        case profilePath = "profile_path"
-//        case castId = "cast_id"
-//        case character = "character"
-//        case creditId = "credit_id"
-//        case order = "order"
-//    }
 }
