@@ -36,6 +36,7 @@ class DetailViewController: UIViewController {
     var buttonActive: Bool = false
     var movieId = 0
     var tvShowId = 0
+    var realmId = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()

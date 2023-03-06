@@ -8,6 +8,8 @@
 import UIKit
 import SwiftEntryKit
 
+
+
 class GuestPopUpAlert: UIView {
     
     private var imageView: UIImageView!
@@ -30,6 +32,7 @@ class GuestPopUpAlert: UIView {
     
     @objc func actionButtonPressed() {
         message.action()
+        
     }
 }
 

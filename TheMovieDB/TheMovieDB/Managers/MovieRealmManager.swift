@@ -31,7 +31,7 @@ class MovieRealmManager {
             movieRealm.voteAverage = movie?.voteAverage ?? 0
             
             try? realm?.write {
-                realm?.add(movieRealm)
+                realm?.add(movieRealm, update: .all)
             }
         case .tvShow:
             let tvShowRealm = MovieRealm()
@@ -45,7 +45,7 @@ class MovieRealmManager {
             tvShowRealm.voteAverage = tvShow?.voteAverage ?? 0
 
                try? realm?.write {
-                   realm?.add(tvShowRealm)
+                   realm?.add(tvShowRealm, update: .all)
                }
         case .getImage:
             break

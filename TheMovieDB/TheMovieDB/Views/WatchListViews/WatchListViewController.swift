@@ -232,6 +232,7 @@ extension WatchListViewController: UITableViewDelegate {
                     tableView.reloadData()
                 }
             case 2:
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     tableView.beginUpdates()
                     self.viewModel.removeRealmMedia(media: self.viewModel.realmList[indexPath.row])
