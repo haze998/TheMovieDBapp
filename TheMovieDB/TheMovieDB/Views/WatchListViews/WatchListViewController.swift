@@ -153,12 +153,14 @@ extension WatchListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 && !viewModel.moviesList.isEmpty {
+         if section == 0 && !viewModel.moviesList.isEmpty {
             return "Movies"
         } else if section == 1 && !viewModel.tvShowsList.isEmpty {
             return "TV Shows"
-        } else {
+        } else if section == 2 && !viewModel.realmList.isEmpty {
             return "Realm Storage"
+        } else {
+            return ""
         }
     }
     
