@@ -39,7 +39,7 @@ class GenresNetworkManager {
             var dict: [String: [MediaResponse.Media]] = [:]
             for genre in response {
                 guard let genreId = genre.id else { return }
-                guard let apiURL = URL(string: "https://api.themoviedb.org/3/discover/\(mediaType)?api_key=aef19f83a7261debd6b9b8edfd7919ce&language=en-US&sort_by=popularity.desc&with_genres=\(genreId)") else {
+                guard let apiURL = URL(string: "https://api.themoviedb.org/3/discover/\(mediaType)?api_key=\(Constants.apiKey)&language=en-US&sort_by=popularity.desc&with_genres=\(genreId)") else {
                     fatalError("Invalid URL")
                 }
                 let session = URLSession(configuration: .default)
